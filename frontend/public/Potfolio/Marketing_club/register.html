@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Now | Marketing Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-pink-50 min-h-screen flex flex-col justify-center items-center">
+  <!-- Banner -->
+  <div class="w-full max-w-2xl mx-auto mt-8 mb-6">
+    <div class="flex items-center justify-center gap-2 bg-gradient-to-r from-orange-400 to-pink-500 text-white px-6 py-3 rounded-xl shadow-lg text-lg font-semibold">
+      <span class="text-2xl">🎁</span>
+      <span>First 10 lucky customers will get a <b>FREE landing page!</b></span>
+    </div>
+  </div>
+  <!-- Registration Form -->
+  <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8">
+    <h2 class="text-3xl font-extrabold text-center text-orange-500 mb-6">Register Now</h2>
+    <form id="register-form" class="space-y-4">
+      <div>
+        <label for="reg-name" class="block font-semibold mb-1">Name</label>
+        <input type="text" id="reg-name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <div>
+        <label for="reg-email" class="block font-semibold mb-1">Email</label>
+        <input type="email" id="reg-email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <div>
+        <label for="reg-mobile" class="block font-semibold mb-1">Mobile Number</label>
+        <input type="tel" id="reg-mobile" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <div>
+        <label for="reg-requirement" class="block font-semibold mb-1">Requirement</label>
+        <textarea id="reg-requirement" rows="10" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
+      </div>
+      <div>
+        <label for="reg-address" class="block font-semibold mb-1">Address</label>
+        <input type="text" id="reg-address" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="reg-city" class="block font-semibold mb-1">City</label>
+          <input type="text" id="reg-city" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        </div>
+        <div>
+          <label for="reg-state" class="block font-semibold mb-1">State</label>
+          <input type="text" id="reg-state" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        </div>
+        <div>
+          <label for="reg-country" class="block font-semibold mb-1">Country</label>
+          <input type="text" id="reg-country" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        </div>
+      </div>
+      <div>
+        <label for="reg-date" class="block font-semibold mb-1">Date</label>
+        <input type="date" id="reg-date" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <button type="submit" class="w-full py-3 bg-gradient-to-r from-orange-400 to-pink-500 text-white font-bold rounded-lg text-lg shadow hover:scale-105 transition-transform">Register Now</button>
+    </form>
+    <div id="register-message" class="text-center font-semibold mt-4"></div>
+  </div>
+
+  <!-- Celebration Popup -->
+  <div id="celebration-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center relative animate-bounceIn">
+      <button id="popup-close" class="absolute top-3 right-3 text-gray-400 hover:text-orange-500 text-2xl font-bold">&times;</button>
+      <div class="flex justify-center mb-4">
+        <div class="text-5xl text-pink-500 bg-pink-100 rounded-full p-4 shadow">
+          🎉
+        </div>
+      </div>
+      <h2 class="text-3xl font-bold mb-2 text-orange-500">Congratulations!</h2>
+      <p class="mb-4 text-gray-700">Your registration was successful.<br>Thank you for joining the lucky 10!</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+    const SUPABASE_URL = "https://rsyyzokrhmqmypwbgbzk.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzeXl6b2tyaG1xbXlwd2JnYnprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEyMTY4NzIsImV4cCI6MjA2Njc5Mjg3Mn0.2R_xw0VohyycGZKc8qqqBQP2teJIvvLyjQq7hOKXNFg";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById('register-form');
+    const messageDiv = document.getElementById('register-message');
+    const popup = document.getElementById('celebration-popup');
+    const popupClose = document.getElementById('popup-close');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      messageDiv.textContent = '';
+      const name = document.getElementById('reg-name').value.trim();
+      const date = document.getElementById('reg-date').value;
+      const email = document.getElementById('reg-email').value.trim();
+      const mobile = document.getElementById('reg-mobile').value.trim();
+      const requirement = document.getElementById('reg-requirement').value.trim();
+      const address = document.getElementById('reg-address').value.trim();
+      const city = document.getElementById('reg-city').value.trim();
+      const state = document.getElementById('reg-state').value.trim();
+      const country = document.getElementById('reg-country').value.trim();
+      const payload = {
+        Name: name,
+        Date: date,
+        Email: email,
+        "Mobile Number": mobile,
+        Requirement: requirement,
+        Address: address,
+        City: city,
+        State: state,
+        Country: country
+      };
+      const { data, error } = await supabase.from('Register_Now').insert([payload]);
+      if (error) {
+        messageDiv.textContent = `Error: ${error.message}`;
+        messageDiv.style.color = 'red';
+        console.error('Supabase insert error:', error);
+        if (error.details) console.error('Error details:', error.details);
+        if (error.hint) console.error('Error hint:', error.hint);
+      } else {
+        messageDiv.textContent = '';
+        form.reset();
+        // Show popup
+        popup.classList.remove('hidden');
+        // Confetti burst
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            confetti({
+              particleCount: 80,
+              spread: 70,
+              origin: { y: 0.6 },
+              colors: ['#ff8906', '#e5306f', '#fbbf24', '#f472b6', '#6366f1']
+            });
+          }, i * 300);
+        }
+      }
+    });
+    popupClose.onclick = function() {
+      popup.classList.add('hidden');
+    };
+    popup.onclick = function(e) {
+      if (e.target === popup) popup.classList.add('hidden');
+    };
+  </script>
+</body>
+</html> 

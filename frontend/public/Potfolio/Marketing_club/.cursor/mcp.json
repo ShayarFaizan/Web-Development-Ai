@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "sbp_c02cd748f235a795cbdcd57fdfa035a0e6db6058"
+      ]
+    }
+  }
+}
+// This file is used to configure the MCP server for the Marketing Club project.
+// It specifies the command to run the Supabase MCP server with the provided access token.
+// The access token is used to authenticate requests to the Supabase backend.
+// The MCP server allows for real-time updates and interactions with the Supabase database.

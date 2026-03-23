@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#">Travel<span>Toor</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#package">Package</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav__btns">
+        <button class="btn">Register</button>
+      </div>
+    </nav>
+    <header class="section__container header__container" id="home">
+      <div class="header__content">
+        <h1><span>Let's</span> Creat Memorable Journey</h1>
+
+        <p class="section__description">
+          Embark on an unforgettable adventure with us! Discover breathtaking
+          destinations, create lasting memories, and make every journey
+          remarkable
+        </p>
+        <form action="/">
+          <div class="input__group">
+            <label for="location">Location</label>
+            <input type="text" name="location" placeholder="Lakshadweep" />
+          </div>
+          <div class="input__group">
+            <label for="date">Date</label>
+            <input type="text" name="date" placeholder="26 Mar, Fri" />
+          </div>
+          <div class="input__group">
+            <label for="price">Price</label>
+            <input type="text" name="price" placeholder="42,000" />
+          </div>
+          <button class="btn"><i class="ri-search-line"></i></button>
+        </form>
+      </div>
+      <div class="header__image">
+        <img src="assets/header-1.jpg" alt="header" />
+        <img src="assets/header-2.jpg" alt="" />
+        <img src="assets/header-3.jpg" alt="" />
+        <img src="assets/bg.png" alt="" />
+      </div>
+    </header>
+    <section class="section__container choose__container" id="about">
+      <div class="choose__image">
+        <img src="assets/choose.jpg" alt="" />
+      </div>
+      <div class="choose__content">
+        <p class="section__subheader">Why Choose Us?</p>
+        <h2 class="section__header">PLan Your Trip</h2>
+        <ul class="choose__list">
+          <li>
+            <span><i class="ri-verified-badge-fill"></i></span>
+            <div>
+              <h4>Best Price Guarantee</h4>
+              <p>
+                We ensure you get the most competitive rates for your travel
+                plans, making your dream destinations affordable.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span><i class="ri-calendar-fill"></i></span>
+            <div>
+              <h4>Booking Options</h4>
+              <p>
+                Experience the ease of flexible booking options tailored to suit
+                your schedule and preferences.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span><i class="ri-road-map-fill"></i></span>
+            <div>
+              <h4>Revising Track Map</h4>
+              <p>
+                Navigate your adventure with our personalized track maps
+                designed for seamless and enjoyable travel experiences.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section__container popular__container" id="package">
+      <img src="assets/bg.png" alt="" class="popular__bg" />
+      <p class="section__subheader">Famous Destinations</p>
+      <h2 class="section__header">
+        Our Popular <span>Destinations</span> Packages
+      </h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper__slide">
+            <div class="popular__card">
+              <img src="assets/popular-1.jpg" alt="" />
+              <div class="popular__content">
+                <div class="popular__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  4.0(34)😊
+                </div>
+                <h4>Lakshadweep</h4>
+                <p><span>Rs. 28,000/-</span></p>
+                <div class="popular__card__footer">
+                  <div>
+                    <span><i class="ri-time-line"></i></span> 4 Day's
+                  </div>
+                  <div>
+                    <span><i class="ri-group-3-fill"></i></span> 15+
+                  </div>
+                  <div>
+                    <span><i class="ri-map-pin-2-fill"></i></span> India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper__slide">
+            <div class="popular__card">
+              <img src="assets/popular-2.jpg" alt="" />
+              <div class="popular__content">
+                <div class="popular__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  4.5(55)😊
+                </div>
+                <h4>Kaziranga</h4>
+                <p><span>Rs. 15,000/-</span></p>
+                <div class="popular__card__footer">
+                  <div>
+                    <span><i class="ri-time-line"></i></span> 2 Day's
+                  </div>
+                  <div>
+                    <span><i class="ri-group-3-fill"></i></span> 12+
+                  </div>
+                  <div>
+                    <span><i class="ri-map-pin-2-fill"></i></span> India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper__slide">
+            <div class="popular__card">
+              <img src="assets/popular-3.jpg" alt="" />
+              <div class="popular__content">
+                <div class="popular__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  4.2(42)��
+                </div>
+                <h4>Sun Temple</h4>
+                <p><span>Rs. 18,000/-</span></p>
+                <div class="popular__card__footer">
+                  <div>
+                    <span><i class="ri-time-line"></i></span> 3 Day's
+                  </div>
+                  <div>
+                    <span><i class="ri-group-3-fill"></i></span> 10+
+                  </div>
+                  <div>
+                    <span><i class="ri-map-pin-2-fill"></i></span> India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper__slide">
+            <div class="popular__card">
+              <img src="assets/popular-4.jpg" alt="" />
+              <div class="popular__content">
+                <div class="popular__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  4.8(65)😊
+                </div>
+                <h4>kashmir</h4>
+                <p><span>Rs. 30,000/-</span></p>
+                <div class="popular__card__footer">
+                  <div>
+                    <span><i class="ri-time-line"></i></span> 3 Day's
+                  </div>
+                  <div>
+                    <span><i class="ri-group-3-fill"></i></span> 20+
+                  </div>
+                  <div>
+                    <span><i class="ri-map-pin-2-fill"></i></span> India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper__slide">
+            <div class="popular__card">
+              <img src="assets/popular-5.jpg" alt="" />
+              <div class="popular__content">
+                <div class="popular__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  4.5(55)😊
+                </div>
+                <h4>Kanyakumari</h4>
+                <p><span>Rs. 15,000/-</span></p>
+                <div class="popular__card__footer">
+                  <div>
+                    <span><i class="ri-time-line"></i></span> 5 Day's
+                  </div>
+                  <div>
+                    <span><i class="ri-group-3-fill"></i></span> 12+
+                  </div>
+                  <div>
+                    <span><i class="ri-map-pin-2-fill"></i></span> India
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

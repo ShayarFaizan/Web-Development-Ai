@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #e5e5fd;
+  min-height: 100vh;
+  border: 10px solid #88cfe5;
+}
+
+.content {
+  max-width: 981px;
+  margin: 0 auto;
+}
+.image_container {
+  border-radius: 3%;
+  overflow: hidden; /* Prevents image from overflowing */
+}
+
+.image_container {
+  flex-basis: 50%;
+}
+
+img {
+  height: 320px;
+  max-width: 100%; /* Ensures image doesn't overflow */
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Aligns content vertically */
+  gap: 5px; /* Adds space between the image and the text */
+  margin: 50px 0 0 0;
+  /* align-items: flex-end; */
+}
+.top-section h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #88cfe5;
+}
+.top-section h4 {
+  /* font-size: 19px; */
+  color: black;
+  font-family: sans-serif;
+  font-weight: 300; /* Use font-weight to control the lightness of the font */
+  font-style: inherit; /* 'font-style: normal;' instead of 'font-style: smaller;' */
+}
+
+h1,
+h4 {
+  margin: 0;
+  padding-left: 20px; /* Adds space between text and image */
+}
+.about-section {
+  margin: 50px 0 0 0;
+}
+.about-section h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #414143;
+  margin-bottom: 20px;
+}
+.about-section p {
+  line-height: 1.6; /* Adjusts line height for better readability */
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+}
+.Important-points h3 {
+  margin: 12px 0 0 0;
+  border-top: 1px solid #ccc;
+  padding: 15px 0 15px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #414143;
+  /* font-family: "Merriweather Sans", sans-serif; */
+}
+
+.Important-points ul {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0;
+}
+
+.Important-points li {
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.points {
+  display: flex; /* Flexbox to arrange items side by side */
+  justify-content: space-between; /* Spreads list and image apart */
+  align-items: flex-start; /* Aligns items at the top */
+}
+.ikigai-image {
+  height: 250px; /* Adjust the size as needed */
+  width: auto;
+  margin: 26px 221px 0 0;
+}
+.points ol {
+  list-style-type: circle; /* Changes list style to decimal */
+  padding-left: 20px; /* Adds space between list items */
+  margin: 95px 0 0 0;
+  color: #28b1db;
+  text-shadow: 0px 0px 8px rgb(128, 128, 128); /* Adds a subtle shadow */
+  font-weight: 300; /* Makes the text light and smooth */
+}
+.points li {
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.points p {
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+  margin: 25px 0 3px 0;
+}
+.recommendation h2 {
+  margin: 50px 0 0 0;
+  text-align: justify;
+  font-size: 30px;
+  font-weight: bold;
+  color: #414143;
+}
+.recommendation p {
+  line-height: 1.6; /* Adjusts line height for better readability */
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+  margin: 25px 0 3px 0;
+}
+footer {
+  background-color: #5fbcdf;
+  padding: 15px;
+  color: white;
+  text-align: center;
+  margin-top: 14px;
+  max-width: 10px 0 0 0;
+}
+footer p a img {
+  height: 30pt;
+  margin: 15px 0 0 0;
+}
+.conclusion {
+  margin: 50px 0 0 0;
+  text-align: justify;
+  line-height: 1.6; /* Adjusts line height for better readability */
+  font-size: 17px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100; /* or another number like 300, 500, etc. */
+  font-style: normal;
+  letter-spacing: 1px;
+}
+.additional-info img {
+  /* text-align: right; */
+  margin: 20px 0 0 0;
+  width: 990px;
+  height: inherit;
+}
+.additional-info {
+  text-align: center;
+}

@@ -1,0 +1,73 @@
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.8em;
+  color: #666;
+}
+.pimg1 {
+  background-image: url(IMG/bridge-4636745.jpg);
+  min-height: 100%;
+}
+.pimg2 {
+  background-image: url(IMG/river-4640055.jpg);
+  min-height: 420px;
+}
+.pimg3 {
+  background-image: url(IMG/water-3161063.jpg);
+  min-height: 420px;
+}
+.pimg4 {
+  background-image: url(IMG/switzerland-4290226.jpg);
+  min-height: 100%;
+}
+.pimg1,
+.pimg2,
+.pimg3,
+.pimg4 {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.ptext {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 27px;
+  letter-spacing: 8px;
+  text-transform: lowercase;
+}
+.textbg {
+  background-color: #313534;
+  color: white;
+  padding: 20px;
+  box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.5);
+}
+.textbg:hover {
+  box-shadow: 8px 6px 10px rgba(1, 1, 1, 0.5);
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+  /* transform: scale(1.05); */
+}
+.textbg:hover {
+  background-color: #95a6b6;
+}
+.section {
+  padding: 50px 80px;
+  text-align: center;
+}
+.writting_section {
+  background-color: #f4f4f4;
+  color: #666;
+}
+.writting_section2 {
+  background-color: #282e34;
+  color: #ddd;
+}

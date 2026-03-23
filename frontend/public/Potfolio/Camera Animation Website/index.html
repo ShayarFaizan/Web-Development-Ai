@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfect Capture</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Syne:wght@700;800&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div class="outside-bg">
+      <div class="app-frame">
+        <!-- Viewfinder Overlay -->
+        <div class="viewfinder">
+          <div class="v-line h-top"></div>
+          <div class="v-line h-bottom"></div>
+          <div class="v-line v-left"></div>
+          <div class="v-line v-right"></div>
+          <div class="v-line v-between"></div>
+          <div class="v-line v-vertical"></div>
+
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+          <div class="logo">Capture</div>
+          <ul class="nav-links">
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#">PRODUCTS</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+          <div class="cart"></div>
+        </nav>
+
+        <div class="scroll-container">
+          <!-- Section 1: Hero -->
+          <section class="section hero-section">
+            <div class="hero">
+              <div class="hero-text-container">
+                <h1 class="hero-text text-left">CAPTURE</h1>
+                <h1 class="hero-text text-right">MOMENTS</h1>
+              </div>
+            </div>
+
+            <!-- Footer UI Elements -->
+            <div class="ui-elements">
+              <div class="left-ui">
+                <a href="#" class="explore-btn">
+                  <span>EXPLORE</span>
+                  <span>MORE</span>
+                </a>
+                <p class="description">
+                  Discover engineered for <br />
+                  creators, storytellers, and professionals <br />
+                  who demand excellence in every shot.
+                </p>
+              </div>
+              <div class="right-ui">
+                <div class="tagline">
+                  <p>More Than <span>Just a Camera</span></p>
+                  <p><b>It's Your Creative Partner</b></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2: Details -->
+          <section class="section detail-section">
+            <div class="detail-bg-slanted"></div>
+            <div class="detail-content">
+              <h2 class="bg-text-large">ULTRA HD</h2>
+              <div class="detail-text-info">
+                <h3>
+                  Capture Life's Best <br />
+                  Moments with Clarity
+                </h3>
+                <p>
+                  Whether you're a professional photographer, filmmaker,
+                  traveler, or a content creator, our cameras are designed to
+                  elevate every shot. With cutting edge sensors, advanced
+                  stabilization and sleek design.
+                </p>
+                <a href="#" class="buy-now-btn">BUY NOW</a>
+              </div>
+              <div class="detail-footer">
+                <div class="stat">
+                  <span class="stat-num">500K</span>
+                  <p>
+                    From a professional photographer,<br />creator, or a
+                    passionate traveler.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Shared Camera Wrapper -->
+        <div class="camera-wrapper">
+          <img
+            src="assets/camera.svg"
+            alt="Vintage Camera"
+            class="camera-img"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

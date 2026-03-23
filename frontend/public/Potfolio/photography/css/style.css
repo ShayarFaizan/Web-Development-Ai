@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
+:root {
+  --primary-color: #b32557;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  /* इसका मतलब है कि कागज़ की ऊँचाई हमेशा आपकी स्क्रीन जितनी होगी, चाहे उस पर कुछ लिखा हो या न हो। यह सुनिश्चित करता है कि बैकग्राउंड हमेशा पूरी स्क्रीन पर दिखे। */
+  font-family: "Fredoka", sans-serif;
+  background-image: url("../assets/header.jpg");
+  background-position: center center;
+  /* इसका मतलब है कि तस्वीर कागज़ के बिल्कुल बीच में लगाई जाएगी, न ऊपर, न नीचे, न दाएं, न बाएं। */
+  background-repeat: no-repeat;
+  /* इसका मतलब है कि तस्वीर सिर्फ एक बार दिखाई देगी, बार-बार नहीं दोहराई जाएगी। */
+  background-size: cover;
+  /* इसका मतलब है कि तस्वीर को इतना बड़ा किया जाएगा कि वह पूरे कागज़ को ढक ले, भले ही तस्वीर का कुछ हिस्सा कट जाए। */
+}
+
+.container {
+  min-height: 100vh;
+  /* इसका मतलब है कि डिब्बे की कम से कम ऊँचाई हमेशा स्क्रीन की ऊँचाई के बराबर होगी। अगर कंटेंट कम भी है, तो भी डिब्बा पूरी स्क्रीन पर फैला हुआ दिखेगा। */
+  display: flex;
+  flex-direction: column;
+  /* इसका मतलब है कि डिब्बे के अंदर का कंटेंट ऊपर से नीचे की ओर एक कॉलम में व्यवस्थित होगा। जैसे एक के ऊपर एक चीज़ें रखी होती हैं। */
+  max-width: var(--max-width);
+  margin: auto;
+  overflow: hidden;
+}
+
+nav {
+  padding: 2rem 1rem;
+  overflow: hidden;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav__links > div li:not(:first-child) {
+  display: none;
+}
+.nav__links img {
+  max-width: 50px;
+}
+
+.nav__links a {
+  position: relative;
+  isolation: isolate;
+  padding-bottom: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--white);
+}
+.nav__links a::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--white);
+  transition: 0.3s;
+}
+.nav__links a:hover::after {
+  width: 100%;
+}
+@media (width > 768px) {
+  .nav__links > div li:not(:first-child) {
+    display: block;
+  }
+
+  .nav__links > div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+.section__container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section__container h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.section__container h1,
+.section__container h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 4rem;
+}
+.section__container h1 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--white);
+}
+.section__container button {
+  max-width: fit-content;
+  margin-block: 5rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid var(--white);
+  cursor: pointer;
+}
+
+.section__container button span {
+  padding: 10px 25px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background-color: var(--white);
+}
+.scroll__bottom {
+  position: absolute;
+  bottom: 0;
+  transform: translate(-50%, -5rem) rotate(-90deg);
+  animation: scroll-down 2s linear infinite;
+}
+.scroll__bottom a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+}
+.scroll__bottom span {
+  display: block;
+  font-size: 1.2rem;
+  transform: rotate(90deg);
+}
+@keyframes scroll-down {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 10px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+.socials {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.socials a {
+  text-decoration: none;
+  padding: 6px 8px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background-color: var(--white);
+  border-radius: 100%;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+@media (width > 540px) {
+  .section__container h1,
+  .section__container h2 {
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+  }
+  .nav__links > div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .section__container h1,
+  .section__container h2 {
+    font-size: 7rem;
+    line-height: 7rem;
+  }
+}

@@ -1,0 +1,13 @@
+﻿1. Install (update) 
+2. Disable Windows Defender (or other antivirus)
+3. Run and apply the patch
+4. Enable antivirus
+5. Done
+
+--------------------------------------------------------------
+
+1. Установить (обновить)
+2. Отключить "Защитник Windows" (или другой антивирус)
+3. Запустить и применить патч
+4. Включить антивирус
+5. Готово

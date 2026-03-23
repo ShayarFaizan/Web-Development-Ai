@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my tuines website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/03f500d785.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">
+          My Tuines
+          <span class="fas fa-headphones"></span>
+        </div>
+        <ul>
+          <li><a href="#hero">OverView</a></li>
+          <li><a href="#Music">Music</a></li>
+          <li><a href="#Video">Video</a></li>
+          <li><a href="#Gift">Gift Card</a></li>
+          <li><a href="#Make Your Music">Make Your Music</a></li>
+          <li>
+            <!-- Clickable icon (image or font awesome icon) -->
+            <a href="javascript:void(0)" id="search-icon"
+              ><i class="fas fa-search"></i
+            ></a>
+            <!-- Hidden search bar -->
+            <span id="search-bar">
+              <input type="text" placeholder="Search..." />
+            </span>
+          </li>
+        </ul>
+        <script>
+          document
+            .getElementById("search-icon")
+            .addEventListener("click", function () {
+              const searchBar = document.getElementById("search-bar");
+              searchBar.classList.toggle("active");
+            });
+        </script>
+      </nav>
+    </header>
+    <main>
+    <section class="hero_section" id="hero">
+      <div class="container">
+        <h1>My Tuines</h1>
+        <h3>Your music, movies, and TV shows take center stage.</h3>
+        <p>
+          myTunes is the best way to organize and enjoy the music, movies, and
+          TV shows you already have — and shop for the ones you want. Enjoy all
+          the entertainment myTunes has to offer on your Mac and PC.
+        </p>
+      </div>
+    </section>
+    <section class="music-section" id="Music">
+      <div class="container">
+        <h2>
+          <span> <i class="fa fa-music"></i> </span>
+          Music
+        </h2>
+        <h4>
+            Stream over 45 million songs, ad-free.
+          myTunes offers a wide range of music, from classic rock and pop to hip
+          hop, electronic, and indie. Whether you're a fan of classic rock or a
+          contemporary artist, myTunes has got you covered.
+        </h4>
+        <button class="primary-btn">
+          Play MyTunes
+        </button>
+        <p>
+          Orange Music is available in myTunes, and for iOS and Android
+            devices.
+        </p>
+        <div class="ipad-iphone-img">
+          <img src="img/Group 2.png" alt="Group 2.png">
+        </div>
+    </section>
+    <section class="about-music container">
+      <h3>
+        The movie and TV collection you always wished for. Granted.
+      </h3>
+      <p>
+        myTunes offers a movie and TV collection that's the perfect blend of your
+        favorite films, TV shows, and movies from theaters. Whether you're a fan of
+        Disney, Marvel, or HBO Max, myTunes has got you covered.
+      </p>
+      <button class="secondary-btn">
+        Read More
+      </button>
+      <div class="mac-img">
+        <img src="img/MacBook Pro.png" alt="">
+      </div>
+      <span class="ooo">
+      <h3>
+      Watch your favorite movies and TV shows on your Mac and PC.
+      <i class="fa fa-music"></i>
+    </h3></span>
+    <span class="change"><p>
+      MyTunes Offers a movie and TV collection that's the perfect blend of your
+      favorite films, TV shows, and movies from theaters. Whether you're a fan of
+      Disney, Marvel, or HBO Max, myTunes has got you covered.
+    </p></span>
+   </section>
+   <section class="video-section" id="Video">
+  <div class="container">
+   
+    <section class="video-section"></section>
+  <video controls>
+    <source src="video/Ellie Goulding Love Me Like You Do Vevo Presents Live in London.mp4" type="video/mp4">
+    <!-- Fallback message if the video tag isn't supported -->
+    Your browser does not support the video tag.
+  </video>
+  </div>
+</section>
+ <div class="container">
+        <section class="gift-section" id="Gift">
+          <div class="gift-card">
+            <img src="img/pngwing 1.png" alt="gift card" />
+          </div>
+          <div class="gift-content">
+            <h3>Gift Card</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
+              cum explicabo, excepturi eaque commodi minima quas repellendus
+              assumenda facere hic, earum quasi iste asperiores molestiae
+              obcaecati laborum, voluptatum alias velit cupiditate! Quae soluta
+              sapiente quasi, iusto quam magnam doloribus natus quod eius, rerum
+              asperiores aspernatur. Illum neque sequi odit fuga.
+            </p>
+            <p>Already have an Orange MyTunes Music Gift Card?</p>
+            <hr />
+            <div>
+              <button class="secondary-btn">Redeem</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <section class="footer-upper">
+        <div class="container">
+          <div class="footer-links">
+<h4>Shop & Learn</h4>
+<ul>
+              <li>Music</li>
+              <li>Movies</li>
+              <li>Shows</li>
+              <li>Apps</li>
+              <li>Gift Cards</li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Orange Store</h4>
+            <ul>
+              <li>Find a Store</li>
+              <li>Today at Orange</li>
+              <li>Financing</li>
+              <li>Orange Camp</li>
+              <li>Order Status</li>
+            </ul>
+          </div>
+           <div class="footer-links">
+            <h4>Orange Store</h4>
+            <ul>
+              <li>Find a Store</li>
+              <li>Today at Orange</li>
+              <li>Financing</li>
+              <li>Orange Camp</li>
+              <li>Order Status</li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Education & Business</h4>
+            <ul>
+              <li>Orange & Education</li>
+              <li>Shop for Collage</li>
+              <li>Orange & Business</li>
+              <li>Shop for Business</li>
+              <li>Jobs</li>
+            </ul>
+          </div>
+          <div class="footer-links" id="Make Your Music">
+            <h4>Make Your Music</h4>
+            <ul>
+              <li>Newsroom</li>
+              <li>Top Directors</li>
+              <li>Investors</li>
+              <li>Envents</li>
+              <li>Contact MY Tuines</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="footer-lower " >
+        <p>Copyright © 2024 MyTunes</p>
+      </section>
+    </footer>
+  </body>
+</html>
