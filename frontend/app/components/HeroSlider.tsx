@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const images = [
-  "/assets/hero1.jpg",
+  "/assets/hero9,999.jpg",
   "/assets/hero2.jpg",
   "/assets/hero3.jpg",
   "/assets/hero4.jpg",
@@ -14,7 +14,6 @@ export default function HeroSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
 
   // Auto slide
   useEffect(() => {
@@ -64,7 +63,6 @@ export default function HeroSlider() {
     setTouchEnd(null);
   };
 
-
   return (
     <div
       className="relative w-full overflow-hidden group max-h-[900px]"
@@ -73,7 +71,6 @@ export default function HeroSlider() {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-
       {/* Slider Images container with smooth CSS transition */}
       <div
         className="flex w-full h-full transition-transform duration-500 ease-in-out"
