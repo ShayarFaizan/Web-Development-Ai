@@ -438,7 +438,7 @@ export default function CartPage() {
       });
 
       const options = {
-        key: "rzp_test_SOjyvVSoJst1lB",
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
         amount: order.amount,
         currency: order.currency,
         name: "Web Development AI",
