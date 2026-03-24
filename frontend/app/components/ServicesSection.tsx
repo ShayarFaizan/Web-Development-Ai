@@ -4,11 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 const services = [
-  { id: 1, src: "/assets/is1.svg", label: "E-COMMERCE SOLUTIONS" },
-  { id: 2, src: "/assets/is2.svg", label: "Blog Website" },
-  { id: 3, src: "/assets/is3.svg", label: "DIGITAL MARKETING" },
-  { id: 4, src: "/assets/is4.svg", label: "Educational Site" },
-  { id: 5, src: "/assets/is5.svg", label: "Business Website" },
+  { id: 1, src: "/assets/is1.jpg", label: "E-COMMERCE SOLUTIONS" },
+  { id: 2, src: "/assets/is2.jpg", label: "Blog Website" },
+  { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING" },
+  { id: 4, src: "/assets/is4.jpg", label: "Educational Site" },
+  { id: 5, src: "/assets/is5.jpg", label: "Business Website" },
 ];
 
 export default function ServicesSection() {

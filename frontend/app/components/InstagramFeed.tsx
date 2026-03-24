@@ -22,7 +22,7 @@ interface InstaProfile {
 const placeholders: InstaPost[] = Array.from({ length: 6 }, (_, i) => ({
   id: `placeholder-${i}`,
   media_type: "IMAGE",
-  media_url: `/assets/is${(i % 5) + 1}.svg`,
+  media_url: `/assets/is${(i % 5) + 1}.jpg`,
   permalink: "https://www.instagram.com/by_coder_baba",
   caption: "Check out our latest work! ✨ #ByCoderBaba",
   timestamp: new Date().toISOString(),
