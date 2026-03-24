@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar"; // Check path
 import GoogleOneTap from "./components/GoogleOneTap";
 import { AppProvider } from "@/app/context/AppContext";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,6 +66,8 @@ export default function RootLayout({
           <GoogleOneTap />
           <Navbar />
           <main className="pt-0 md:pt-[92px]">{children}</main>
+          <SpeedInsights />
+          <Analytics />
         </AppProvider>
       </body>
     </html>
