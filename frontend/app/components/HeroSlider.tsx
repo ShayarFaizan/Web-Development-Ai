@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const images = [
-  "/assets/hero1.svg",
-  "/assets/hero2.svg",
-  "/assets/hero3.svg",
-  "/assets/hero4.svg",
+  "/assets/hero1.jpg",
+  "/assets/hero2.jpg",
+  "/assets/hero3.jpg",
+  "/assets/hero4.jpg",
 ];
 
 export default function HeroSlider() {
