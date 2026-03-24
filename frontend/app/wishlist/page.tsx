@@ -20,7 +20,7 @@ export default function WishlistPage() {
   if (wishlistItems.length === 0) {
     return (
       <div
-        className="min-h-[100vh] flex flex-col items-center justify-center px-6 py-20"
+        className="min-h-screen flex flex-col items-center justify-center px-6 py-20"
         style={{ background: "#ffffff" }}
       >
         <div
@@ -330,7 +330,7 @@ export default function WishlistPage() {
                           <Trash2 size={13} strokeWidth={2} />
                         </button>
 
-                        <div className="relative w-full aspect-[4/3] bg-white flex items-center justify-center p-2 mb-1">
+                        <div className="relative w-full aspect-4/3 bg-white flex items-center justify-center p-2 mb-1">
                           <Image
                             src={item.image}
                             alt={item.title}
@@ -364,7 +364,7 @@ export default function WishlistPage() {
                           </div>
 
                           <div className="mt-1 flex items-center gap-1 mb-3">
-                            <div className="flex items-center text-green-600 gap-[1px]">
+                            <div className="flex items-center text-green-600 gap-px">
                               <span className="text-[10px]">★</span>
                               <span className="text-[10px]">★</span>
                               <span className="text-[10px]">★</span>

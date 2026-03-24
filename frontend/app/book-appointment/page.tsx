@@ -14,7 +14,7 @@ export default function BookAppointment() {
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white pt-[60px] md:pt-[90px] pb-32 md:pb-10 px-4 sm:px-6 relative overflow-x-hidden font-sans">
       {/* Background Gradients */}
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#1a150e] to-transparent pointer-events-none z-0" />
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-linear-to-b from-[#1a150e] to-transparent pointer-events-none z-0" />
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#d4a75c] rounded-full blur-[150px] opacity-10 z-0" />
       <div className="absolute top-40 -left-20 w-72 h-72 bg-[#e3bc7c] rounded-full blur-[120px] opacity-10 z-0" />
 
@@ -34,14 +34,14 @@ export default function BookAppointment() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Left Column: Details & Value Prop */}
           <div className="lg:col-span-4 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#d4a75c]/20 to-transparent border border-[#d4a75c]/30 text-[#e3bc7c] text-xs font-semibold tracking-widest uppercase mb-6 w-fit">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-linear-to-r from-[#d4a75c]/20 to-transparent border border-[#d4a75c]/30 text-[#e3bc7c] text-xs font-semibold tracking-widest uppercase mb-6 w-fit">
               <CalendarDays size={14} />
               <span>Free Consultation</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Book Your <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e3bc7c] via-[#fef1cd] to-[#d4a75c]">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#e3bc7c] via-[#fef1cd] to-[#d4a75c]">
                 Strategy Session
               </span>
             </h1>
@@ -73,7 +73,7 @@ export default function BookAppointment() {
             </div>
 
             <div className="bg-[#111] border border-white/5 rounded-2xl p-6 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#e3bc7c] to-[#d4a75c]" />
+              <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-[#e3bc7c] to-[#d4a75c]" />
               <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">What you'll get:</h4>
               <ul className="space-y-3">
                 {[
@@ -94,7 +94,7 @@ export default function BookAppointment() {
           {/* Right Column: Google Calendar Embed */}
           <div className="lg:col-span-8 relative">
             {/* Soft glow behind the calendar */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#e3bc7c]/30 to-[#d4a75c]/30 rounded-[28px] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
+            <div className="absolute -inset-1 bg-linear-to-r from-[#e3bc7c]/30 to-[#d4a75c]/30 rounded-[28px] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
             
             <div className="relative bg-white rounded-[24px] p-2 md:p-4 h-[850px] md:h-[700px] shadow-2xl overflow-hidden flex flex-col items-center justify-center ring-1 ring-white/20">
               {mounted ? (

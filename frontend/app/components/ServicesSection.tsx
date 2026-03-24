@@ -71,7 +71,7 @@ export default function ServicesSection() {
                       {service.label}
                     </p>
                     <button
-                      className="text-black text-[10px] md:text-[11px] font-bold tracking-[0.1em] uppercase px-[18px] py-[10px] rounded-[4px]"
+                      className="text-black text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-[18px] py-[10px] rounded-[4px]"
                       style={{
                         background:
                           "linear-gradient(90deg, #fdf0d5 0%, #d4a351 48%, #fdf0d5 100%)",
