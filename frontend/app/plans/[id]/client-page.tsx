@@ -39,7 +39,9 @@ import {
   onSnapshot, 
   serverTimestamp,
   Timestamp,
-  increment
+  increment,
+  arrayUnion,
+  arrayRemove
 } from "firebase/firestore";
 import { useAppContext } from "@/app/context/AppContext";
 import { useRouter } from "next/navigation";
@@ -50,6 +52,7 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
   const { addToCart } = useAppContext();
   const [selectedMedia, setSelectedMedia] = useState(0);
   const [isDetailsOpen, setIsDetailsOpen] = useState(true);
+  const [isHighlightsOpen, setIsHighlightsOpen] = useState(true);
   
   // Auth State
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -69,6 +72,30 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+
+  // Swipe logic for gallery
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe) {
+      setSelectedMedia((prev) => (prev + 1) % gallery.length);
+    } else if (isRightSwipe) {
+      setSelectedMedia((prev) => (prev - 1 + gallery.length) % gallery.length);
+    }
+  };
 
   // Dynamic Rating Calculations
   const allReviewsCount = localReviews.length;
@@ -117,6 +144,8 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
           isGoldReviewer: data.isGoldReviewer || false,
           likes: data.likes || 0,
           dislikes: data.dislikes || 0,
+          likedBy: data.likedBy || [],
+          dislikedBy: data.dislikedBy || [],
           createdAt: data.createdAt || null
         } as Review;
       });
@@ -212,13 +241,63 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
   };
 
   const handleLike = async (reviewId: string, isDislike: boolean = false) => {
+    if (!currentUser) {
+      alert("Please login to like/dislike reviews.");
+      return;
+    }
+
     try {
       const reviewRef = doc(db, "reviews", reviewId);
-      await updateDoc(reviewRef, {
-        [isDislike ? "dislikes" : "likes"]: increment(1)
-      });
+      const review = localReviews.find(r => r.id === reviewId);
+      if (!review) return;
+
+      const userId = currentUser.uid;
+      const alreadyLiked = review.likedBy?.includes(userId);
+      const alreadyDisliked = review.dislikedBy?.includes(userId);
+
+      if (isDislike) {
+        if (alreadyDisliked) {
+          // Unlike (Remove dislike)
+          await updateDoc(reviewRef, {
+            dislikedBy: arrayRemove(userId),
+            dislikes: increment(-1)
+          });
+        } else {
+          // Add Dislike
+          const updates: any = {
+            dislikedBy: arrayUnion(userId),
+            dislikes: increment(1)
+          };
+          // If was liked, remove like
+          if (alreadyLiked) {
+            updates.likedBy = arrayRemove(userId);
+            updates.likes = increment(-1);
+          }
+          await updateDoc(reviewRef, updates);
+        }
+      } else {
+        if (alreadyLiked) {
+          // Unlike (Remove like)
+          await updateDoc(reviewRef, {
+            likedBy: arrayRemove(userId),
+            likes: increment(-1)
+          });
+        } else {
+          // Add Like
+          const updates: any = {
+            likedBy: arrayUnion(userId),
+            likes: increment(1)
+          };
+          // If was disliked, remove dislike
+          if (alreadyDisliked) {
+            updates.dislikedBy = arrayRemove(userId);
+            updates.dislikes = increment(-1);
+          }
+          await updateDoc(reviewRef, updates);
+        }
+      }
     } catch (error) {
-      console.log("Error updating like/dislike", error);
+      console.error("Error updating like/dislike", error);
     }
   };
 
@@ -275,7 +354,7 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
       <Navbar />
 
       {/* Breadcrumbs */}
-      <nav className="max-w-[1500px] mx-auto px-4 md:px-8 pt-24 pb-4">
+      <nav className="max-w-[1500px] mx-auto px-4 md:px-8 pt-5 md:pt-24 pb-2">
         <div className="flex items-center gap-2 text-[11px] text-zinc-500 overflow-x-auto whitespace-nowrap scrollbar-hide">
           <Link href="/" className="hover:text-amber-600 hover:underline transition-colors uppercase tracking-tight">Home</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
@@ -292,7 +371,12 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
           
           {/* 1. Gallery Column */}
           <div className="lg:col-span-4 space-y-4 lg:sticky lg:top-24 h-fit">
-            <div className="relative aspect-square rounded-lg bg-white border border-black/5 overflow-hidden group cursor-zoom-in">
+            <div 
+              className="relative aspect-square rounded-lg bg-white border border-black/5 overflow-hidden group cursor-zoom-in touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <Image
                 src={gallery[selectedMedia]}
                 alt={card.title}
@@ -389,6 +473,58 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
                ))}
             </div>
 
+            {/* Buying Section for Mobile Only */}
+            <div className="lg:hidden">
+              <div className="p-5 rounded-xl border border-black/10 bg-white space-y-6 shadow-sm">
+                 <div className="space-y-1">
+                     <div className="flex items-start">
+                         <span className="text-sm mt-1 font-medium text-zinc-900">₹</span>
+                         <span className="text-2xl font-medium text-zinc-900">
+                             {card.price.split('₹')[1]}
+                         </span>
+                     </div>
+                     <div className="flex items-center gap-2 text-blue-600 text-xs hover:underline cursor-pointer">
+                         <MapPin className="w-3 h-3 text-zinc-400" />
+                         <span>Deliver to Web Development AI - Bilaspur 495001</span>
+                     </div>
+                 </div>
+
+                 <div className="space-y-2">
+                     <p className="text-green-600 font-medium text-lg tracking-tight">In stock</p>
+                     <div className="text-sm space-y-1">
+                         <div className="flex gap-2">
+                             <span className="text-zinc-400">Ships from</span>
+                             <span className="text-zinc-700">Web Development AI</span>
+                         </div>
+                         <div className="flex gap-2">
+                             <span className="text-zinc-400">Sold by</span>
+                             <span className="text-blue-600 hover:underline uppercase font-medium">Web Development AI</span>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div className="flex flex-col gap-3 pt-2">
+                    <button
+                       onClick={handleAddToCart}
+                       className="w-full py-2.5 rounded-full bg-[#FFD814] hover:bg-[#F7CA00] text-black text-sm font-medium transition-colors text-center shadow-sm cursor-pointer"
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                       onClick={handleBuyNow}
+                       className="w-full py-2.5 rounded-full bg-[#FFA41C] hover:bg-[#FA8900] text-black text-sm font-medium transition-colors text-center shadow-sm cursor-pointer"
+                    >
+                      Buy Now
+                    </button>
+                 </div>
+
+                 <div className="flex items-center gap-2 text-zinc-400 text-xs">
+                     <ShieldCheck className="w-4 h-4" />
+                     <span className="text-blue-600 hover:underline cursor-pointer">Secure transaction</span>
+                 </div>
+              </div>
+            </div>
+
             <div className="space-y-4">
               <h2 className="text-lg font-bold text-zinc-900 tracking-tight uppercase">Product Description</h2>
               <div className="text-zinc-600 text-sm leading-relaxed space-y-4">
@@ -408,8 +544,8 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
             </div>
           </div>
 
-          {/* 3. Right Buying Column */}
-          <div className="lg:col-span-3">
+          {/* 3. Right Buying Column (Sticky for Desktop) */}
+          <div className="hidden lg:block lg:col-span-3">
              <div className="p-5 rounded-xl border border-black/10 bg-white space-y-6 lg:sticky lg:top-24 shadow-sm">
                 <div className="space-y-1">
                     <div className="flex items-start">
@@ -463,24 +599,27 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
 
         {/* 4. Product Highlights */}
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 pt-8">
-            <section className="bg-white rounded-2xl border border-black/5 p-8 space-y-8 shadow-sm">
-                <div className="flex items-center justify-between border-b border-black/5 pb-4">
+            <section className="bg-white rounded-2xl border border-black/5 overflow-hidden shadow-sm">
+                <button 
+                  onClick={() => setIsHighlightsOpen(!isHighlightsOpen)}
+                  className="w-full p-8 flex items-center justify-between text-left hover:bg-black/5 transition-colors"
+                >
                     <h2 className="text-xl font-bold text-zinc-900 tracking-wide uppercase">Product highlights</h2>
-                    <button className="p-2 hover:bg-black/5 rounded-full transition-colors">
-                        <ChevronUp className="w-5 h-5 text-zinc-400" />
-                    </button>
-                </div>
+                    {isHighlightsOpen ? <ChevronUp className="w-5 h-5 text-zinc-400" /> : <ChevronDown className="w-5 h-5 text-zinc-400" />}
+                </button>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
-                    {card.highlights ? card.highlights.map((h: any, i: number) => (
-                        <div key={i} className="space-y-1 group">
-                            <p className="text-xs text-zinc-400 font-bold uppercase tracking-widest">{h.label}</p>
-                            <p className="text-sm text-zinc-700 group-hover:text-amber-600 transition-colors uppercase">{h.value}</p>
-                        </div>
-                    )) : (
-                        <p className="text-zinc-400 italic text-sm">Spec highlights coming soon...</p>
-                    )}
-                </div>
+                {isHighlightsOpen && (
+                    <div className="px-8 pb-8 pt-4 border-t border-black/5 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
+                        {card.highlights ? card.highlights.map((h: any, i: number) => (
+                            <div key={i} className="space-y-1 group">
+                                <p className="text-xs text-zinc-400 font-bold uppercase tracking-widest">{h.label}</p>
+                                <p className="text-sm text-zinc-700 group-hover:text-amber-600 transition-colors uppercase">{h.value}</p>
+                            </div>
+                        )) : (
+                            <p className="text-zinc-400 italic text-sm px-8 pb-8">Spec highlights coming soon...</p>
+                        )}
+                    </div>
+                )}
             </section>
 
             {/* 5. All Details */}
@@ -540,11 +679,17 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
                         
                         <div className="pt-4">
                              <button 
-                                onClick={() => setShowReviewForm(true)}
-                                className="w-full py-2.5 rounded-lg bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-bold hover:bg-zinc-100 transition-all uppercase tracking-widest hover:border-amber-500/30"
-                            >
-                                Rate this Service
-                            </button>
+                                 onClick={() => {
+                                   if (!currentUser) {
+                                     alert("Please login to rate this service.");
+                                     return;
+                                   }
+                                   setShowReviewForm(true);
+                                 }}
+                                 className="w-full py-2.5 rounded-lg bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-bold hover:bg-zinc-100 transition-all uppercase tracking-widest hover:border-amber-500/30"
+                             >
+                                 Rate this Service
+                             </button>
                         </div>
                     </div>
 

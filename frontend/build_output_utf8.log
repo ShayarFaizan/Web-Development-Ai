@@ -1,0 +1,113 @@
+﻿
+> frontend@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 7.8s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/31) ...
+node.exe : ΓÜá metadataBase 
+property in metadata export is 
+not set for resolving social 
+open graph or twitter images, 
+using "http://localhost:3000". 
+See https://nextjs.org/docs/app/a
+pi-reference/functions/generate-m
+etadata#metadatabase
+At line:1 char:1
++ & "E:\Node.js/node.exe" 
+"C:\Users\Shayar 
+Faizan\AppData\Roaming\npm/n ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          : No 
+   tSpecified: (ΓÜá metadataBas  
+  ...ta#metadatabase:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId : Na 
+   tiveCommandError
+ 
+ΓÜá metadataBase property in 
+metadata export is not set for 
+resolving social open graph or 
+twitter images, using 
+"http://localhost:3000". See http
+s://nextjs.org/docs/app/api-refer
+ence/functions/generate-metadata#
+metadatabase
+  Generating static pages using 11 workers (7/31) 
+  Generating static pages using 11 workers (15/31) 
+Γ¿» useSearchParams() should be 
+wrapped in a suspense boundary 
+at page "/". Read more: https://n
+extjs.org/docs/messages/missing-s
+uspense-with-csr-bailout
+    at Q (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\.next\ser
+ver\chunks\ssr\node_modules_next_
+920e7746._.js:2:2111)
+    at o (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\.next\ser
+ver\chunks\ssr\node_modules_next_
+920e7746._.js:4:5284)
+    at l (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\.next\ser
+ver\chunks\ssr\app_components_ac7
+6a35c._.js:196:3036)
+    at an (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:84360)
+    at ai (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:86179)
+    at ai (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:104708)
+    at al (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:107953)
+    at as (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:105368)
+    at am (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:112882)
+    at au (C:\Users\Shayar 
+Faizan\OneDrive\Desktop\Web 
+Development Ai\frontend\node_modu
+les\next\dist\compiled\next-serve
+r\app-page-turbo.runtime.prod.js:
+2:109985)
+Error occurred prerendering page 
+"/". Read more: https://nextjs.or
+g/docs/messages/prerender-error
+Export encountered an error on 
+/page: /, exiting the build.
+Γ¿» Next.js build worker exited 
+with code: 1 and signal: null

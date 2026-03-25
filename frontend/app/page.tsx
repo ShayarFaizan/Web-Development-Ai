@@ -5,6 +5,7 @@ import ServicesSpotlight from "./components/ServicesSpotlight";
 import BannerSlider from "./components/BannerSlider";
 import InstagramFeed from "./components/InstagramFeed";
 import Footer from "./components/Footer";
+import { Suspense } from "react";
 
 export default function Page() {
   const jsonLd = {
@@ -46,7 +47,9 @@ export default function Page() {
       <HeroSlider />
       <HeroVideo />
       <ServicesSection />
-      <ServicesSpotlight />
+      <Suspense fallback={<div className="h-20 w-full" />}>
+        <ServicesSpotlight />
+      </Suspense>
       <BannerSlider />
       <InstagramFeed />
       <Footer />

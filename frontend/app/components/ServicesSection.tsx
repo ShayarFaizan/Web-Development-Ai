@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 const services = [
@@ -13,9 +13,37 @@ const services = [
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const scrollLeft = container.scrollLeft;
+    const scrollCenter = scrollLeft + container.offsetWidth / 2;
+    
+    // Find the item whose center is closest to the container's center
+    const items = Array.from(container.children);
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    items.forEach((item, i) => {
+      const htmlItem = item as HTMLElement;
+      const itemCenter = htmlItem.offsetLeft + htmlItem.offsetWidth / 2;
+      const distance = Math.abs(scrollCenter - itemCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = i;
+      }
+    });
+    
+    if (closestIndex !== activeMobileIndex) {
+      setActiveMobileIndex(closestIndex);
+    }
+  };
 
   return (
-    <section className="w-full bg-[#f4f4f4] py-10 md:py-14">
+    <section className="w-full bg-[#f4f4f4] py-10 md:py-14 overflow-hidden select-none">
       {/* Heading */}
       <h2 className="text-center text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-gray-800 mb-8 md:mb-10 px-4">
         Website Types <span className="text-gray-900">We Build-</span>
@@ -42,7 +70,7 @@ export default function ServicesSection() {
                   src={service.src}
                   alt="Best Web Development AI Portfolio Image"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority={index === 0}
                 />
               </div>
@@ -99,35 +127,46 @@ export default function ServicesSection() {
       </div>
 
       {/* ── MOBILE: Horizontal Scroll with Snap ── */}
-      <div className="md:hidden flex gap-3 px-3 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2">
+      <div 
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="md:hidden flex gap-3 px-[12.5vw] items-center h-[360px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 touch-pan-x overscroll-behavior-x-contain"
+        style={{ touchAction: "pan-x" }}
+      >
         {services.map((service, index) => {
-          const isFirst = index === 0;
+          const isActive = activeMobileIndex === index;
           return (
             <div
               key={service.id}
-              className={`relative rounded-xl overflow-hidden shrink-0 snap-start
-                          ${isFirst ? "w-[72vw]" : "w-[55vw]"}
-                          h-[280px]`}
+              className={`relative rounded-xl overflow-hidden shrink-0 snap-center
+                          transition-all duration-500 ease-in-out
+                          ${isActive ? "w-[75vw] h-[320px]" : "w-[65vw] h-[280px] opacity-70 scale-95"}
+                          mt-auto mb-auto`}
             >
+              <div className="absolute inset-0 bg-[#1a1a1a]" />
               <Image
                 src={service.src}
                 alt="Best Web Development AI Portfolio Image"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority={index === 0}
+                draggable={false}
               />
               {/* Gradient */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/20 to-transparent" />
+              <div
+                className={`absolute inset-0 transition-opacity duration-500
+                              ${isActive ? "bg-linear-to-t from-black/80 via-black/20 to-transparent" : "bg-black/40"}`}
+              />
 
-              {/* Label + button on first, vertical label on others */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                {isFirst ? (
-                  <div>
-                    <p className="text-white text-[11px] font-bold tracking-wider uppercase mb-2">
+              {/* Label + button on active, vertical label on others */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+                {isActive ? (
+                  <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <p className="text-white text-[13px] font-bold tracking-wider uppercase mb-3">
                       {service.label}
                     </p>
                     <button
-                      className="text-black text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-[3px]"
+                      className="text-black text-[10px] font-bold tracking-widest uppercase px-4 py-2 rounded-[4px]"
                       style={{
                         background:
                           "linear-gradient(90deg, #fdf0d5 0%, #d4a351 48%, #fdf0d5 100%)",
@@ -139,7 +178,7 @@ export default function ServicesSection() {
                   </div>
                 ) : (
                   <p
-                    className="text-white text-[9px] font-bold tracking-widest uppercase"
+                    className="text-white text-[10px] font-bold tracking-widest uppercase opacity-80"
                     style={{
                       writingMode: "vertical-rl",
                       transform: "rotate(180deg)",

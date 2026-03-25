@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -14,9 +14,17 @@ import { auth, googleProvider } from "@/lib/firebase";
 import { useAppContext } from "@/app/context/AppContext";
 import { serviceCards, categories } from "@/lib/servicesData";
 
-
 export default function ServicesSpotlight() {
-  const [activeTab, setActiveTab] = useState("Landing Pages");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get("category") || "Landing Pages";
+
+  const setActiveTab = (tab: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("category", tab);
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
   const [modalData, setModalData] = useState<{
     media: string[];
     index: number;
@@ -67,7 +75,7 @@ export default function ServicesSpotlight() {
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-5 md:px-8 py-1.5 md:py-[7px] text-[10px] md:text-[12px] font-semibold tracking-[0.05em] uppercase transition-all duration-300
+                className={`px-8 md:px-10 py-2 md:py-[8px] text-[12px] md:text-[14px] font-semibold tracking-[0.05em] uppercase transition-all duration-300
                   ${isActive ? "text-black" : "text-gray-400 hover:text-white"}
                 `}
                 style={{
@@ -93,9 +101,9 @@ export default function ServicesSpotlight() {
         {/* Left Arrow */}
         <button
           onClick={scrollLeft}
-          className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 z-20
+          className="hidden md:flex absolute left-0 md:left-2 top-1/2 -translate-y-1/2 z-20
                      w-9 h-9 md:w-10 md:h-10 rounded-full border border-amber-400
-                     bg-white flex items-center justify-center shadow-md
+                     bg-white items-center justify-center shadow-md
                      hover:bg-amber-50 transition-all duration-200"
           aria-label="Scroll left"
         >
@@ -116,7 +124,7 @@ export default function ServicesSpotlight() {
         {/* Scrollable Track */}
         <div
           ref={sliderRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth px-8 md:px-10"
+          className="flex gap-4 overflow-x-auto scroll-smooth px-4 md:px-10"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -135,9 +143,9 @@ export default function ServicesSpotlight() {
         {/* Right Arrow */}
         <button
           onClick={scrollRight}
-          className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 z-20
+          className="hidden md:flex absolute right-0 md:right-2 top-1/2 -translate-y-1/2 z-20
                      w-9 h-9 md:w-10 md:h-10 rounded-full border border-amber-400
-                     bg-white flex items-center justify-center shadow-md
+                     bg-white items-center justify-center shadow-md
                      hover:bg-amber-50 transition-all duration-200"
           aria-label="Scroll right"
         >
@@ -204,7 +212,6 @@ function MediaCarousel({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
 
   const currentMedia = media[currentIndex];
   const isVideo = currentMedia.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/);
@@ -303,7 +310,6 @@ function MediaCarousel({
     setTouchEnd(null);
   };
 
-
   return (
     <div
       className="relative w-full h-full bg-black group overflow-hidden cursor-pointer"
@@ -312,8 +318,6 @@ function MediaCarousel({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-
-
       {isVideo ? (
         <video
           key={currentIndex}
@@ -468,20 +472,35 @@ function MediaModal({
   onClose: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [zoomLevel, setZoomLevel] = useState(1); // 1 = 100%, 4 = 400%
   const currentMedia = media[currentIndex];
   const isVideo = currentMedia.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
+  const lastTap = useRef<number>(0);
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation();
+    setZoomLevel(1);
     setCurrentIndex((prev) => (prev + 1) % media.length);
   };
 
   const handlePrev = (e?: React.MouseEvent) => {
     e?.stopPropagation();
+    setZoomLevel(1);
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
+  };
+
+  const zoomIn = () => setZoomLevel(prev => Math.min(prev + 0.5, 4));
+  const zoomOut = () => setZoomLevel(prev => Math.max(prev - 0.5, 1));
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    const now = Date.now();
+    const DOUBLE_TAP_DELAY = 300;
+    if (now - lastTap.current < DOUBLE_TAP_DELAY) {
+      setZoomLevel(zoomLevel === 1 ? 2.5 : 1);
+    }
+    lastTap.current = now;
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -496,6 +515,13 @@ function MediaModal({
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     e.stopPropagation();
+    // Disable swipe navigation when zoomed in to allow panning
+    if (zoomLevel > 1) {
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
+
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
@@ -511,17 +537,19 @@ function MediaModal({
     setTouchEnd(null);
   };
 
-
   return (
-    <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/95 backdrop-blur-md p-0 md:p-4 animate-in fade-in duration-300">
       <div
-        className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex items-center justify-center bg-black"
-        style={{ touchAction: "pan-y" }}
+        className={`relative w-full h-full md:max-w-5xl md:aspect-video md:rounded-2xl shadow-2xl border-white/10 flex transition-all ${
+          zoomLevel > 1 
+            ? "overflow-auto flex-col scroll-smooth active:cursor-grabbing" 
+            : "overflow-hidden items-center justify-center p-0"
+        } bg-black`}
+        style={{ touchAction: zoomLevel > 1 ? "auto" : "pan-y" }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-
         {isVideo ? (
           <video
             key={currentIndex}
@@ -537,7 +565,15 @@ function MediaModal({
             key={currentIndex}
             src={currentMedia}
             alt="Enlarged view"
-            className="w-full h-full object-contain"
+            onClick={handleImageClick}
+            className={`transition-all duration-300 ease-out cursor-zoom-in ${
+              zoomLevel > 1 
+                ? "h-auto p-12 md:p-20 block m-auto" 
+                : "w-full h-full object-contain"
+            }`}
+            style={{ 
+              minWidth: zoomLevel > 1 ? `${zoomLevel * 100}vw` : '100%'
+            }}
           />
         )}
 
@@ -545,14 +581,14 @@ function MediaModal({
         {media.length > 1 && (
           <>
             <button
-              onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl"
+               onClick={handlePrev}
+               className={`absolute left-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white hidden md:flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl ${zoomLevel > 1 ? "opacity-20 hover:opacity-100" : ""}`}
             >
               ‹
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl"
+              className={`absolute right-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white hidden md:flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl ${zoomLevel > 1 ? "opacity-20 hover:opacity-100" : ""}`}
             >
               ›
             </button>
@@ -580,6 +616,28 @@ function MediaModal({
         >
           ✕
         </button>
+
+        {!isVideo && (
+          <div className="absolute top-4 left-4 z-140 flex items-center gap-1.5 bg-black/50 backdrop-blur-md p-1 shadow-lg border border-white/10">
+            <button
+              onClick={zoomOut}
+              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold transition-all active:scale-95 disabled:opacity-30 rounded-md"
+              disabled={zoomLevel <= 1}
+            >
+              -
+            </button>
+            <div className="px-3 min-w-[70px] text-center">
+               <span className="text-[10px] font-black text-white uppercase tracking-widest">{Math.round(zoomLevel * 100)}%</span>
+            </div>
+            <button
+              onClick={zoomIn}
+              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold transition-all active:scale-95 disabled:opacity-30 rounded-md"
+              disabled={zoomLevel >= 4}
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
       {/* Click outside to close */}
       <div className="absolute inset-0 -z-10" onClick={onClose} />
@@ -888,7 +946,7 @@ function ServiceCard({
       </div>
 
       {/* Card Content */}
-      <div 
+      <div
         onClick={() => router.push(`/plans/${card.id}`)}
         className="flex flex-col flex-1 p-3.5 md:p-4 cursor-pointer"
       >
@@ -898,7 +956,7 @@ function ServiceCard({
         </h3>
 
         {/* Features */}
-        <ul className="flex flex-col gap-1 mb-2 flex-1">
+        <ul className="hidden md:flex flex-col gap-1 mb-2 flex-1">
           {card.features.map((f, i) => {
             const isNotIncluded = f.toLowerCase().includes("not included");
             return (
@@ -920,54 +978,55 @@ function ServiceCard({
         </ul>
 
         {/* Delivery */}
-        <p className="text-[10px] text-amber-400/80 mb-3">
+        <p className="hidden md:block text-[10px] text-amber-400/80 mb-3">
           ⏳ Delivery: {card.delivery}
         </p>
 
         {/* Tag badge */}
-        <div className="mb-3">
+        <div className="hidden md:block mb-3">
           <span className="border border-amber-500/50 text-amber-400 text-[10px] font-semibold px-3 py-0.5 rounded-full">
             {card.tag}
           </span>
         </div>
 
-        {/* Price */}
-        <div className="flex items-baseline gap-2 mb-4">
-          <span className="text-white font-bold text-sm"> {card.price}</span>
-          <span className="text-gray-500 line-through text-[11px]">
-            {card.originalPrice}
-          </span>
+        {/* Price, Read More & CTA Button Container */}
+        <div className="mt-auto">
+          {/* Price */}
+          <div className="flex items-baseline gap-2 mb-4">
+            <span className="text-white font-bold text-sm"> {card.price}</span>
+            <span className="text-gray-500 line-through text-[11px]">
+              {card.originalPrice}
+            </span>
+          </div>
+
+          <Link
+            href={`/plans/${card.id}`}
+            className="text-amber-400 text-[11px] font-medium hover:underline mb-3 block w-fit underline-offset-4 cursor-pointer"
+          >
+            READ FULL DETAILS →
+          </Link>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAddToCartClick();
+            }}
+            className="w-full py-2.5 text-[12px] font-semibold tracking-[0.05em] rounded-md text-black
+                       cursor-pointer active:scale-95 transition-all duration-300 hover:opacity-90 outline-none focus:outline-none focus:ring-0 flex items-center justify-center gap-2"
+            style={{
+              background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
+              border: "none",
+            }}
+          >
+            {isAdded ? (
+              <>
+                ADDED <span className="animate-bounce">✓</span>
+              </>
+            ) : (
+              "ADD TO CART"
+            )}
+          </button>
         </div>
-
-        {/* Read More Section */}
-        <Link 
-          href={`/plans/${card.id}`}
-          className="text-amber-400 text-[11px] font-medium hover:underline mb-3 block w-fit underline-offset-4 cursor-pointer"
-        >
-          READ FULL DETAILS →
-        </Link>
-
-        {/* CTA Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleAddToCartClick();
-          }}
-          className="w-full py-2.5 text-[12px] font-semibold tracking-[0.05em] rounded-md text-black
-                     cursor-pointer active:scale-95 transition-all duration-300 hover:opacity-90 outline-none focus:outline-none focus:ring-0 flex items-center justify-center gap-2"
-          style={{
-            background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
-            border: "none",
-          }}
-        >
-          {isAdded ? (
-            <>
-              ADDED <span className="animate-bounce">✓</span>
-            </>
-          ) : (
-            "ADD TO CART"
-          )}
-        </button>
       </div>
 
       {/* Attach login modal locally here */}

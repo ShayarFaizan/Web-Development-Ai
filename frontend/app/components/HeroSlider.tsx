@@ -90,7 +90,7 @@ export default function HeroSlider() {
       </div>
 
       {/* Left Arrow */}
-      <div className="absolute top-1/2 left-4 md:left-6 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer z-10">
+      <div className="hidden md:flex absolute top-1/2 left-4 md:left-6 -translate-y-1/2 transition-opacity duration-300 cursor-pointer z-10">
         <button
           onClick={goToPrevious}
           className="flex items-center justify-center w-[34px] h-[34px] rounded-[8px] transition-all duration-300 hover:scale-110"
@@ -119,7 +119,7 @@ export default function HeroSlider() {
       </div>
 
       {/* Right Arrow */}
-      <div className="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer z-10">
+      <div className="hidden md:flex absolute top-1/2 right-4 md:right-6 -translate-y-1/2 transition-opacity duration-300 cursor-pointer z-10">
         <button
           onClick={goToNext}
           className="flex items-center justify-center w-[34px] h-[34px] rounded-[8px] transition-all duration-300 hover:scale-110"

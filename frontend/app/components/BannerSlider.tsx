@@ -28,7 +28,6 @@ export default function BannerSlider() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-
   const prev = () =>
     setCurrent((c) => (c - 1 + banners.length) % banners.length);
   const next = () => setCurrent((c) => (c + 1) % banners.length);
@@ -56,7 +55,6 @@ export default function BannerSlider() {
     setTouchStart(null);
     setTouchEnd(null);
   };
-
 
   return (
     <section className="w-full bg-white py-5 md:py-6 select-none">
@@ -134,7 +132,6 @@ export default function BannerSlider() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-
           {/* Left Arrow */}
           <button
             onClick={prev}

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar"; // Check path
 import GoogleOneTap from "./components/GoogleOneTap";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { AppProvider } from "@/app/context/AppContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -19,7 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Web Development Services in India - Best AI Website Builder for Business",
+  title:
+    "AI Web Development Services in India - Best AI Website Builder for Business",
   description:
     "Get a professional website with 1-second load time. Specialized in Next.js and AI-powered solutions for your business. Best AI Web Development Agency in India offering low-cost web design.",
   keywords:
@@ -83,6 +85,7 @@ export default function RootLayout({
         <AppProvider>
           <GoogleOneTap />
           <Navbar />
+          <WhatsAppButton />
           <main className="pt-0 md:pt-[92px]">{children}</main>
           <SpeedInsights />
           <Analytics />

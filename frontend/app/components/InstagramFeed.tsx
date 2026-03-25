@@ -345,9 +345,9 @@ export default function InstagramFeed() {
           <button
             onClick={() => scroll("left")}
             aria-label="Scroll left"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20
                        w-9 h-9 rounded-full bg-white border border-gray-300
-                       shadow-md flex items-center justify-center
+                       shadow-md items-center justify-center
                        hover:bg-gray-50 transition-colors"
           >
             <svg
@@ -428,9 +428,9 @@ export default function InstagramFeed() {
           <button
             onClick={() => scroll("right")}
             aria-label="Scroll right"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20
                        w-9 h-9 rounded-full bg-white border border-gray-300
-                       shadow-md flex items-center justify-center
+                       shadow-md items-center justify-center
                        hover:bg-gray-50 transition-colors"
           >
             <svg

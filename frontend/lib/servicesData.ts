@@ -17,6 +17,8 @@ export interface Review {
   dislikes: number;
   images?: string[];
   userId?: string;
+  likedBy?: string[];
+  dislikedBy?: string[];
   createdAt?: any;
 }
 
@@ -41,6 +43,25 @@ export interface CardData {
 export const categories = ["Landing Pages", "Website's"];
 
 export const serviceCards: CardData[] = [
+  {
+    id: 999,
+    title: "Payment Gateway Testing (₹1)",
+    image: "/assets/ssl2.svg",
+    videos: [],
+    badge: "TEST",
+    discount: "99%",
+    features: [
+      "Strictly for payment testing",
+      "Only costs ₹1",
+      "Check Razorpay integration",
+    ],
+    price: "₹1",
+    originalPrice: "₹100",
+    delivery: "Instant",
+    tag: "Test",
+    category: "Landing Pages",
+    detailedDescription: "This product is only added to test the Razorpay payment gateway with a minimal ₹1 transaction. Please do not expect any real services from this.",
+  },
   {
     id: 13,
     title: "Basic Static Site (Fast Loading React Website)",
