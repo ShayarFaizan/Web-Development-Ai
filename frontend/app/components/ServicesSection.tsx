@@ -130,8 +130,7 @@ export default function ServicesSection() {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="md:hidden flex gap-3 px-[12.5vw] items-center h-[360px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 touch-pan-x overscroll-behavior-x-contain"
-        style={{ touchAction: "pan-x" }}
+        className="md:hidden flex gap-3 px-[12.5vw] items-center h-[360px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 overscroll-behavior-x-contain"
       >
         {services.map((service, index) => {
           const isActive = activeMobileIndex === index;
