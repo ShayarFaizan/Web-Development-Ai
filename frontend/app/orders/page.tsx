@@ -69,16 +69,19 @@ export default function OrdersPage() {
   };
 
   const getStatusIcon = (status: string) => {
-    if (status === "paid" || status === "success") {
-      return <CheckCircle2 className="text-green-500 w-5 h-5" />;
+    switch(status.toLowerCase()) {
+      case "paid":
+      case "success":
+        return <CheckCircle2 className="text-green-500 w-4 h-4" strokeWidth={2.5} />;
+      case "failed":
+      case "expired":
+        return <XCircle className="text-red-500 w-4 h-4" strokeWidth={2.5} />;
+      case "cancelled":
+        return <AlertCircle className="text-red-400 w-4 h-4" strokeWidth={2.5} />;
+      case "awaiting payment":
+      default:
+        return <Clock className="text-orange-500 w-4 h-4 animate-pulse" strokeWidth={2.5} />;
     }
-    if (status === "failed") {
-      return <XCircle className="text-red-500 w-5 h-5" />;
-    }
-    if (status === "cancelled") {
-      return <AlertCircle className="text-red-500 w-5 h-5" />;
-    }
-    return <Clock className="text-orange-500 w-5 h-5" />;
   };
 
   if (loading) {
@@ -118,21 +121,37 @@ export default function OrdersPage() {
           <div className="space-y-4">
             {orders.map((order) => {
               const orderTime = getOrderTime(order.orderDate);
-              const isExpired = Date.now() - orderTime > 15 * 60 * 1000;
+              const now = Date.now();
+              const isExpired = now - orderTime > 24 * 60 * 60 * 1000; // 24 hours
               const currentStatus = order.paymentStatus || "pending";
-              const displayStatus =
-                currentStatus === "pending" && isExpired ? "cancelled" : currentStatus;
+              
+              let displayStatus = currentStatus;
+              if (currentStatus === "pending") {
+                displayStatus = isExpired ? "expired" : "awaiting payment";
+              }
 
               return (
-              <div key={order.id} className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 relative overflow-hidden">
+              <div key={order.id} className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 relative overflow-hidden group hover:border-gray-200 transition-all duration-300">
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <span className="text-xs uppercase font-bold text-gray-400 tracking-wider">Order ID</span>
-                    <p className="text-sm text-gray-900 font-medium mt-0.5">{order.id.toUpperCase()}</p>
+                    <p className="text-sm text-gray-900 font-medium mt-0.5 font-mono">{order.id.toUpperCase()}</p>
                   </div>
-                  <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${displayStatus === "cancelled" ? "bg-red-50 border-red-200" : "bg-gray-50 border-gray-100"}`}>
-                    {getStatusIcon(displayStatus)}
-                    <span className={`text-xs font-semibold uppercase tracking-wider ${displayStatus === "cancelled" ? "text-red-600" : "text-gray-700"}`}>
+                   <div className={`flex items-center gap-2 px-3 py-1 rounded-full border transition-colors ${
+                    displayStatus === "paid" || displayStatus === "success" ? "bg-green-50 border-green-200" :
+                    displayStatus === "failed" || displayStatus === "cancelled" ? "bg-red-50 border-red-200" :
+                    "bg-orange-50 border-orange-200"
+                  }`}>
+                     <div className={`w-1.5 h-1.5 rounded-full ${
+                      displayStatus === "paid" || displayStatus === "success" ? "bg-green-500" :
+                      displayStatus === "failed" || displayStatus === "cancelled" ? "bg-red-500" :
+                      "bg-orange-500 animate-pulse"
+                    }`} />
+                     <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                      displayStatus === "paid" || displayStatus === "success" ? "text-green-700" :
+                      displayStatus === "failed" || displayStatus === "cancelled" ? "text-red-700" :
+                      "text-orange-700"
+                    }`}>
                       {displayStatus}
                     </span>
                   </div>

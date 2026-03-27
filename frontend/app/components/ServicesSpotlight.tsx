@@ -49,7 +49,7 @@ export default function ServicesSpotlight() {
   return (
     <section
       id="pricing"
-      className="w-full bg-white py-10 md:py-14 overflow-hidden"
+      className="w-full bg-white py-10 md:py-14 overflow-x-hidden"
     >
       {/* ── Section Heading ── */}
       <h2 className="text-center text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-gray-800 mb-8 md:mb-10 px-4">
@@ -89,7 +89,7 @@ export default function ServicesSpotlight() {
                     : "transparent",
                 }}
               >
-                {cat}
+                {cat === "WEBSITES" ? "WEBSITE'S" : cat}
               </button>
             );
           })}
@@ -210,12 +210,13 @@ function MediaCarousel({
   const [isMuted, setIsMuted] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const currentMedia = media[currentIndex];
   const isVideo = currentMedia.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/);
 
+  // Video loop preview logic
   useEffect(() => {
     if (!isVideo) return;
     const video = videoRef.current;
@@ -227,7 +228,6 @@ function MediaCarousel({
     }
 
     const handleTimeUpdate = () => {
-      // preview mode: loop first 4 seconds if not isInteracting
       if (!isInteracting && video.currentTime >= 4) {
         video.currentTime = 0;
         video.play();
@@ -239,6 +239,43 @@ function MediaCarousel({
 
     return () => video.removeEventListener("timeupdate", handleTimeUpdate);
   }, [isInteracting, currentIndex, isModalActive, isPlaying, isVideo]);
+
+  // Passive touch listeners (GOLDEN FIX for mobile vertical scroll)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleTs = (e: TouchEvent) => {
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleTe = (e: TouchEvent) => {
+      if (touchStart === null) return;
+      const tEnd = e.changedTouches[0].clientX;
+      const dist = touchStart - tEnd;
+      const isLeft = dist > 50;
+      const isRight = dist < -50;
+
+      if (isLeft) {
+        setCurrentIndex((prev) => (prev + 1) % media.length);
+        setIsInteracting(false);
+        setIsMuted(true);
+      } else if (isRight) {
+        setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
+        setIsInteracting(false);
+        setIsMuted(true);
+      }
+      setTouchStart(null);
+    };
+
+    container.addEventListener("touchstart", handleTs, { passive: true });
+    container.addEventListener("touchend", handleTe, { passive: true });
+
+    return () => {
+      container.removeEventListener("touchstart", handleTs);
+      container.removeEventListener("touchend", handleTe);
+    };
+  }, [touchStart, media.length]);
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -270,7 +307,7 @@ function MediaCarousel({
 
   const startPreview = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!isVideo) return; // Images don't have preview interactions like this
+    if (!isVideo) return;
     setIsInteracting(true);
     setIsPlaying(true);
     if (videoRef.current) {
@@ -279,44 +316,11 @@ function MediaCarousel({
     }
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      setCurrentIndex((prev) => (prev + 1) % media.length);
-      setIsInteracting(false);
-      setIsMuted(true);
-    } else if (isRightSwipe) {
-      setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
-      setIsInteracting(false);
-      setIsMuted(true);
-    }
-
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
   return (
     <div
+      ref={containerRef}
       className="relative w-full h-full bg-black group overflow-hidden cursor-pointer"
       style={{ touchAction: "pan-y" }}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       {isVideo ? (
         <video
@@ -356,7 +360,7 @@ function MediaCarousel({
         </>
       )}
 
-      {/* Controls / Info Overlay */}
+      {/* Controls Overlay */}
       {isVideo &&
         (!isInteracting ? (
           <div
@@ -364,25 +368,19 @@ function MediaCarousel({
             onClick={startPreview}
           >
             <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 transform group-hover:scale-110 transition-transform duration-300">
-              <svg
-                className="w-5 h-5 text-white fill-current translate-x-0.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg className="w-5 h-5 text-white fill-current translate-x-0.5" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
             <div
               className="text-black text-[10px] font-bold px-4 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-2 transition-all duration-300 uppercase tracking-widest shadow-xl"
-              style={{
-                background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
-              }}
+              style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}
             >
               Click to Preview
             </div>
           </div>
         ) : (
-          <div className="absolute bottom-2 left-0 right-0 px-3 z-30 flex items-center justify-between animate-in slide-in-from-bottom-2 duration-300">
+          <div className="absolute bottom-2 left-0 right-0 px-3 z-30 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <button
                 onClick={togglePlay}
@@ -397,8 +395,6 @@ function MediaCarousel({
                 {isMuted ? "🔇" : "🔊"}
               </button>
             </div>
-
-            {/* Maximize option button - hidden here as we moved it to bottom-right */}
           </div>
         ))}
 
@@ -416,50 +412,20 @@ function MediaCarousel({
         </div>
       )}
 
-      {/* Maximize Button (Bottom Right) */}
+      {/* Maximize Button */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           onOpenModal(media, currentIndex);
         }}
         className="absolute bottom-2 right-2 z-40 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center border border-white/20 hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-all duration-300 cursor-pointer"
-        title="Open Large View"
       >
-        <svg
-          className="w-4 h-4"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M15 3h6v6" />
-          <path d="M9 21H3v-6" />
-          <path d="M21 3l-7 7" />
-          <path d="M3 21l7-7" />
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 3h6v6" /> <path d="M9 21H3v-6" /> <path d="M21 3l-7 7" /> <path d="M3 21l7-7" />
         </svg>
       </button>
     </div>
   );
-}
-
-/* ══════════════════════════════════
-   Single Service Card
-   ══════════════════════════════════ */
-interface CardData {
-  id: number;
-  title: string;
-  image: string;
-  badge: string;
-  discount: string;
-  features: string[];
-  price: string;
-  originalPrice: string;
-  delivery: string;
-  tag: string;
-  category: string;
-  videos?: string[];
 }
 
 function MediaModal({
@@ -472,12 +438,13 @@ function MediaModal({
   onClose: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-  const [zoomLevel, setZoomLevel] = useState(1); // 1 = 100%, 4 = 400%
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const lastTap = useRef<number>(0);
+
   const currentMedia = media[currentIndex];
   const isVideo = currentMedia.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const lastTap = useRef<number>(0);
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -496,162 +463,78 @@ function MediaModal({
 
   const handleImageClick = (e: React.MouseEvent) => {
     const now = Date.now();
-    const DOUBLE_TAP_DELAY = 300;
-    if (now - lastTap.current < DOUBLE_TAP_DELAY) {
+    if (now - lastTap.current < 300) {
       setZoomLevel(zoomLevel === 1 ? 2.5 : 1);
     }
     lastTap.current = now;
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+    const handleTs = (e: TouchEvent) => {
+      setTouchStart(e.targetTouches[0].clientX);
+    };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    // Disable swipe navigation when zoomed in to allow panning
-    if (zoomLevel > 1) {
+    const handleTe = (e: TouchEvent) => {
+      if (zoomLevel > 1) {
+        setTouchStart(null);
+        return;
+      }
+      if (touchStart === null) return;
+      const tEnd = e.changedTouches[0].clientX;
+      const dist = touchStart - tEnd;
+      if (dist > 50) handleNext();
+      else if (dist < -50) handlePrev();
       setTouchStart(null);
-      setTouchEnd(null);
-      return;
-    }
+    };
 
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    container.addEventListener("touchstart", handleTs, { passive: true });
+    container.addEventListener("touchend", handleTe, { passive: true });
 
-    if (isLeftSwipe) {
-      handleNext();
-    } else if (isRightSwipe) {
-      handlePrev();
-    }
-
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
+    return () => {
+      container.removeEventListener("touchstart", handleTs);
+      container.removeEventListener("touchend", handleTe);
+    };
+  }, [touchStart, zoomLevel, media.length]);
 
   return (
-    <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/95 backdrop-blur-md p-0 md:p-4 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/95 backdrop-blur-md p-0 md:p-4">
       <div
+        ref={containerRef}
         className={`relative w-full h-full md:max-w-5xl md:aspect-video md:rounded-2xl shadow-2xl border-white/10 flex transition-all ${
-          zoomLevel > 1 
-            ? "overflow-auto flex-col scroll-smooth active:cursor-grabbing" 
-            : "overflow-hidden items-center justify-center p-0"
+          zoomLevel > 1 ? "overflow-auto flex-col" : "overflow-hidden items-center justify-center"
         } bg-black`}
         style={{ touchAction: zoomLevel > 1 ? "auto" : "pan-y" }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         {isVideo ? (
-          <video
-            key={currentIndex}
-            src={currentMedia}
-            autoPlay
-            controls
-            className="w-full h-full object-contain"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <video key={currentIndex} src={currentMedia} autoPlay controls className="w-full h-full object-contain" />
         ) : (
           <img
-            key={currentIndex}
-            src={currentMedia}
-            alt="Enlarged view"
+            key={currentIndex} src={currentMedia} alt="Enlarged"
             onClick={handleImageClick}
-            className={`transition-all duration-300 ease-out cursor-zoom-in ${
-              zoomLevel > 1 
-                ? "h-auto p-12 md:p-20 block m-auto" 
-                : "w-full h-full object-contain"
-            }`}
-            style={{ 
-              minWidth: zoomLevel > 1 ? `${zoomLevel * 100}vw` : '100%'
-            }}
+            className={`transition-all duration-300 ${zoomLevel > 1 ? "h-auto p-12 md:p-20 block m-auto" : "w-full h-full object-contain"}`}
+            style={{ minWidth: zoomLevel > 1 ? `${zoomLevel * 100}vw` : '100%' }}
           />
         )}
 
-        {/* Modal Navigation Arrows */}
-        {media.length > 1 && (
-          <>
-            <button
-               onClick={handlePrev}
-               className={`absolute left-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white hidden md:flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl ${zoomLevel > 1 ? "opacity-20 hover:opacity-100" : ""}`}
-            >
-              ‹
-            </button>
-            <button
-              onClick={handleNext}
-              className={`absolute right-4 top-1/2 -translate-y-1/2 z-130 w-12 h-12 rounded-full bg-black/50 text-white hidden md:flex items-center justify-center hover:bg-amber-500 transition-all border border-white/10 text-2xl ${zoomLevel > 1 ? "opacity-20 hover:opacity-100" : ""}`}
-            >
-              ›
-            </button>
-
-            {/* Indicator Dots for Modal */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-130">
-              {media.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === currentIndex
-                      ? "bg-amber-400 w-6"
-                      : "bg-white/30 w-1.5"
-                  }`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-140 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-red-500 transition-colors border border-white/20 text-xl"
-          aria-label="Close media"
-        >
-          ✕
-        </button>
+        <button onClick={onClose} className="absolute top-4 right-4 z-140 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center border border-white/20 text-xl">✕</button>
 
         {!isVideo && (
           <div className="absolute top-4 left-4 z-140 flex items-center gap-1.5 bg-black/50 backdrop-blur-md p-1 shadow-lg border border-white/10">
-            <button
-              onClick={zoomOut}
-              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold transition-all active:scale-95 disabled:opacity-30 rounded-md"
-              disabled={zoomLevel <= 1}
-            >
-              -
-            </button>
-            <div className="px-3 min-w-[70px] text-center">
-               <span className="text-[10px] font-black text-white uppercase tracking-widest">{Math.round(zoomLevel * 100)}%</span>
-            </div>
-            <button
-              onClick={zoomIn}
-              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold transition-all active:scale-95 disabled:opacity-30 rounded-md"
-              disabled={zoomLevel >= 4}
-            >
-              +
-            </button>
+            <button onClick={zoomOut} className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md" disabled={zoomLevel <= 1}>-</button>
+            <div className="px-3 min-w-[70px] text-center text-white text-[10px] font-black">{Math.round(zoomLevel * 100)}%</div>
+            <button onClick={zoomIn} className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md" disabled={zoomLevel >= 4}>+</button>
           </div>
         )}
       </div>
-      {/* Click outside to close */}
       <div className="absolute inset-0 -z-10" onClick={onClose} />
     </div>
   );
 }
 
-const LoginModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
+const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -661,291 +544,81 @@ const LoginModal = ({
 
   const handleGoogleSignIn = async () => {
     try {
-      setErrorMsg("");
       setLoading(true);
       await signInWithPopup(auth, googleProvider);
       onClose();
-    } catch (error: any) {
-      setErrorMsg(error.message);
-    } finally {
-      setLoading(false);
-    }
+    } catch (e: any) { setErrorMsg(e.message); } finally { setLoading(false); }
   };
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setErrorMsg("");
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       onClose();
-    } catch (error: any) {
-      setErrorMsg(error.message || "Failed to sign in.");
-    } finally {
-      setLoading(false);
-    }
+    } catch (e: any) { setErrorMsg(e.message || "Failed to sign in."); } finally { setLoading(false); }
   };
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div
-        className="relative w-full max-w-sm rounded-[10px] overflow-hidden p-6 shadow-2xl animate-in fade-in zoom-in duration-300"
-        style={{
-          background: "#111",
-          border: "1px solid #333",
-        }}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-        >
-          ✕
-        </button>
-
+      <div className="relative w-full max-w-sm rounded-[10px] overflow-hidden p-6 shadow-2xl bg-[#111] border border-[#333]">
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
         <div className="text-center mb-6">
-          <h2 className="text-[18px] font-bold text-white mb-1 tracking-wide">
-            Welcome Back
-          </h2>
+          <h2 className="text-[18px] font-bold text-white mb-1">Welcome Back</h2>
           <p className="text-xs text-gray-400">Please sign in to continue</p>
         </div>
-
-        {errorMsg && (
-          <div className="mb-4 text-[11px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 text-center">
-            {errorMsg}
-          </div>
-        )}
-
-        <button
-          type="button"
-          onClick={handleGoogleSignIn}
-          disabled={loading}
-          className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md mb-4 bg-white hover:bg-gray-100 transition-colors text-black font-semibold text-sm shadow-sm disabled:opacity-50"
-        >
-          <img
-            src="https://www.google.com/favicon.ico"
-            alt="Google"
-            className="w-4 h-4 object-contain"
-          />
-          Sign In with Google
+        {errorMsg && <div className="mb-4 text-[11px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 text-center">{errorMsg}</div>}
+        <button onClick={handleGoogleSignIn} disabled={loading} className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md mb-4 bg-white text-black font-semibold text-sm">
+          <img src="https://www.google.com/favicon.ico" alt="GP" className="w-4 h-4" /> Sign In with Google
         </button>
-
-        <div className="flex items-center gap-3 my-4">
-          <div className="flex-1 h-px bg-[#333]"></div>
-          <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
-            or
-          </span>
-          <div className="flex-1 h-px bg-[#333]"></div>
-        </div>
-
         <form className="space-y-4" onSubmit={handleEmailSignIn}>
-          <div className="text-left">
-            <label className="block text-[11px] text-gray-400 mb-1.5 tracking-wide font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4a75c] transition-colors"
-            />
-          </div>
-          <div className="text-left">
-            <label className="block text-[11px] text-gray-400 mb-1.5 tracking-wide font-medium">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-              className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[#d4a75c] transition-colors"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2.5 text-[12px] font-bold tracking-[0.05em] uppercase rounded-md text-black transition-opacity duration-300 hover:opacity-90 outline-none mt-4 disabled:opacity-50"
-            style={{
-              background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
-            }}
-          >
-            {loading ? "Signing In..." : "SIGN IN"}
-          </button>
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white" />
+          <button type="submit" disabled={loading} className="w-full py-2.5 font-bold tracking-[0.05em] uppercase rounded-md text-black" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{loading ? "Signing In..." : "SIGN IN"}</button>
         </form>
       </div>
     </div>
   );
 };
 
-function ServiceCard({
-  card,
-  onMediaClick,
-  isModalActive,
-}: {
-  card: CardData;
-  onMediaClick: (media: string[], index: number) => void;
-  isModalActive: boolean;
-}) {
+function ServiceCard({ card, onMediaClick, isModalActive }: { card: CardData; onMediaClick: (media: string[], index: number) => void; isModalActive: boolean }) {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart, toggleWishlist, isInWishlist } = useAppContext();
   const router = useRouter();
-
   const isWishlisted = isInWishlist(card.id);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+    const unsubscribe = onAuthStateChanged(auth, u => setUser(u));
     return () => unsubscribe();
   }, []);
 
-  const handleWishlistClick = () => {
-    if (user) {
-      toggleWishlist({
-        id: card.id,
-        title: card.title,
-        image: card.image,
-        price: card.price,
-        originalPrice: card.originalPrice,
-        delivery: card.delivery,
-        category: card.category,
-      });
-    } else {
-      setShowAuthModal(true);
-    }
-  };
-
+  const handleWishlistClick = () => user ? toggleWishlist(card) : setShowAuthModal(true);
   const handleAddToCartClick = () => {
     if (user) {
-      addToCart({
-        id: card.id,
-        title: card.title,
-        image: card.image,
-        price: card.price,
-        originalPrice: card.originalPrice,
-        delivery: card.delivery,
-        category: card.category,
-      });
-      // Show checkmark animation for 2 seconds
+      addToCart(card);
       setIsAdded(true);
       setTimeout(() => setIsAdded(false), 2000);
-    } else {
-      setShowAuthModal(true);
-    }
+    } else setShowAuthModal(true);
   };
 
-  const isLimitedOffer = card.badge?.includes("LIMITED");
-
   return (
-    <div
-      className={`shrink-0 w-[230px] md:w-[255px] rounded-xl overflow-hidden transition-all duration-400 flex flex-col ${
-        isLimitedOffer
-          ? "border-2 border-[#d4a75c] shadow-[0_0_20px_rgba(212,167,92,0.4)] relative"
-          : "border border-gray-200 hover:border-amber-300 hover:shadow-xl"
-      }`}
-      style={{ background: "#111" }}
-    >
-      {/* Glow Effect Background on Limited Offers */}
-      {isLimitedOffer && (
-        <div className="absolute inset-0 z-0 bg-linear-to-b from-[#d4a75c]/10 to-transparent pointer-events-none" />
-      )}
-      {/* Image */}
+    <div className={`shrink-0 w-[230px] md:w-[255px] rounded-xl overflow-hidden flex flex-col border border-gray-800`} style={{ background: "#111", touchAction: "auto" }}>
       <div className="relative w-full h-[210px] md:h-[230px] bg-[#1a1a1a] overflow-hidden">
-        {/* Wishlist */}
-        <button
-          onClick={handleWishlistClick}
-          className={`absolute top-3 left-3 z-20 transition-colors ${
-            isWishlisted
-              ? "text-red-500 hover:text-red-400"
-              : "text-gray-400 hover:text-red-400"
-          }`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={isWishlisted ? "currentColor" : "none"}
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>
+        <button onClick={handleWishlistClick} className={`absolute top-3 left-3 z-20 ${isWishlisted ? "text-red-500" : "text-gray-400"}`}>
+          <svg fill={isWishlisted ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
         </button>
-
-        {/* Badges */}
-        <div className="absolute top-2 right-2 z-20 flex flex-col items-end gap-1.5">
-          <span
-            className="text-black font-extrabold tracking-wider uppercase text-[8px] px-2.5 py-1 rounded-sm shadow-sm"
-            style={{
-              background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
-              border: "1px solid #c89542",
-            }}
-          >
-            {card.badge}
-          </span>
-          <span
-            className="text-black font-extrabold tracking-widest text-[10px] px-2.5 py-0.5 rounded-sm shadow-sm"
-            style={{
-              background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
-              border: "1px solid #c89542",
-            }}
-          >
-            {card.discount}
-          </span>
+        <div className="absolute top-2 right-2 z-20 flex flex-col gap-1.5 pointer-events-none">
+          <span className="text-black font-extrabold text-[8px] px-2.5 py-1 rounded-sm" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{card.badge}</span>
+          <span className="text-black font-extrabold text-[10px] px-2.5 py-0.5 rounded-sm" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{card.discount}</span>
         </div>
-
-        {card.videos && card.videos.length > 0 ? (
-          <MediaCarousel
-            media={card.videos}
-            onOpenModal={(mediaArr, idx) => onMediaClick(mediaArr, idx)}
-            isModalActive={isModalActive}
-          />
+        {card.videos?.length ? (
+          <MediaCarousel media={card.videos} onOpenModal={onMediaClick} isModalActive={isModalActive} />
         ) : (
-          <div className="relative w-full h-full group">
-            <Image
-              src={card.image}
-              alt={card.title}
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-500"
-            />
-            {/* Maximize Button for Static Image */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onMediaClick([card.image], 0);
-              }}
-              className="absolute bottom-2 right-2 z-20 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center border border-white/20 hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-all duration-300 cursor-pointer"
-              title="Open Large View"
-            >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M15 3h6v6" />
-                <path d="M9 21H3v-6" />
-                <path d="M21 3l-7 7" />
-                <path d="M3 21l7-7" />
-              </svg>
-            </button>
-          </div>
+          <div className="relative w-full h-full"><Image src={card.image} alt={card.title} fill className="object-cover" /></div>
         )}
       </div>
-
-      {/* Card Content */}
       <div
         onClick={() => router.push(`/plans/${card.id}`)}
         className="flex flex-col flex-1 p-3.5 md:p-4 cursor-pointer"
@@ -957,7 +630,7 @@ function ServiceCard({
 
         {/* Features */}
         <ul className="hidden md:flex flex-col gap-1 mb-2 flex-1">
-          {card.features.map((f, i) => {
+          {card.features?.map((f, i) => {
             const isNotIncluded = f.toLowerCase().includes("not included");
             return (
               <li
@@ -1028,12 +701,22 @@ function ServiceCard({
           </button>
         </div>
       </div>
-
-      {/* Attach login modal locally here */}
-      <LoginModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-      />
+      <LoginModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>
   );
+}
+
+interface CardData {
+  id: number;
+  title: string;
+  image: string;
+  badge: string;
+  discount: string;
+  features: string[];
+  price: string;
+  originalPrice: string;
+  delivery: string;
+  tag: string;
+  category: string;
+  videos?: string[];
 }

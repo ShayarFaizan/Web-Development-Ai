@@ -40,6 +40,7 @@ import {
   serverTimestamp,
   doc,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 
 const LoginModal = ({
@@ -451,11 +452,12 @@ export default function CartPage() {
         email: data.email || user?.email,
         phone: data.phone,
         address: data.address || "",
-        projectDetails: data.projectDetails || "", // Added this line
+        projectDetails: data.projectDetails || "", 
         amount: totalPrice,
         totalMRP: totalMRP,
         deliveryTime: deliveryTimes,
         paymentStatus: "pending",
+        razorpayOrderId: order.id, // Store Razorpay ID for webhook verification
         serviceName: serviceNames,
         orderDate: serverTimestamp(),
       });
@@ -557,6 +559,30 @@ export default function CartPage() {
           name: data.name,
           email: data.email || user?.email,
           contact: data.phone,
+        },
+        modal: {
+          on_dismiss: async function () {
+            try {
+              // Only update if it's still pending
+              const currentOrderDoc = await getDoc(
+                doc(db, "orders", orderRef.id),
+              );
+              if (
+                currentOrderDoc.exists() &&
+                currentOrderDoc.data().paymentStatus === "pending"
+              ) {
+                await setDoc(
+                  doc(db, "orders", orderRef.id),
+                  {
+                    paymentStatus: "cancelled",
+                  },
+                  { merge: true },
+                );
+              }
+            } catch (error) {
+              console.error("Error updating cancelled status:", error);
+            }
+          },
         },
         theme: {
           color: "#d4a75c",

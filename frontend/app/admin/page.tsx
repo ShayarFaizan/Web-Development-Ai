@@ -567,15 +567,31 @@ export default function AdminPanel() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <span
+                           <span
                             className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest border inline-block mb-1 ${
                               order.paymentStatus === "paid" ||
                               order.paymentStatus === "success"
                                 ? "bg-green-50 text-green-600 border-green-100"
-                                : "bg-red-50 text-red-600 border-red-100"
+                                : order.paymentStatus === "cancelled" ||
+                                  order.paymentStatus === "failed"
+                                ? "bg-red-50 text-red-600 border-red-100"
+                                : "bg-orange-50 text-orange-600 border-orange-100"
                             }`}
                           >
-                            {order.paymentStatus || "pending"}
+                            {(() => {
+                              const status = order.paymentStatus || "pending";
+                              // Show "expired" if pending and older than 24h
+                              if (status === "pending" && order.orderDate) {
+                                const orderTime = new Date(
+                                  order.orderDate.seconds * 1000,
+                                ).getTime();
+                                const now = new Date().getTime();
+                                if (now - orderTime > 24 * 60 * 60 * 1000) {
+                                  return "expired";
+                                }
+                              }
+                              return status;
+                            })()}
                           </span>
                           <p className="text-base font-black text-gray-900 mt-1">
                             ₹{(order.amount || 0).toLocaleString("en-IN")}
