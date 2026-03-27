@@ -21,16 +21,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "AI Web Development Services in India - Best AI Website Builder for Business",
+    "AI Web Development Services in India - Premium Custom Websites",
   description:
-    "Get a professional website with 1-second load time. Specialized in Next.js and AI-powered solutions for your business. Best AI Web Development Agency in India offering low-cost web design.",
+    "Hire an expert full-stack Next.js developer for your startup or enterprise. We build high-performance, premium custom React websites, integrate AI solutions, and develop scalable eCommerce platforms in India.",
   keywords:
-    "Best Web Development Company in India, Digital Visiting Card Maker, Smart Business Card Online, Ecommerce Website Development Service, Portfolio Website Builder for Students, Low Cost Website Design India, Next.js Web Development Services, React JS Website Development, Fastest Website Builder 2026, AI Powered Website Design, Firebase Backend Integration, Server Side Rendering (SSR) Websites, Web Developer near me, Website Designer in Delhi, Website Designer in Mumbai, Website Designer in Bangalore, Freelance Web Developer India, web development ai, AI integrated website, AI chatbot setup, affordable web design india, sasta website developer, website under 7000, website under 10000, next.js expert, react developer, mern stack developer",
+    "premium custom next.js web development in india, professional full stack react developer for startups, enterprise ecommerce website development service india, AI integrated web development agency, smart business web solutions, high-performance server side rendering websites, custom corporate portfolio website builder, premium ui ux web design, scalable nextjs saas development, firebase backend expert developers, professional ai web solutions for businesses, top rated website designer in delhi mumbai bangalore, hire elite next.js developer india",
   authors: [{ name: "Shayar Faizan" }],
   openGraph: {
-    title: "Web Development AI - Leading AI Web Agency in India",
+    title: "Web Development AI - Premium & High-Performance Custom Websites",
     description:
-      "Transform your business with 1-second load time websites. Specialized in Next.js, AI solutions, and high-performance E-commerce apps.",
+      "Transform your business with lightning-fast, custom-built React and Next.js websites. We offer premium AI integrations, scalable eCommerce setups, and elite development for startups and enterprises in India.",
     url: "https://webdevelopmentai.in",
     siteName: "Web Development AI",
     images: [
@@ -45,13 +45,23 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Development AI - Top AI Web Development Services",
+    title: "Web Development AI - Premium Next.js Experts",
     description:
-      "Get a professional website with 1-second load time. Specialized in Next.js and AI solutions for your business.",
+      "Hire elite Next.js web developers in India. Get a high-performance, custom website with AI integrations designed for businesses and startups.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://webdevelopmentai.in',
   },
 };
 

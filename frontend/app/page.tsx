@@ -21,19 +21,16 @@ export default function Page() {
     },
     telephone: "+91 62649 06078",
     url: "https://webdevelopmentai.in",
-    priceRange: "₹₹",
+    priceRange: "₹₹₹",
     serviceType: [
-      "AI Web Development Services in India",
-      "Best AI Website Builder for Business",
-      "Professional Web Development AI Solutions",
-      "Low Cost Web Design with AI",
-      "Next.js AI Portfolio Website",
-      "Digital Visiting Card with Firebase Backend",
-      "Fast Loading React Websites for Startups",
-      "Automated Web Development for Small Business",
-      "E-commerce Website Development",
-      "Freelance Web Developer Services",
-      "UI UX Design"
+      "Premium Custom Next.js Web Development",
+      "Professional React Developer for Startups",
+      "High-Performance eCommerce Website Design India",
+      "AI Integrated Enterprise Web Solutions",
+      "Scalable Server-Side Rendered (SSR) Applications",
+      "Corporate Digital Portfolio & Branding",
+      "Premium Business Web Design Agency",
+      "Firebase Backend & Full Stack Expert Services"
     ],
   };
 
@@ -43,7 +40,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <h1 className="sr-only">Top-Rated AI Web Development Agency in India - Professional AI Web Solutions & Services</h1>
+      <h1 className="sr-only">Premium Custom Next.js Web Development & Professional React Developer in India. Hire experts for high-performance eCommerce and AI integrated web solutions.</h1>
       <HeroSlider />
       <HeroVideo />
       <ServicesSection />
