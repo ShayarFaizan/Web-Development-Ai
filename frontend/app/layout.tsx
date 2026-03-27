@@ -20,8 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "AI Web Development Services in India - Premium Custom Websites",
+  title: "AI Web Development Services in India - Premium Custom Websites",
   description:
     "Hire an expert full-stack Next.js developer for your startup or enterprise. We build high-performance, premium custom React websites, integrate AI solutions, and develop scalable eCommerce platforms in India.",
   keywords:
@@ -49,19 +48,24 @@ export const metadata: Metadata = {
     description:
       "Hire elite Next.js web developers in India. Get a high-performance, custom website with AI integrations designed for businesses and startups.",
   },
+  icons: {
+    icon: "/assets/NextGen Website Developer2.png",
+    shortcut: "/assets/NextGen Website Developer2.png",
+    apple: "/assets/NextGen Website Developer2.png",
+  },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   alternates: {
-    canonical: 'https://webdevelopmentai.in',
+    canonical: "https://webdevelopmentai.in",
   },
 };
 

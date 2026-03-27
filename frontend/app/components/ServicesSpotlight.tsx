@@ -368,13 +368,18 @@ function MediaCarousel({
             onClick={startPreview}
           >
             <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 transform group-hover:scale-110 transition-transform duration-300">
-              <svg className="w-5 h-5 text-white fill-current translate-x-0.5" viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5 text-white fill-current translate-x-0.5"
+                viewBox="0 0 24 24"
+              >
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
             <div
               className="text-black text-[10px] font-bold px-4 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-2 transition-all duration-300 uppercase tracking-widest shadow-xl"
-              style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}
+              style={{
+                background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
+              }}
             >
               Click to Preview
             </div>
@@ -420,8 +425,17 @@ function MediaCarousel({
         }}
         className="absolute bottom-2 right-2 z-40 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center border border-white/20 hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-all duration-300 cursor-pointer"
       >
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 3h6v6" /> <path d="M9 21H3v-6" /> <path d="M21 3l-7 7" /> <path d="M3 21l7-7" />
+        <svg
+          className="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M15 3h6v6" /> <path d="M9 21H3v-6" /> <path d="M21 3l-7 7" />{" "}
+          <path d="M3 21l7-7" />
         </svg>
       </button>
     </div>
@@ -458,8 +472,8 @@ function MediaModal({
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
   };
 
-  const zoomIn = () => setZoomLevel(prev => Math.min(prev + 0.5, 4));
-  const zoomOut = () => setZoomLevel(prev => Math.max(prev - 0.5, 1));
+  const zoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.5, 4));
+  const zoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
 
   const handleImageClick = (e: React.MouseEvent) => {
     const now = Date.now();
@@ -504,28 +518,59 @@ function MediaModal({
       <div
         ref={containerRef}
         className={`relative w-full h-full md:max-w-5xl md:aspect-video md:rounded-2xl shadow-2xl border-white/10 flex transition-all ${
-          zoomLevel > 1 ? "overflow-auto flex-col" : "overflow-hidden items-center justify-center"
+          zoomLevel > 1
+            ? "overflow-auto flex-col"
+            : "overflow-hidden items-center justify-center"
         } bg-black`}
         style={{ touchAction: zoomLevel > 1 ? "auto" : "pan-y" }}
       >
         {isVideo ? (
-          <video key={currentIndex} src={currentMedia} autoPlay controls className="w-full h-full object-contain" />
+          <video
+            key={currentIndex}
+            src={currentMedia}
+            autoPlay
+            controls
+            className="w-full h-full object-contain"
+          />
         ) : (
           <img
-            key={currentIndex} src={currentMedia} alt="Enlarged"
+            key={currentIndex}
+            src={currentMedia}
+            alt="Enlarged"
             onClick={handleImageClick}
             className={`transition-all duration-300 ${zoomLevel > 1 ? "h-auto p-12 md:p-20 block m-auto" : "w-full h-full object-contain"}`}
-            style={{ minWidth: zoomLevel > 1 ? `${zoomLevel * 100}vw` : '100%' }}
+            style={{
+              minWidth: zoomLevel > 1 ? `${zoomLevel * 100}vw` : "100%",
+            }}
           />
         )}
 
-        <button onClick={onClose} className="absolute top-4 right-4 z-140 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center border border-white/20 text-xl">✕</button>
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-140 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center border border-white/20 text-xl"
+        >
+          ✕
+        </button>
 
         {!isVideo && (
           <div className="absolute top-4 left-4 z-140 flex items-center gap-1.5 bg-black/50 backdrop-blur-md p-1 shadow-lg border border-white/10">
-            <button onClick={zoomOut} className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md" disabled={zoomLevel <= 1}>-</button>
-            <div className="px-3 min-w-[70px] text-center text-white text-[10px] font-black">{Math.round(zoomLevel * 100)}%</div>
-            <button onClick={zoomIn} className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md" disabled={zoomLevel >= 4}>+</button>
+            <button
+              onClick={zoomOut}
+              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md"
+              disabled={zoomLevel <= 1}
+            >
+              -
+            </button>
+            <div className="px-3 min-w-[70px] text-center text-white text-[10px] font-black">
+              {Math.round(zoomLevel * 100)}%
+            </div>
+            <button
+              onClick={zoomIn}
+              className="w-10 h-10 flex items-center justify-center bg-white text-black text-xl font-bold rounded-md"
+              disabled={zoomLevel >= 4}
+            >
+              +
+            </button>
           </div>
         )}
       </div>
@@ -534,7 +579,13 @@ function MediaModal({
   );
 }
 
-const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const LoginModal = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -547,7 +598,11 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       setLoading(true);
       await signInWithPopup(auth, googleProvider);
       onClose();
-    } catch (e: any) { setErrorMsg(e.message); } finally { setLoading(false); }
+    } catch (e: any) {
+      setErrorMsg(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
@@ -556,32 +611,87 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       onClose();
-    } catch (e: any) { setErrorMsg(e.message || "Failed to sign in."); } finally { setLoading(false); }
+    } catch (e: any) {
+      setErrorMsg(e.message || "Failed to sign in.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="relative w-full max-w-sm rounded-[10px] overflow-hidden p-6 shadow-2xl bg-[#111] border border-[#333]">
-        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+        >
+          ✕
+        </button>
         <div className="text-center mb-6">
-          <h2 className="text-[18px] font-bold text-white mb-1">Welcome Back</h2>
+          <h2 className="text-[18px] font-bold text-white mb-1">
+            Welcome Back
+          </h2>
           <p className="text-xs text-gray-400">Please sign in to continue</p>
         </div>
-        {errorMsg && <div className="mb-4 text-[11px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 text-center">{errorMsg}</div>}
-        <button onClick={handleGoogleSignIn} disabled={loading} className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md mb-4 bg-white text-black font-semibold text-sm">
-          <img src="https://www.google.com/favicon.ico" alt="GP" className="w-4 h-4" /> Sign In with Google
+        {errorMsg && (
+          <div className="mb-4 text-[11px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 text-center">
+            {errorMsg}
+          </div>
+        )}
+        <button
+          onClick={handleGoogleSignIn}
+          disabled={loading}
+          className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md mb-4 bg-white text-black font-semibold text-sm"
+        >
+          <img
+            src="https://www.google.com/favicon.ico"
+            alt="GP"
+            className="w-4 h-4"
+          />{" "}
+          Sign In with Google
         </button>
         <form className="space-y-4" onSubmit={handleEmailSignIn}>
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white" />
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white" />
-          <button type="submit" disabled={loading} className="w-full py-2.5 font-bold tracking-[0.05em] uppercase rounded-md text-black" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{loading ? "Signing In..." : "SIGN IN"}</button>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+            className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+            className="w-full bg-[#1a1a1a] border border-[#333] rounded-md px-3 py-2.5 text-white"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-2.5 font-bold tracking-[0.05em] uppercase rounded-md text-black"
+            style={{
+              background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
+            }}
+          >
+            {loading ? "Signing In..." : "SIGN IN"}
+          </button>
         </form>
       </div>
     </div>
   );
 };
 
-function ServiceCard({ card, onMediaClick, isModalActive }: { card: CardData; onMediaClick: (media: string[], index: number) => void; isModalActive: boolean }) {
+function ServiceCard({
+  card,
+  onMediaClick,
+  isModalActive,
+}: {
+  card: CardData;
+  onMediaClick: (media: string[], index: number) => void;
+  isModalActive: boolean;
+}) {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [isAdded, setIsAdded] = useState(false);
@@ -590,11 +700,12 @@ function ServiceCard({ card, onMediaClick, isModalActive }: { card: CardData; on
   const isWishlisted = isInWishlist(card.id);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, u => setUser(u));
+    const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
     return () => unsubscribe();
   }, []);
 
-  const handleWishlistClick = () => user ? toggleWishlist(card) : setShowAuthModal(true);
+  const handleWishlistClick = () =>
+    user ? toggleWishlist(card) : setShowAuthModal(true);
   const handleAddToCartClick = () => {
     if (user) {
       addToCart(card);
@@ -604,19 +715,65 @@ function ServiceCard({ card, onMediaClick, isModalActive }: { card: CardData; on
   };
 
   return (
-    <div className={`shrink-0 w-[230px] md:w-[255px] rounded-xl overflow-hidden flex flex-col border border-gray-800`} style={{ background: "#111", touchAction: "auto" }}>
+    <div
+      className={`shrink-0 w-[230px] md:w-[255px] rounded-xl overflow-hidden flex flex-col border border-gray-800`}
+      style={{ background: "#111", touchAction: "auto" }}
+    >
       <div className="relative w-full h-[210px] md:h-[230px] bg-[#1a1a1a] overflow-hidden">
-        <button onClick={handleWishlistClick} className={`absolute top-3 left-3 z-20 ${isWishlisted ? "text-red-500" : "text-gray-400"}`}>
-          <svg fill={isWishlisted ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+        <button
+          onClick={handleWishlistClick}
+          className={`absolute top-3 left-3 z-20 ${isWishlisted ? "text-red-500" : "text-gray-400"}`}
+        >
+          <svg
+            fill={isWishlisted ? "currentColor" : "none"}
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+            />
+          </svg>
         </button>
-        <div className="absolute top-2 right-2 z-20 flex flex-col gap-1.5 pointer-events-none">
-          <span className="text-black font-extrabold text-[8px] px-2.5 py-1 rounded-sm" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{card.badge}</span>
-          <span className="text-black font-extrabold text-[10px] px-2.5 py-0.5 rounded-sm" style={{ background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)" }}>{card.discount}</span>
+        <div className="absolute top-2 right-2 z-20 flex flex-col items-end gap-1.5 pointer-events-none">
+          {card.badge && (
+            <span
+              className="text-[black] font-extrabold text-[9px] px-2.5 py-1 rounded-sm w-fit"
+              style={{
+                background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
+              }}
+            >
+              {card.badge}
+            </span>
+          )}
+          {card.discount && (
+            <span
+              className="text-[black] font-extrabold text-[11px] px-2.5 py-0.5 rounded-sm w-fit"
+              style={{
+                background: "linear-gradient(90deg, #e3bc7c, #fef1cd, #d4a75c)",
+              }}
+            >
+              {card.discount}
+            </span>
+          )}
         </div>
         {card.videos?.length ? (
-          <MediaCarousel media={card.videos} onOpenModal={onMediaClick} isModalActive={isModalActive} />
+          <MediaCarousel
+            media={card.videos}
+            onOpenModal={onMediaClick}
+            isModalActive={isModalActive}
+          />
         ) : (
-          <div className="relative w-full h-full"><Image src={card.image} alt={card.title} fill className="object-cover" /></div>
+          <div className="relative w-full h-full">
+            <Image
+              src={card.image}
+              alt={card.title}
+              fill
+              className="object-cover"
+            />
+          </div>
         )}
       </div>
       <div
@@ -701,7 +858,10 @@ function ServiceCard({ card, onMediaClick, isModalActive }: { card: CardData; on
           </button>
         </div>
       </div>
-      <LoginModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+      <LoginModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+      />
     </div>
   );
 }
