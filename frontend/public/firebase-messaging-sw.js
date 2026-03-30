@@ -3,13 +3,12 @@ importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js'
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
 
 firebase.initializeApp({
-  // These values should be injected or handled via environment variables
-  apiKey: "REMOVED_FOR_SECURITY",
-  authDomain: "REMOVED_FOR_SECURITY",
-  projectId: "REMOVED_FOR_SECURITY",
-  storageBucket: "REMOVED_FOR_SECURITY",
-  messagingSenderId: "REMOVED_FOR_SECURITY",
-  appId: "REMOVED_FOR_SECURITY",
+  apiKey: "AIzaSyAF6j6cErt7ywYhAB7Nv9Jkw9oS9BE-ktM",
+  authDomain: "webdevai-c4345.firebaseapp.com",
+  projectId: "webdevai-c4345",
+  storageBucket: "webdevai-c4345.firebasestorage.app",
+  messagingSenderId: "1023932204163",
+  appId: "1:1023932204163:web:42c4bc78218dde9c45c7b6",
 });
 
 const messaging = firebase.messaging();
