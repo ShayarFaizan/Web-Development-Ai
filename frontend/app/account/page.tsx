@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAppContext } from "@/app/context/AppContext";
 import {
   Package,
   Heart,
@@ -168,6 +169,7 @@ const LoginModal = ({
 
 export default function AccountPage() {
   const router = useRouter();
+  const { savedAddress, setSavedAddress } = useAppContext();
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [currentView, setCurrentView] = useState<string>("main");
@@ -477,12 +479,38 @@ export default function AccountPage() {
               <button onClick={() => setCurrentView("main")}><ArrowLeft size={22} /></button>
               <h2 className="font-bold text-[18px]">{labels.addresses}</h2>
             </div>
-            <div className="p-4 bg-gray-50 flex items-center justify-between">
-              <span className="text-[13px] font-bold text-[#d4a351] uppercase">{selectedLang === 'hi' ? "+ नया पता जोड़ें" : "+ Add a new address"}</span>
-            </div>
+            
+            <button 
+              onClick={() => {
+                const newAddr = prompt("Enter your address:", savedAddress || "");
+                if (newAddr !== null) setSavedAddress(newAddr);
+              }}
+              className="w-full p-4 bg-gray-50 flex items-center justify-between border-b hover:bg-gray-100 transition-colors"
+            >
+              <span className="text-[13px] font-bold text-[#d4a351] uppercase">
+                {savedAddress ? "✎ Update Address" : (selectedLang === 'hi' ? "+ नया पता जोड़ें" : "+ Add a new address")}
+              </span>
+            </button>
+
             <div className="p-8 text-center">
-              <MapPin size={48} className="mx-auto text-gray-200 mb-3" />
-              <p className="text-gray-400 text-[13px]">{selectedLang === 'hi' ? "कोई पता नहीं मिला" : "No saved addresses found"}</p>
+              {savedAddress ? (
+                <div className="bg-amber-50/50 p-4 rounded-lg border border-amber-100 text-left animate-in fade-in duration-500">
+                  <div className="flex items-start gap-3">
+                    <MapPin size={20} className="text-[#d4a351] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-[14px] font-bold text-gray-900 mb-1">Current Address</p>
+                      <p className="text-[13px] text-gray-600 leading-relaxed font-medium">{savedAddress}</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <MapPin size={48} className="mx-auto text-gray-200 mb-3" />
+                  <p className="text-gray-400 text-[13px] tracking-wide font-medium">
+                    {selectedLang === 'hi' ? "कोई सहेजा गया पता नहीं मिला" : "No saved addresses found"}
+                  </p>
+                </>
+              )}
             </div>
           </div>
         );

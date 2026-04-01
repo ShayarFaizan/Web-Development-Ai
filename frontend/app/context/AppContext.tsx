@@ -49,6 +49,11 @@ interface AppContextType {
   removeFromWishlist: (id: number) => void;
   isInWishlist: (id: number) => boolean;
   moveToCart: (id: number) => void;
+
+  /* User & Address */
+  user: FirebaseUser | null;
+  savedAddress: string | null;
+  setSavedAddress: (addr: string | null) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -57,6 +62,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
   const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [savedAddress, setSavedAddress] = useState<string | null>(null);
 
   // Listen to Auth State and load data from LocalStorage
   useEffect(() => {
@@ -89,6 +95,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setWishlistItems([]);
       }
     });
+
+    // Load saved address
+    const globalAddress = localStorage.getItem("savedAddress");
+    if (globalAddress) setSavedAddress(globalAddress);
+
     return () => unsubscribe();
   }, []);
 
@@ -102,6 +113,15 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       );
     }
   }, [cartItems, wishlistItems, user]);
+
+  // Persist address changes
+  useEffect(() => {
+    if (savedAddress) {
+      localStorage.setItem("savedAddress", savedAddress);
+    } else {
+      localStorage.removeItem("savedAddress");
+    }
+  }, [savedAddress]);
 
   /* ── Cart helpers ── */
   const addToCart = (item: Omit<CartItem, "quantity">) => {
@@ -188,6 +208,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         removeFromWishlist,
         isInWishlist,
         moveToCart,
+        user,
+        savedAddress,
+        setSavedAddress,
       }}
     >
       {children}

@@ -126,7 +126,7 @@ export default function RootLayout({
           <GoogleOneTap />
           <Navbar />
           <WhatsAppButton />
-          <main className="pt-0 md:pt-[92px]">{children}</main>
+          <main className="pt-[110px] md:pt-[92px]">{children}</main>
           <SpeedInsights />
           <Analytics />
         </AppProvider>

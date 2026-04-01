@@ -22,7 +22,8 @@ import {
   UserCheck,
   X,
   Camera,
-  Trash2
+  Trash2,
+  Heart
 } from "lucide-react";
 import { Review, CardData } from "@/lib/servicesData";
 import Navbar from "@/app/components/Navbar";
@@ -49,7 +50,7 @@ import { useRouter } from "next/navigation";
 export default function PlanDetailClient({ card, id }: { card: CardData, id: string }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const { addToCart } = useAppContext();
+  const { addToCart, toggleWishlist, isInWishlist } = useAppContext();
   const [selectedMedia, setSelectedMedia] = useState(0);
   const [isDetailsOpen, setIsDetailsOpen] = useState(true);
   const [isHighlightsOpen, setIsHighlightsOpen] = useState(true);
@@ -354,15 +355,15 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
       <Navbar />
 
       {/* Breadcrumbs */}
-      <nav className="max-w-[1500px] mx-auto px-4 md:px-8 pt-5 md:pt-24 pb-2">
+      <nav className="max-w-[1500px] mx-auto px-4 md:px-8 pt-2 md:pt-10 pb-2">
         <div className="flex items-center gap-2 text-[11px] text-zinc-500 overflow-x-auto whitespace-nowrap scrollbar-hide">
           <Link href="/" className="hover:text-amber-600 hover:underline transition-colors uppercase tracking-tight">Home</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
-          <Link href="/#pricing" className="hover:text-amber-600 hover:underline transition-colors uppercase tracking-tight">Services</Link>
+          <Link href="/more-services" className="hover:text-amber-600 hover:underline transition-colors uppercase tracking-tight">Services</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
-          <span className="hover:text-amber-600 cursor-pointer uppercase tracking-tight">{card.category}</span>
+          <Link href={`/more-services?category=${encodeURIComponent(card.category)}`} className="text-blue-600 hover:text-amber-600 hover:underline transition-colors uppercase tracking-tight cursor-pointer font-medium">{card.category}</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
-          <span className="text-zinc-800 font-medium truncate uppercase tracking-tight">{card.title}</span>
+          <span className="text-zinc-800 font-bold truncate uppercase tracking-tight">{card.title}</span>
         </div>
       </nav>
 
@@ -389,6 +390,33 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
                   {card.badge}
                 </span>
               </div>
+
+              {/* Wishlist Button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleWishlist({
+                    id: card.id,
+                    title: card.title,
+                    image: card.image,
+                    price: card.price,
+                    originalPrice: card.originalPrice,
+                    delivery: card.delivery,
+                    category: card.category
+                  });
+                }}
+                className={`absolute top-4 right-4 transition-all duration-300 p-2.5 rounded-full backdrop-blur-md shadow-lg border border-white/20 z-10 ${
+                  isInWishlist(card.id) 
+                    ? "bg-red-500 text-white" 
+                    : "bg-white/70 text-gray-400 hover:text-red-500 hover:bg-white"
+                }`}
+              >
+                <Heart 
+                  size={20} 
+                  fill={isInWishlist(card.id) ? "currentColor" : "none"} 
+                  strokeWidth={isInWishlist(card.id) ? 0 : 2.5}
+                />
+              </button>
             </div>
             
             <div className="flex gap-2 overflow-x-auto py-2 scrollbar-hide">
@@ -412,15 +440,27 @@ export default function PlanDetailClient({ card, id }: { card: CardData, id: str
               <h1 className="text-2xl md:text-3xl font-medium text-zinc-900 mb-2 leading-tight">
                 {card.title} - Professional {card.category} Experience ({card.tag} Plan)
               </h1>
-              <div className="flex items-center gap-4 text-sm font-light">
-                <div className="flex items-center gap-1 group cursor-pointer">
-                  {averageRating > 0 && <span className="text-amber-600 font-bold">{averageRating}</span>}
-                  <div className="flex items-center">
-                    {renderStars(averageRating)}
+              <div className="flex items-center gap-4 text-sm font-light h-6">
+                {(card.reviews && card.reviews.length > 0) ? (
+                  <div className="flex items-center gap-1 group cursor-pointer">
+                    {averageRating > 0 && <span className="text-amber-600 font-bold">{averageRating}</span>}
+                    <div className="flex items-center">
+                      {renderStars(averageRating)}
+                    </div>
+                    <span className="text-blue-600 hover:text-amber-700 hover:underline ml-1 uppercase text-[10px] font-bold tracking-widest">
+                      {totalReviewsCount.toLocaleString()} Customer Ratings
+                    </span>
                   </div>
-                  <span className="text-blue-600 hover:text-amber-700 hover:underline ml-1 uppercase text-[10px] font-bold tracking-widest">
-                    {totalReviewsCount > 0 ? `${totalReviewsCount} Customer Ratings` : "No Ratings Yet"}
-                  </span>
+                ) : (
+                   <div className="flex items-center text-zinc-400 text-[10px] uppercase font-bold tracking-widest">
+                      No Ratings Yet
+                   </div>
+                )}
+                
+                <div className="ml-2">
+                  <div className="flex items-center bg-[#2874f0] text-white text-[9px] md:text-[11px] font-black px-2.5 py-0.5 rounded-sm italic shadow-sm border border-blue-400/30">
+                    <span className="text-yellow-400 mr-1 not-italic text-[12px]">★</span> WEBDEV <span className="ml-1 opacity-90">Assured</span>
+                  </div>
                 </div>
               </div>
             </div>

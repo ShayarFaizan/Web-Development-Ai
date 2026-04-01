@@ -21,11 +21,14 @@ import {
   Menu,
   X,
   ChevronDown,
+  ChevronRight,
   Home,
+  Zap,
   BadgePercent,
   CalendarDays,
   LayoutDashboard,
 } from "lucide-react";
+import { serviceCards, CardData } from "@/lib/servicesData";
 
 /* ══════════════════════════════════════════
    Icon Wrappers (lucide-react)
@@ -490,9 +493,78 @@ const Navbar = () => {
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [imgError, setImgError] = useState(false);
-  const { cartCount, wishlistCount } = useAppContext();
+  const { cartCount, wishlistCount, savedAddress } = useAppContext();
   const router = useRouter();
   const pathname = usePathname();
+
+  // ── Search State ──
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<CardData[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const mobileSearchRef = useRef<HTMLDivElement>(null);
+
+  // Handle Scroll for Header Animation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close search on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+      if (
+        mobileSearchRef.current &&
+        !mobileSearchRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Filtering Logic
+  useEffect(() => {
+    if (searchTerm.trim().length > 1) {
+      const filtered = serviceCards
+        .filter(
+          (card) =>
+            card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            card.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            card.features.some((f) =>
+              f.toLowerCase().includes(searchTerm.toLowerCase()),
+            ),
+        )
+        .slice(0, 8); // Limit to 8 results
+      setSearchResults(filtered);
+      setShowDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  }, [searchTerm]);
+
+  const handleResultClick = (id: number) => {
+    router.push(`/plans/${id}`);
+    setSearchTerm("");
+    setShowDropdown(false);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -505,6 +577,14 @@ const Navbar = () => {
   const handleBookingClick = (e: React.MouseEvent) => {
     e.preventDefault();
     router.push("/book-appointment");
+  };
+
+  const handleSearch = (e: React.FormEvent | React.KeyboardEvent) => {
+    if (e.type === 'keydown' && (e as React.KeyboardEvent).key !== 'Enter') return;
+    if (searchTerm.trim()) {
+      router.push(`/more-services?q=${encodeURIComponent(searchTerm.trim())}`);
+      setShowDropdown(false);
+    }
   };
 
   const handleProfileClick = async () => {
@@ -554,13 +634,84 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Right: Icons + Button */}
-          <div className="flex items-center gap-4">
-            <div className="flex items-center">
-              {/* <button className={`${iconBtn} pr-4`} aria-label="Search">
-                <IconSearch />
+          {/* 🔍 Search Bar (Flipkart Style) */}
+          <div
+            className="flex-1 max-w-[560px] mx-10 hidden lg:block"
+            ref={searchRef}
+          >
+            <div className="relative group">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => searchTerm.length > 1 && setShowDropdown(true)}
+                onKeyDown={handleSearch}
+                placeholder="Search for services, technologies and more"
+                className="w-full h-[36px] px-4 pr-10 rounded-sm text-[13px] outline-none transition-all duration-300
+                           bg-white text-[#111] border border-transparent focus:border-[#e3bc7c]/50
+                           placeholder:text-gray-500 shadow-sm"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              />
+              <button
+                className="absolute right-0 top-0 h-full w-10 flex items-center justify-center cursor-pointer group/search"
+                aria-label="Submit Search"
+                onClick={handleSearch}
+              >
+                <Search
+                  size={18}
+                  className="text-[#e3bc7c] transition-transform group-hover/search:scale-110"
+                  strokeWidth={2.2}
+                />
               </button>
-              <div className="w-px h-5 bg-[#333]" /> */}
+
+              {/* Desktop Search Results Dropdown */}
+              {showDropdown && searchResults.length > 0 && (
+                <div className="absolute top-[calc(100%+4px)] left-0 right-0 bg-white shadow-2xl rounded-sm overflow-hidden z-200 border border-gray-100">
+                  <div className="py-1">
+                    {searchResults.map((result) => (
+                      <Link
+                        key={result.id}
+                        href={`/plans/${result.id}`}
+                        onClick={() => {
+                          setSearchTerm("");
+                          setShowDropdown(false);
+                        }}
+                        className="px-4 py-2.5 flex items-center gap-3 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-50 last:border-0"
+                      >
+                        <div className="w-10 h-10 rounded bg-gray-50 flex-shrink-0 overflow-hidden border border-gray-100">
+                          <img
+                            src={result.image}
+                            alt=""
+                            className="w-full h-full object-contain p-1"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[13px] font-semibold text-[#111] truncate">
+                            {result.title}
+                          </p>
+                          <p className="text-[11px] text-[#e3bc7c] font-medium">
+                            {result.category} • {result.price}
+                          </p>
+                        </div>
+                        <Search size={14} className="text-gray-300" />
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="bg-gray-50 px-4 py-2 border-t border-gray-100 italic">
+                    <p className="text-[10px] text-gray-400">
+                      Total {searchResults.length} recommendations found
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Right: Icons + Button */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <div className="relative group flex items-center h-full">
                 <button
                   className={`${iconBtn} px-4 flex items-center justify-center cursor-pointer h-full`}
@@ -873,6 +1024,134 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* ── MOBILE TOP HEADER (Dynamic Scrolling Header) ── */}
+      {!["/book-appointment", "/account", "/cart", "/more-services"].includes(
+        pathname,
+      ) && (
+        <div
+          className={`md:hidden fixed top-0 left-0 right-0 z-[200] px-3 shadow-lg transition-all duration-300 ease-in-out ${
+            isScrolled ? "py-1.5 gap-0" : "py-2 gap-2"
+          }`}
+          style={{
+            background: "linear-gradient(180deg, #121212 0%, #1a1a1a 100%)",
+            borderBottom: "1px solid rgba(227,188,124,0.15)",
+          }}
+        >
+          {/* Top Row: Location + Points (Vanishes on Scroll) */}
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ease-in-out overflow-hidden ${
+              isScrolled
+                ? "max-h-0 opacity-0 pointer-events-none mb-0 pt-0"
+                : "max-h-10 opacity-100 mb-1 pt-0.5"
+            }`}
+          >
+            <div className="flex items-center gap-1.5 max-w-[80%]">
+              <div className="flex-shrink-0">
+                <div className="bg-[#e3bc7c] text-black p-0.5 rounded-sm shadow-sm">
+                  <Home size={11} fill="black" />
+                </div>
+              </div>
+              <div className="flex items-center gap-1 overflow-hidden">
+                <span className="text-[11px] font-black text-[#e3bc7c] whitespace-nowrap tracking-wide leading-none">
+                  HOME
+                </span>
+                <span className="text-[10px] text-gray-300 truncate font-medium opacity-80 leading-none">
+                  {savedAddress || "Select delivery location"}
+                </span>
+                <ChevronRight size={14} className="text-[#e3bc7c] shrink-0" />
+              </div>
+            </div>
+
+            <div className="bg-black/40 rounded-full px-1.5 py-0.5 flex items-center gap-1 border border-[#e3bc7c]/30 shadow-inner">
+              <div className="bg-[#e3bc7c] rounded-full p-0.5 shadow-sm">
+                <Zap size={9} fill="black" stroke="black" />
+              </div>
+              <span className="text-[10px] font-bold text-[#e3bc7c]">0</span>
+            </div>
+          </div>
+
+          {/* Search Bar Row: Larger, Rounded with gold/brass border */}
+          <div className="relative w-full" ref={mobileSearchRef}>
+            <div className="relative transition-all duration-300">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => searchTerm.length > 1 && setShowDropdown(true)}
+                onKeyDown={handleSearch}
+                placeholder="Search for Services, Apps and more"
+                className="w-full h-[46px] pl-12 pr-4 rounded-xl text-[14px] outline-none bg-white text-[#111] placeholder:text-gray-500 shadow-md ring-1 ring-inset ring-transparent focus:ring-[#e3bc7c]/30"
+                style={{ border: "2px solid #e3bc7c" }}
+              />
+              <Search
+                size={20}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#e3bc7c]"
+                strokeWidth={2.5}
+              />
+            </div>
+
+            {/* Results Dropdown (Mobile) */}
+            {showDropdown && searchResults.length > 0 && (
+              <div className="absolute top-[calc(100%+8px)] left-0 right-0 z-[999] bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 max-h-[70vh] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-300">
+                {searchResults.map((result) => (
+                  <div
+                    key={result.id}
+                    onMouseDown={() => handleResultClick(result.id)}
+                    className="flex items-center gap-3 p-3.5 hover:bg-gray-50 active:bg-gray-100 border-b border-gray-50 last:border-0 cursor-pointer group transition-colors"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center overflow-hidden shrink-0 border border-gray-100">
+                      <img
+                        src={result.image}
+                        alt={result.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder-image.png";
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-[13px] font-bold text-gray-900 truncate tracking-tight">
+                          {result.title}
+                        </h4>
+                        <span className="text-[11px] font-black text-[#d4a351] shrink-0">
+                          {result.price}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[10px] text-gray-400 font-medium">
+                          Free Delivery
+                        </span>
+                        <div className="w-1 h-1 rounded-full bg-gray-200" />
+                        <span className="text-[10px] text-gray-400 font-medium">
+                          {result.category}
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRight
+                      size={14}
+                      className="text-gray-300 group-hover:text-[#d4a351] transition-colors"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── CONDITIONAL CSS TO REMOVE LAYOUT GAP ON SPECIAL PAGES ── */}
+      {["/book-appointment", "/account", "/cart"].includes(pathname) && (
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          main { padding-top: 0 !important; }
+        `,
+          }}
+        />
+      )}
 
       {/* ── FLIPKART STYLE MOBILE BOTTOM NAVBAR ── */}
       <div

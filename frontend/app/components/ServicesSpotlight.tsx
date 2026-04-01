@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
+import { Heart } from "lucide-react";
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -167,7 +168,7 @@ export default function ServicesSpotlight() {
       {/* ── View All Button ── */}
       <div className="flex justify-center mt-10">
         <Link
-          href="/book-appointment"
+          href="/more-services"
           className="rounded-md text-[14px] font-medium px-8 py-2 transition-all duration-300 hover:opacity-80 inline-block"
           style={{
             background: "#000",
@@ -176,7 +177,7 @@ export default function ServicesSpotlight() {
             letterSpacing: "0.02em",
           }}
         >
-          Other Requirements Book Free Appointment
+          More Services
         </Link>
       </div>
 
@@ -721,21 +722,22 @@ function ServiceCard({
     >
       <div className="relative w-full h-[210px] md:h-[230px] bg-[#1a1a1a] overflow-hidden">
         <button
-          onClick={handleWishlistClick}
-          className={`absolute top-3 left-3 z-20 ${isWishlisted ? "text-red-500" : "text-gray-400"}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleWishlistClick();
+          }}
+          className={`absolute top-4 left-4 z-30 transition-all duration-300 p-2 rounded-full backdrop-blur-md shadow-lg border border-white/20 group/heart ${
+            isWishlisted 
+              ? "bg-red-500 text-white scale-110" 
+              : "bg-white/70 text-gray-400 hover:text-red-500 hover:bg-white hover:scale-110"
+          }`}
         >
-          <svg
-            fill={isWishlisted ? "currentColor" : "none"}
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>
+          <Heart 
+            size={16} 
+            fill={isWishlisted ? "currentColor" : "none"} 
+            strokeWidth={2.5}
+            className={isWishlisted ? "animate-pulse-subtle" : ""}
+          />
         </button>
         <div className="absolute top-2 right-2 z-20 flex flex-col items-end gap-1.5 pointer-events-none">
           {card.badge && (

@@ -21,7 +21,7 @@ export default function Page() {
     },
     telephone: "+91 62649 06078",
     url: "https://webdevelopmentai.in",
-    priceRange: "₹₹₹",
+    priceRange: "₹₹ - ₹₹₹₹",
     serviceType: [
       "Premium Custom Next.js Web Development",
       "Professional React Developer for Startups",
