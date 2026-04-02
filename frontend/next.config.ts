@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "ui-avatars.com",
       },
+      {
+        // Placeholder Images
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+      {
+        // ImgBB (Portfolio data)
+        protocol: "https",
+        hostname: "i.ibb.co",
+      },
     ],
   },
 };

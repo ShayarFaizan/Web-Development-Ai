@@ -211,22 +211,46 @@ const Footer = () => {
         <div>
           <h4 style={colHeadingStyle}>Know Us</h4>
           <ul style={listStyle}>
-            {["About Us", "Contact Us", "Blogs", "Careers"].map((item) => (
-              <li key={item}>
-                <Link
-                  href="#"
-                  style={linkStyle}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.textDecoration = "underline")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.textDecoration = "none")
-                  }
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/about"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#contact"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                Blogs
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                Careers
+              </Link>
+            </li>
           </ul>
         </div>
 

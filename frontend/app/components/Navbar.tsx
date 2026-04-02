@@ -76,6 +76,33 @@ const servicesMegaColumns = [
   },
 ];
 
+const aboutMegaColumns = [
+  {
+    heading: "Our Journey",
+    items: [
+      { label: "Our Mission", href: "/about#mission" },
+      { label: "Founder's Story", href: "/about#founder" },
+      { label: "Journey in Photos", href: "/about#photos" },
+    ],
+  },
+  {
+    heading: "Our Culture",
+    items: [
+      { label: "Core Values", href: "/about#values" },
+      { label: "Our Awards", href: "/about#awards" },
+      { label: "Team Atmosphere", href: "/about#photos" },
+    ],
+  },
+  {
+    heading: "Impact",
+    items: [
+      { label: "Client Love", href: "/about#testimonials" },
+      { label: "Project Results", href: "/portfolio" },
+      { label: "Success Stories", href: "/about#testimonials" },
+    ],
+  },
+];
+
 const subNavItems = [
   // { label: "HOME", href: "/", dropdown: null },
   {
@@ -90,7 +117,12 @@ const subNavItems = [
     isPortfolioMega: true,
     dropdown: null,
   },
-  { label: "PRICING", href: "#pricing", dropdown: null },
+  {
+    label: "ABOUT US",
+    href: "/about",
+    isAboutMega: true,
+    dropdown: null,
+  },
   { label: "WHATSAPP", href: "https://wa.me/916264906078", dropdown: null },
   { label: "BLOG", href: "/blog", dropdown: null },
   {
@@ -102,6 +134,91 @@ const subNavItems = [
 ];
 
 import portfolioData from "./portfolioData.json";
+
+/* ══════════════════════════════════════════
+   Services Mega Menu Panel
+   ══════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   About Mega Menu Panel
+   ══════════════════════════════════════════ */
+function AboutMegaMenu({ open }: { open: boolean }) {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "92px",
+        left: 0,
+        right: 0,
+        zIndex: 999,
+        background: "#fff",
+        boxShadow: "none",
+        pointerEvents: open ? "auto" : "none",
+        opacity: open ? 1 : 0,
+        transition: "opacity 0.1s ease",
+        padding: "28px 60px 32px 60px",
+      }}
+    >
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "0",
+          maxWidth: "900px",
+          margin: "0 auto",
+        }}
+      >
+        {aboutMegaColumns.map((col, colIdx) => (
+          <div
+            key={col.heading}
+            style={{
+              borderRight:
+                colIdx < aboutMegaColumns.length - 1
+                  ? "1px solid #f0f0f0"
+                  : "none",
+              paddingLeft: colIdx === 0 ? 0 : "32px",
+              paddingRight:
+                colIdx === aboutMegaColumns.length - 1 ? 0 : "32px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "15px",
+                fontWeight: "700",
+                color: "#111",
+                letterSpacing: "0.05em",
+                marginBottom: "14px",
+                textTransform: "none",
+              }}
+            >
+              {col.heading}
+            </div>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {col.items.map((item) => (
+                <li key={item.label} style={{ marginBottom: "10px" }}>
+                  <Link
+                    href={item.href}
+                    style={{
+                      fontSize: "14px",
+                      color: "#555",
+                      textDecoration: "none",
+                      transition: "color 0.15s",
+                      display: "block",
+                      lineHeight: "1.4",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#111")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 /* ══════════════════════════════════════════
    Services Mega Menu Panel
@@ -325,7 +442,7 @@ function ContactMegaMenu({ open }: { open: boolean }) {
           Contact us
         </Link>
         <Link
-          href="#about"
+          href="#pricing"
           style={{
             fontSize: "13px",
             fontWeight: "100",
@@ -337,7 +454,7 @@ function ContactMegaMenu({ open }: { open: boolean }) {
           onMouseEnter={(e) => (e.currentTarget.style.color = "#111")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
         >
-          About Us
+          Pricing
         </Link>
       </div>
     </div>
@@ -409,6 +526,32 @@ function SubNavItem({ item }: { item: (typeof subNavItems)[number] }) {
           </span>
         </Link>
         <PortfolioMegaMenu open={open} />
+      </div>
+    );
+  }
+
+  /* ABOUT US — full-width mega menu */
+  if ((item as any).isAboutMega) {
+    return (
+      <div
+        ref={ref}
+        className="relative flex items-center h-full group/nav"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={() => setOpen(false)}
+      >
+        <Link
+          href={item.href}
+          className="flex items-center gap-1 h-full px-3 text-[11.5px] font-semibold tracking-widest
+                     transition-colors duration-200 whitespace-nowrap
+                     text-gray-700 hover:text-black cursor-pointer uppercase"
+        >
+          {item.label}
+          <span className="text-gray-400 transition-transform duration-300 group-hover/nav:-rotate-180">
+            <IconChevron />
+          </span>
+        </Link>
+        <AboutMegaMenu open={open} />
       </div>
     );
   }
@@ -607,7 +750,7 @@ const Navbar = () => {
     // { name: "Home", href: "/" },
     { name: "Services", href: "#services" },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "About Us", href: "#about" },
+    { name: "About Us", href: "/about" },
     { name: "Pricing", href: "#pricing" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "#contact" },
