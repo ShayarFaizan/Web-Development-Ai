@@ -39,8 +39,7 @@ export default function PortfolioPage() {
 
           <p className="text-gray-400 text-sm md:text-base max-w-md leading-relaxed">
             Explore our diverse collection of web projects, ranging from elegant
-            landing pages to complex e-commerce solutions and custom web
-            applications.
+            landing pages to complex e-commerce solutions. As the leading <strong className="text-gray-200">portfolio website developer Bilaspur</strong>, we build digital experiences that stand out.
           </p>
         </div>
 

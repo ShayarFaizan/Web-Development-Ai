@@ -60,7 +60,7 @@ export default function HeroVideo() {
       {/* Section Heading */}
       <div className="text-center mb-5 md:mb-8 px-4">
         <h1 className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-gray-800">
-          Web Development AI — India&apos;s Leading AI-Powered Web Agency
+          Web Development AI — Chhattisgarh&apos;s Leading AI-Powered Web Agency
         </h1>
       </div>
 

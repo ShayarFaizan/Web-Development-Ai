@@ -69,7 +69,7 @@ export const serviceCards: CardData[] = [
     ],
     price: "₹22,999",
     originalPrice: "₹31,999",
-    delivery: "3–5 din",
+    delivery: "13–21 din",
     tag: "One Time",
     category: "Website's",
     detailedDescription: `
@@ -455,7 +455,7 @@ High-Performance Sales Landing Page
     ],
     price: "₹9,999",
     originalPrice: "₹14,999",
-    delivery: "3–5 din",
+    delivery: "13–21 din",
     tag: "One Time",
     category: "Landing Pages",
     highlights: [
@@ -694,7 +694,7 @@ Vaule Table:
     ],
     price: "₹8,499",
     originalPrice: "₹12,999",
-    delivery: "3–5 days",
+    delivery: "13–21 days",
     tag: "One Time",
     category: "Landing Pages",
     detailedDescription:

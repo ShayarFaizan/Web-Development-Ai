@@ -20,16 +20,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Web Development Services in India - Premium Custom Websites",
+  title: "Website Developer in Bilaspur | Web Development Company Chhattisgarh — webdevelopmentai.in",
   description:
-    "Hire an expert full-stack Next.js developer for your startup or enterprise. We build high-performance, premium custom React websites, integrate AI solutions, and develop scalable eCommerce platforms in India.",
+    "Best website developer in Bilaspur, Chhattisgarh. ₹9,999 se shuru — affordable website development, ecommerce website, landing page, aur Next.js business sites. As a leading web development company Bilaspur, 13–21 din mein ready. Website banwana ho to abhi contact karo.",
   keywords:
-    "premium custom next.js web development in india, professional full stack react developer for startups, enterprise ecommerce website development service india, AI integrated web development agency, smart business web solutions, high-performance server side rendering websites, custom corporate portfolio website builder, premium ui ux web design, scalable nextjs saas development, firebase backend expert developers, professional ai web solutions for businesses, top rated website designer in delhi mumbai bangalore, hire elite next.js developer india",
+    "website developer in Bilaspur, web development company Bilaspur, website banane wala Bilaspur, website designer near me Bilaspur, affordable website development Bilaspur, website banane ka kharcha Bilaspur, website development cost Bilaspur 2026, cheap website designer Bilaspur, website development price Chhattisgarh, ecommerce website developer Bilaspur, Next.js developer Bilaspur, business website Bilaspur Chhattisgarh, landing page banana hai Bilaspur, portfolio website developer Bilaspur, best web developer Bilaspur, hire web developer Bilaspur, freelance web developer Bilaspur, Google pe website kaise aaye Bilaspur, website maintenance service Bilaspur, web development agency Chhattisgarh",
   authors: [{ name: "Shayar Faizan" }],
   openGraph: {
-    title: "Web Development AI - Premium & High-Performance Custom Websites",
+    title: "Website Developer in Bilaspur | Affordable Web Development — webdevelopmentai.in",
     description:
-      "Transform your business with lightning-fast, custom-built React and Next.js websites. We offer premium AI integrations, scalable eCommerce setups, and elite development for startups and enterprises in India.",
+      "Bilaspur ka best website developer. ₹9,999 se shuru, 13–21 din delivery. Ecommerce, landing page, business website — sab kuch ek jagah. Chhattisgarh ke local businesses ke liye specialist.",
     url: "https://webdevelopmentai.in",
     siteName: "Web Development AI",
     images: [
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Development AI - Premium Next.js Experts",
+    title: "Website Developer in Bilaspur | Web Development AI",
     description:
-      "Hire elite Next.js web developers in India. Get a high-performance, custom website with AI integrations designed for businesses and startups.",
+      "Bilaspur mein best website developer. ₹9,999 mein professional business website, ecommerce, aur landing page banwao. Hire karo aaj — 13–21 din delivery.",
   },
   icons: {
     icon: "/assets/NextGen Website Developer2.png",

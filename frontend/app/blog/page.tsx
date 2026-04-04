@@ -20,13 +20,151 @@ interface Blog {
 
 const FEATURED_ARTICLES = [
   {
-    tags: ["GEMINI", "GOOGLE AI STUDIO", "AI", "AI HOMEPAGE", "EVENTS"],
-    title: "Get ready for Google I/O 2026",
+    tags: ["BILASPUR", "WEBSITE COST", "WEB DEVELOPMENT", "2026 GUIDE"],
+    title: "Bilaspur, Chhattisgarh Mein Website Banwane Ka Kharcha Kitna Hai? (2026 Guide)",
     description:
-      "Google I/O returns May 19-20. Watch the livestreams for updates on Android, AI, Chrome, and Cloud. Registration is open on the Google I/O website.",
-    image: "/blog/next.js.png",
-    date: "MAY 19 – 20",
+      "Bilaspur, Chhattisgarh mein apna business online lane ki soch rahe hain? Jaano website ka sahi kharcha, local areas (Vyapar Vihar, Ratanpur) ke liye tips, aur 2026 ka complete guide Roman Hindi mein.",
+    date: "APRIL 2026",
+    link: "/blog/bilaspur-mein-website-banwane-ka-kharcha",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-[#1a73e8] to-[#0d47a1] flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-6 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-6xl">🏙️</div>
+          <div className="text-white text-center">
+            <div className="text-[13px] font-medium text-blue-200 uppercase tracking-widest mb-1">Bilaspur Guide</div>
+            <div className="text-4xl font-bold">2026</div>
+          </div>
+          <div className="text-6xl">💻</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          WEBSITE COST GUIDE
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
   },
+  {
+    tags: ["BILASPUR INSIGHTS", "LOCAL BUSINESS", "GROWTH"],
+    title: "Local Business Ke Liye Website Kyun Zaroori Hai?",
+    description:
+      "Vyapar Vihar, Telipara, aur Rama Magneto Mall ke real examples se samjho ki internet pe na hona aapke Bilaspur aadharit business ko kaise nuksan pahucha raha hai.",
+    date: "APRIL 2026",
+    link: "/blog/kyun-zaroori-hai-website-bilaspur",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-indigo-500 to-purple-700 flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-6xl">🏪</div>
+          <div className="text-white text-center">
+            <div className="text-[13px] font-medium text-indigo-200 uppercase tracking-widest mb-1">Local Business</div>
+            <div className="text-4xl font-bold">Growth</div>
+          </div>
+          <div className="text-6xl">📈</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          BILASPUR CASE STUDIES
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
+  },
+  {
+    tags: ["BILASPUR", "LOCAL VS BAHAR", "TRUST GUIDE"],
+    title: "Raipur ya Bangalore Se Website Banwana vs Local Developer — Kya Sahi Hai?",
+    description:
+      "Honest comparison: paisa, time, communication aur after-support ke basis par jaano ki Bilaspur ke local business ke liye kaun sa developer sahi rahega.",
+    date: "APRIL 2026",
+    link: "/blog/raipur-bangalore-vs-local-developer",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-orange-400 to-rose-600 flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-6xl">🏙️</div>
+          <div className="text-white text-center">
+            <div className="text-[13px] font-medium text-orange-200 uppercase tracking-widest mb-1">Local vs Bahar</div>
+            <div className="text-4xl font-bold">Trust</div>
+          </div>
+          <div className="text-6xl">🤝</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          BILASPUR COMPARISON GUIDE
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
+  },
+  {
+    tags: ["BILASPUR", "AI WEBSITE", "FAST DELIVERY", "USP"],
+    title: "AI se Website Banana — Kam Time Mein, Better Results",
+    description:
+      "Bilaspur ka pehla AI-powered web studio. Jaano kaise hamare unique system se aapki website 3-5 din mein ready hoti hai — premium quality, Google-friendly, aur local SEO ke saath.",
+    date: "APRIL 2026",
+    link: "/blog/ai-se-website-banana-bilaspur",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-emerald-400 to-teal-700 flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-6xl">🤖</div>
+          <div className="text-white text-center">
+            <div className="text-[13px] font-medium text-emerald-200 uppercase tracking-widest mb-1">AI-Powered</div>
+            <div className="text-4xl font-bold">Speed</div>
+          </div>
+          <div className="text-6xl">⚡</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          BILASPUR AI WEB STUDIO
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
+  },
+  {
+    tags: ["CHHATTISGARH", "WEBSITE GUIDE", "DECISION STAGE", "SMALL BUSINESS"],
+    title: "Chhattisgarh Ke Small Businesses Ke Liye Best Website Type — Static vs Dynamic vs Ecommerce",
+    description:
+      "Decision table, budget guide, 5 common mistakes aur Chhattisgarh-specific context ke saath jaano ki aapke restaurant, clinic ya boutique ke liye exactly kaunsa website type sahi hai.",
+    date: "APRIL 2026",
+    link: "/blog/chhattisgarh-ke-liye-best-website-type",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-violet-500 to-fuchsia-700 flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-6xl">📊</div>
+          <div className="text-white text-center">
+            <div className="text-[13px] font-medium text-violet-200 uppercase tracking-widest mb-1">Decision Guide</div>
+            <div className="text-4xl font-bold">Static vs E-comm</div>
+          </div>
+          <div className="text-6xl">🏪</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          CHHATTISGARH BUSINESS GUIDE
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
+  },
+  {
+    tags: ["NICHE GUIDE", "LOCAL BUSINESS", "CHHATTISGARH", "ZERO COMPETITION"],
+    title: "Petrol Pump, Kirana Store, Clinic — Chhattisgarh Ke Local Businesses Ki Website Kaisi Honi Chahiye?",
+    description:
+      "Real competitor research ke saath: Chhattisgarh mein in 6 niches mein Google par competition virtually zero hai. Pehle aane wala jitta hai — deep-dive guide with feature lists, SEO keywords aur blueprints.",
+    date: "APRIL 2026",
+    link: "/blog/chhattisgarh-local-business-website-guide",
+    customContent: (
+      <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-linear-to-br from-orange-500 to-red-600 flex flex-col items-center justify-center p-8 group/image">
+        <div className="flex items-center gap-5 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
+          <div className="text-5xl">⛽</div>
+          <div className="text-5xl">🛒</div>
+          <div className="text-white text-center px-2">
+            <div className="text-[11px] font-medium text-orange-200 uppercase tracking-widest mb-1">Niche Deep-Dive</div>
+            <div className="text-3xl font-bold">Zero Competition</div>
+          </div>
+          <div className="text-5xl">🏥</div>
+          <div className="text-5xl">🔧</div>
+        </div>
+        <div className="text-white/80 text-sm font-medium tracking-wider">
+          REAL COMPETITOR RESEARCH — CHHATTISGARH
+        </div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+      </div>
+    )
+  }
 ];
 
 const STATIC_BLOGS = [
@@ -275,65 +413,64 @@ export default function BlogPage() {
         <div className="max-w-[1440px] mx-auto relative z-10 px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Hero Section - Left */}
-            <div className="lg:col-span-7 bg-white rounded-2xl shadow-2xl flex flex-col relative group">
-              <div className="p-10 flex flex-col h-full">
-                <h2 className="text-[28px] font-medium text-[#202124] mb-10 font-sans tracking-tight">
-                  Featured articles
-                </h2>
+            <div className="lg:col-span-7 bg-white rounded-2xl shadow-2xl relative group hover:shadow-3xl transition-shadow flex flex-col">
+              <h2 className="text-[28px] font-medium text-[#202124] pt-10 px-10 font-sans tracking-tight shrink-0">
+                Featured articles
+              </h2>
 
-                <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black flex flex-col items-center justify-center p-8 group/image">
-                  <div className="flex items-center gap-6 mb-8 transform transition-transform duration-700 group-hover/image:scale-110">
-                    <div className="w-16 h-16 text-[#00E676] flex items-center justify-center">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="w-full h-full fill-current"
-                      >
-                        <path d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
-                      </svg>
+              {/* Carousel Viewport */}
+              <div className="relative flex-1 overflow-hidden mt-6">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out h-full w-full" 
+                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                >
+                  {FEATURED_ARTICLES.map((article, idx) => (
+                    <div key={idx} className="min-w-full h-full flex flex-col px-10 pb-10">
+                      <Link href={article.link} className="flex flex-col h-full group/link">
+                        {article.customContent}
+                        <div className="mt-10 flex-1">
+                          <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium text-[#1a73e8] tracking-widest uppercase mb-6">
+                            {article.tags.map((tag) => (
+                              <span key={tag} className="hover:underline cursor-pointer">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <h3 className="text-[28px] font-semibold text-[#202124] mb-4 leading-tight group-hover/link:text-[#1a73e8] transition-colors">
+                            {article.title}
+                          </h3>
+                          <p className="text-[#3c4043] text-[17px] leading-relaxed max-w-2xl">
+                            {article.description}
+                          </p>
+                        </div>
+                      </Link>
                     </div>
-                    <div className="w-16 h-16 text-white border-2 border-white rounded-full flex items-center justify-center p-2">
-                      <div className="w-full h-full border border-white rounded-full animate-pulse"></div>
-                    </div>
-                    <div className="w-16 h-16 bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 rounded-lg"></div>
-                  </div>
-                  <div className="text-white text-3xl font-bold tracking-wider">
-                    MAY 19 – 20
-                  </div>
-                </div>
-
-                <div className="mt-10">
-                  <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium text-[#1a73e8] tracking-widest uppercase mb-6">
-                    {FEATURED_ARTICLES[0].tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="hover:underline cursor-pointer"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-[36px] font-normal text-[#202124] mb-4 leading-tight">
-                    {FEATURED_ARTICLES[0].title}
-                  </h3>
-                  <p className="text-[#3c4043] text-[18px] leading-relaxed max-w-2xl">
-                    {FEATURED_ARTICLES[0].description}
-                  </p>
-                </div>
-
-                <div className="flex justify-center gap-3 mt-auto pt-10">
-                  {[0, 1, 2, 3, 4, 5].map((i) => (
-                    <div
-                      key={i}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${i === activeSlide ? "bg-black w-6" : "bg-gray-300 hover:bg-gray-400 cursor-pointer"}`}
-                      onClick={() => setActiveSlide(i)}
-                    />
                   ))}
                 </div>
               </div>
 
-              <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-[#dadce0] hover:bg-gray-50 transition-all z-20 cursor-pointer">
+              {/* Pagination Dots */}
+              <div className="px-10 pb-10 flex justify-center gap-3">
+                {FEATURED_ARTICLES.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer z-10 relative ${i === activeSlide ? "bg-[#1a73e8] w-6" : "bg-gray-300 hover:bg-gray-400 w-2"}`}
+                    onClick={() => setActiveSlide(i)}
+                  />
+                ))}
+              </div>
+
+              {/* Next Slide Button (Arrows) */}
+              <div 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveSlide((prev) => (prev + 1) % FEATURED_ARTICLES.length);
+                }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-[#dadce0] hover:bg-gray-50 transition-all z-20 cursor-pointer"
+              >
                 <ChevronRight className="w-8 h-8 text-[#202124]" />
-              </button>
+              </div>
             </div>
 
             {/* Hero Section - Right (Latest) */}
@@ -344,7 +481,11 @@ export default function BlogPage() {
                 </h2>
                 <div className="space-y-10">
                   {blogs.map((blog, idx) => (
-                    <div key={blog.id || idx} className="group cursor-pointer">
+                    <Link
+                      key={blog.id || idx}
+                      href={blog.link || `/blog/${blog.id || idx}`}
+                      className="group cursor-pointer block"
+                    >
                       <div className="text-[12px] font-medium text-[#70757a] tracking-wider mb-2 uppercase">
                         {blog.date || "MARCH 30, 2026"}
                       </div>
@@ -355,7 +496,7 @@ export default function BlogPage() {
                         {blog.snippet || blog.description}
                       </p>
                       <div className="h-px bg-[#dadce0] mt-10 group-last:hidden"></div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

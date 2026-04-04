@@ -18,8 +18,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
             At Web Development AI, our team and culture are at the heart of our success. 
-            We build performant, beautiful, and AI-powered web solutions crafted to provide 
-            an exceptional digital experience for businesses across India.
+            We build performant, beautiful, and AI-powered web solutions. As a trusted <strong className="font-semibold text-gray-800">freelance web developer Bilaspur</strong>, we craft exceptional digital experiences for businesses across India.
           </p>
           <div className="pt-4">
             <Link 
@@ -107,6 +106,24 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      {/* ─── Tech Stack Section ─── */}
+      <section className="bg-[#fcfcfc] py-20 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-[#111] mb-6">Our Technology Stack</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+            We utilize the latest modern web technologies to build lightning-fast, highly scalable web applications. If you're looking for an expert <strong className="font-semibold text-gray-800">Next.js developer Bilaspur</strong> or a top-tier <strong className="font-semibold text-gray-800">React developer Bilaspur</strong>, you are in the right place.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Firebase", "Node.js"].map((tech, i) => (
+              <div key={i} className="px-6 py-3 bg-white rounded-full border border-gray-200 shadow-sm text-gray-800 font-medium">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Founder's Journey Section ─── */}
       <section id="founder" className="bg-[#0a0a0a] py-20 md:py-28 overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">

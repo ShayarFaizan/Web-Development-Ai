@@ -364,9 +364,7 @@ const Footer = () => {
             maxWidth: "900px",
           }}
         >
-          We build fast, modern websites using AI-powered development so your
-          business can launch quickly, attract more customers, and grow online
-          with a strong professional presence. 🚀
+          As the <strong style={{ color: "#fff" }}>best web developer Bilaspur</strong>, we build fast, modern websites using AI-powered development. If you need an <strong style={{ color: "#fff" }}>affordable website developer Bilaspur</strong>, we ensure your business can launch quickly and grow online. <Link href="https://wa.me/916264906078" style={{ color: "#e3bc7c", textDecoration: "underline" }}>Hire web developer Bilaspur</Link> today for a strong professional presence. 🚀
         </p>
       </div>
 
@@ -389,9 +387,9 @@ const Footer = () => {
             textTransform: "uppercase",
           }}
         >
-          Starting Website from <span style={{ color: "#fff" }}>₹6,999</span>{" "}
+          Starting Website from <span style={{ color: "#fff" }}>₹9,999</span>{" "}
           <span style={{ color: "#555", margin: "0 10px" }}>|</span> Delivery in{" "}
-          <span style={{ color: "#fff" }}>3–5 Days</span>
+          <span style={{ color: "#fff" }}>13–21 Days</span>
         </p>
       </div>
 
