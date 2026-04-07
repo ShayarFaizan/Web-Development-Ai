@@ -242,6 +242,27 @@ const CLOUD_BLOGS = [
   },
 ];
 
+const CHHATTISGARH_BLOGS = [
+  {
+    title: "Website banwane ka kharcha Raipur mein 2026: The Ultimate Price Guide",
+    color: "#fef7e0",
+    type: "raipur",
+    link: "/blog/website-banane-ka-kharcha-raipur-2026",
+  },
+  {
+    title: "Top 5 Web Development Companies in Raipur — Honest Comparison",
+    color: "#ffffff",
+    type: "raipurTop5",
+    link: "/blog/top-5-web-development-companies-raipur",
+  },
+  {
+    title: "Raipur ke local business ke liye website kyu zaroori hai (2026)",
+    color: "#000000",
+    type: "tech",
+    link: "/blog/why-website-important-raipur-business",
+  },
+];
+
 export default function BlogPage() {
   const [blogs, setBlogs] = useState<any[]>(STATIC_BLOGS);
   const [loading, setLoading] = useState(true);
@@ -531,6 +552,7 @@ export default function BlogPage() {
             { title: "Mobile", blogs: MOBILE_BLOGS },
             { title: "Web", blogs: WEB_BLOGS },
             { title: "Cloud", blogs: CLOUD_BLOGS },
+            { title: "Chhattisgarh", blogs: CHHATTISGARH_BLOGS },
           ].map((section, sIdx) => (
             <div key={section.title}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -546,8 +568,9 @@ export default function BlogPage() {
                 <div className="lg:col-span-9 relative">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {section.blogs.map((blog, bIdx) => (
-                      <div
+                      <Link
                         key={bIdx}
+                        href={(blog as any).link || "#"}
                         className="flex flex-col group cursor-pointer"
                       >
                         <h4 className="text-[18px] font-medium text-[#202124] mb-14 leading-tight h-[80px] line-clamp-3 group-hover:text-[#1a73e8] transition-colors">
@@ -589,6 +612,30 @@ export default function BlogPage() {
                                 </div>
                               </div>
                             )}
+                            {(blog as any).type === "raipur" && (
+                              <div className="relative w-full h-full flex items-center justify-center font-bold text-[#805a3b] text-xl">
+                                🤖 Raipur 2026
+                              </div>
+                            )}
+                            {(blog as any).type === "bilaspur" && (
+                              <div className="w-full h-full bg-linear-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center p-4 border border-gray-100 rounded-xl">
+                                <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[12px]">
+                                  Bilaspur Prices
+                                </div>
+                              </div>
+                            )}
+                            {(blog as any).type === "raipurTop5" && (
+                              <div className="w-full h-full bg-white flex items-center justify-center p-4 border border-[#dadce0] rounded-[16px] shadow-sm relative">
+                                <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[13px] shadow-sm">
+                                  Raipur Rankings
+                                </div>
+                              </div>
+                            )}
+                            {(blog as any).type === "tech" && (
+                              <div className="text-white font-bold text-2xl flex items-center gap-2 tracking-tight">
+                                tech <span className="text-red-500">❤️</span>
+                              </div>
+                            )}
                             {(blog as any).type === "xr" && (
                               <div className="w-full h-full flex items-center justify-center bg-blue-50">
                                 <div className="w-12 h-12 border-2 border-blue-200 rounded-full flex items-center justify-center text-blue-400">
@@ -624,7 +671,7 @@ export default function BlogPage() {
                             )}
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
 
@@ -633,7 +680,7 @@ export default function BlogPage() {
                   </button>
                 </div>
               </div>
-              {sIdx < 3 && (
+              {sIdx < 4 && (
                 <div className="h-px bg-gray-100 my-16 w-full"></div>
               )}
             </div>

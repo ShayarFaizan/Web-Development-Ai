@@ -7,7 +7,12 @@ export async function GET() {
   const token = await getValidInstagramToken();
 
   if (!token) {
-    return NextResponse.json({ error: "No token" }, { status: 401 });
+    // Fail gracefully with empty data instead of 401 to prevent console/UI crash
+    return NextResponse.json({ 
+      data: [],
+      profile: { username: "by_coder_baba", profile_picture_url: null },
+      error: "No token" 
+    }, { status: 200 });
   }
 
   try {

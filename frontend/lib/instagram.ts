@@ -41,8 +41,10 @@ export async function getValidInstagramToken() {
     }
 
     return token;
-  } catch (error) {
-    console.error("Error in getValidInstagramToken:", error);
+  } catch (error: any) {
+    if (error?.code !== "permission-denied") {
+      console.error("[Instagram] Error in getValidInstagramToken:", error?.message || error);
+    }
     return process.env.INSTAGRAM_ACCESS_TOKEN; // Fallback to env
   }
 }

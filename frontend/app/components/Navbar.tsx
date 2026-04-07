@@ -74,6 +74,15 @@ const servicesMegaColumns = [
       { label: "CRM / SaaS", href: "/book-appointment" },
     ],
   },
+  {
+    heading: "Local Services",
+    items: [
+      { label: "Raipur Developer", href: "/services/raipur" },
+      { label: "Bilaspur Websites", href: "/website-development-company-chhattisgarh" },
+      { label: "Bilaspur Ecommerce", href: "/ecommerce-website-bilaspur" },
+      { label: "Maintenance", href: "/website-maintenance-service-bilaspur" },
+    ],
+  },
 ];
 
 const aboutMegaColumns = [

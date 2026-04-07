@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   keywords:
     "website developer in Bilaspur, web development company Bilaspur, website banane wala Bilaspur, website designer near me Bilaspur, affordable website development Bilaspur, website banane ka kharcha Bilaspur, website development cost Bilaspur 2026, cheap website designer Bilaspur, website development price Chhattisgarh, ecommerce website developer Bilaspur, Next.js developer Bilaspur, business website Bilaspur Chhattisgarh, landing page banana hai Bilaspur, portfolio website developer Bilaspur, best web developer Bilaspur, hire web developer Bilaspur, freelance web developer Bilaspur, Google pe website kaise aaye Bilaspur, website maintenance service Bilaspur, web development agency Chhattisgarh",
   authors: [{ name: "Shayar Faizan" }],
+  metadataBase: new URL("https://webdevelopmentai.in"),
   openGraph: {
     title: "Website Developer in Bilaspur | Affordable Web Development — webdevelopmentai.in",
     description:
