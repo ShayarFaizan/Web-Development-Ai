@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://webdevelopmentai.in
+
+# Sitemaps
 Sitemap: https://webdevelopmentai.in/sitemap.xml

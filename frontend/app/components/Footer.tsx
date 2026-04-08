@@ -199,8 +199,8 @@ const Footer = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "32px",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gap: "24px",
           padding: "40px 50px 30px 50px",
           maxWidth: "1200px",
           margin: "0 auto",
@@ -343,6 +343,32 @@ const Footer = () => {
             ))}
           </ul>
         </div>
+          {/* Column 5: Locations (Newly Added for SEO) */}
+        <div>
+          <h4 style={colHeadingStyle}>Our Presence</h4>
+          <ul style={listStyle}>
+            <li>
+              <Link
+                href="/blog/why-website-important-raipur-business"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                Website Developer Raipur
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/ecommerce-website-bilaspur"
+                style={linkStyle}
+                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+              >
+                Website Developer Bilaspur
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* ─── Why Businesses Choose Us ──────────────────────────────────────────────────── */}
@@ -364,7 +390,7 @@ const Footer = () => {
             maxWidth: "900px",
           }}
         >
-          As the <strong style={{ color: "#fff" }}>best web developer Bilaspur</strong>, we build fast, modern websites using AI-powered development. If you need an <strong style={{ color: "#fff" }}>affordable website developer Bilaspur</strong>, we ensure your business can launch quickly and grow online. <Link href="https://wa.me/916264906078" style={{ color: "#e3bc7c", textDecoration: "underline" }}>Hire web developer Bilaspur</Link> today for a strong professional presence. 🚀
+          As the <strong style={{ color: "#fff" }}>best web developer Bilaspur</strong> and <strong style={{ color: "#fff" }}>top website development company in Raipur</strong>, we build fast, modern websites using AI-powered development. If you need an <strong style={{ color: "#fff" }}>affordable website developer Bilaspur</strong> or professional services in <strong style={{ color: "#fff" }}>Raipur</strong>, we ensure your business can launch quickly and grow online. <Link href="https://wa.me/916264906078" style={{ color: "#e3bc7c", textDecoration: "underline" }}>Hire web developer Raipur & Bilaspur</Link> today for a strong professional presence. 🚀
         </p>
       </div>
 

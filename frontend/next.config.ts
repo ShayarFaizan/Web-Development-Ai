@@ -53,6 +53,11 @@ const nextConfig: NextConfig = {
         destination: "https://webdevelopmentai.in/:path*",
         permanent: true,
       },
+      {
+        source: "/blog/raipur-vs-local-developer-bilaspur",
+        destination: "/blog/raipur-bangalore-vs-local-developer",
+        permanent: true,
+      },
     ]
   },
 }
