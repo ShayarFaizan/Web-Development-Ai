@@ -8,11 +8,14 @@ export async function GET() {
 
   if (!token) {
     // Fail gracefully with empty data instead of 401 to prevent console/UI crash
-    return NextResponse.json({ 
-      data: [],
-      profile: { username: "by_coder_baba", profile_picture_url: null },
-      error: "No token" 
-    }, { status: 200 });
+    return NextResponse.json(
+      {
+        data: [],
+        profile: { username: "by_coder_baba", profile_picture_url: null },
+        error: "No token",
+      },
+      { status: 200 },
+    );
   }
 
   try {
