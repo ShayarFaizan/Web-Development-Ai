@@ -2,7 +2,7 @@
 module.exports = {
   siteUrl: 'https://webdevelopmentai.in',
   generateRobotsTxt: true,
-  // Exclude protected routes
-  exclude: ['/account', '/orders', '/login', '/register'],
+  // Exclude protected and transactional routes
+  exclude: ['/account', '/orders', '/login', '/register', '/cart', '/wishlist', '/admin', '/order-success'],
   generateIndexSitemap: false,
 }
