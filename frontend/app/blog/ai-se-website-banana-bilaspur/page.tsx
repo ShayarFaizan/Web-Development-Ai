@@ -282,7 +282,7 @@ export default function AiSeWebsiteBanaoPage() {
           </div>
 
           {/* CTA */}
-          <section className="bg-gradient-to-br from-[#0a0a1a] to-[#1a2744] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
+          <section className="bg-linear-to-br from-[#0a0a1a] to-[#1a2744] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <div className="absolute top-4 left-4 w-40 h-40 border border-emerald-400 rounded-full" />
               <div className="absolute bottom-4 right-4 w-64 h-64 border border-emerald-400 rounded-full" />

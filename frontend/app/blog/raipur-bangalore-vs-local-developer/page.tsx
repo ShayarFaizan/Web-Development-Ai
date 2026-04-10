@@ -296,7 +296,7 @@ export default function LocalVsOutsideDeveloperPage() {
           </div>
 
           {/* CTA Section */}
-          <section className="bg-gradient-to-br from-[#202124] to-[#1a1a2e] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
+          <section className="bg-linear-to-br from-[#202124] to-[#1a1a2e] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-8 left-8 w-32 h-32 border-2 border-white rounded-full" />
               <div className="absolute bottom-8 right-8 w-48 h-48 border-2 border-white rounded-full" />

@@ -286,6 +286,7 @@ export default function AboutPage() {
             {/* Collage Column (LEFT on Desktop) - Masonry Layout to prevent cropping */}
             <div className="w-full lg:w-[55%] columns-2 md:columns-3 gap-4 space-y-4">
             {[
+                "chhattisgarh state finalcial officer.png",
                 "j1.webp", "j2.webp", "j3.webp", 
                 "j4.webp", "j5.webp", "j6.webp", 
                 "j7.jpeg", "j8.jpeg", "j9jpeg.jpeg", "j10.jpeg"

@@ -36,7 +36,7 @@ export default function BilaspurWebsiteBlogPage() {
       </div>
 
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#1a73e8] via-[#1557b0] to-[#0d47a1] text-white">
+      <div className="bg-linear-to-br from-[#1a73e8] via-[#1557b0] to-[#0d47a1] text-white">
         <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
           <div className="flex flex-wrap gap-2 mb-6">
             {["BILASPUR", "WEBSITE COST", "WEB DEVELOPMENT", "2026 GUIDE"].map(
@@ -300,7 +300,7 @@ export default function BilaspurWebsiteBlogPage() {
 
         {/* CTA Section */}
         <section>
-          <div className="bg-gradient-to-br from-[#1a73e8] to-[#0d47a1] rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
+          <div className="bg-linear-to-br from-[#1a73e8] to-[#0d47a1] rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
 
@@ -409,7 +409,7 @@ export default function BilaspurWebsiteBlogPage() {
 
         {/* Author */}
         <div className="mt-16 pt-8 border-t border-[#dadce0] flex items-center gap-5">
-          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1a73e8] to-[#0d47a1] flex items-center justify-center text-white font-bold text-xl shrink-0">
+          <div className="w-14 h-14 rounded-full bg-linear-to-br from-[#1a73e8] to-[#0d47a1] flex items-center justify-center text-white font-bold text-xl shrink-0">
             W
           </div>
           <div>

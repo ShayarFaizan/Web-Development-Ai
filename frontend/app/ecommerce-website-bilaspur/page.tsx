@@ -217,7 +217,7 @@ export default function EcommerceWebsiteBilaspurPage() {
                 href="https://wa.me/916264906078?text=Hi%2C%20mujhe%20ecommerce%20website%20banwani%20hai%20Bilaspur%20mein"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center bg-[#202124] text-white font-bold py-3 rounded-xl hover:bg-[#000] transition-all text-sm"
+                className="block text-center bg-[#202124] text-white font-bold py-3 rounded-xl hover:bg-black transition-all text-sm"
               >
                 Yeh Package Lena Hai →
               </a>
@@ -246,7 +246,7 @@ export default function EcommerceWebsiteBilaspurPage() {
       </div>
 
       {/* CTA Banner */}
-      <div className="bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] py-16">
+      <div className="bg-linear-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] py-16">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-2 text-yellow-400 mb-4">
             <MapPin size={18} />

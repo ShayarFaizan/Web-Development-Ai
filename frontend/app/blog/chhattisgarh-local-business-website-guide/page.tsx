@@ -511,7 +511,7 @@ export default function LocalBusinessWebsiteGuidePage() {
           </div>
 
           {/* CTA */}
-          <section className="bg-gradient-to-br from-[#0d1117] to-[#1a2433] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
+          <section className="bg-linear-to-br from-[#0d1117] to-[#1a2433] rounded-[32px] p-10 md:p-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <div className="absolute top-6 left-6 w-36 h-36 border border-orange-400 rounded-full" />
               <div className="absolute bottom-6 right-6 w-56 h-56 border border-orange-400 rounded-full" />

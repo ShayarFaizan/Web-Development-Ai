@@ -832,7 +832,7 @@ const Navbar = () => {
                         }}
                         className="px-4 py-2.5 flex items-center gap-3 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-50 last:border-0"
                       >
-                        <div className="w-10 h-10 rounded bg-gray-50 flex-shrink-0 overflow-hidden border border-gray-100">
+                        <div className="w-10 h-10 rounded bg-gray-50 shrink-0 overflow-hidden border border-gray-100">
                           <img
                             src={result.image}
                             alt=""
@@ -1182,7 +1182,7 @@ const Navbar = () => {
         pathname,
       ) && (
         <div
-          className={`md:hidden fixed top-0 left-0 right-0 z-[200] px-3 shadow-lg transition-all duration-300 ease-in-out ${
+          className={`md:hidden fixed top-0 left-0 right-0 z-200 px-3 shadow-lg transition-all duration-300 ease-in-out ${
             isScrolled ? "py-1.5 gap-0" : "py-2 gap-2"
           }`}
           style={{
@@ -1199,7 +1199,7 @@ const Navbar = () => {
             }`}
           >
             <div className="flex items-center gap-1.5 max-w-[80%]">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="bg-[#e3bc7c] text-black p-0.5 rounded-sm shadow-sm">
                   <Home size={11} fill="black" />
                 </div>
@@ -1245,7 +1245,7 @@ const Navbar = () => {
 
             {/* Results Dropdown (Mobile) */}
             {showDropdown && searchResults.length > 0 && (
-              <div className="absolute top-[calc(100%+8px)] left-0 right-0 z-[999] bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 max-h-[70vh] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="absolute top-[calc(100%+8px)] left-0 right-0 z-999 bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 max-h-[70vh] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-300">
                 {searchResults.map((result) => (
                   <div
                     key={result.id}

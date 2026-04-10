@@ -66,7 +66,7 @@ export default function BilaspurImportanceBlogPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Example 1 */}
-            <div className="bg-gradient-to-br from-white to-[#f1f8ff] p-8 rounded-[24px] border border-blue-100/50 hover:border-blue-300 transition-all group">
+            <div className="bg-linear-to-br from-white to-[#f1f8ff] p-8 rounded-[24px] border border-blue-100/50 hover:border-blue-300 transition-all group">
               <div className="w-12 h-12 bg-blue-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
                 <Users size={24} />
               </div>
@@ -79,7 +79,7 @@ export default function BilaspurImportanceBlogPage() {
             </div>
 
             {/* Example 2 */}
-            <div className="bg-gradient-to-br from-white to-[#fff9f1] p-8 rounded-[24px] border border-orange-100/50 hover:border-orange-300 transition-all group">
+            <div className="bg-linear-to-br from-white to-[#fff9f1] p-8 rounded-[24px] border border-orange-100/50 hover:border-orange-300 transition-all group">
               <div className="w-12 h-12 bg-[#f9ab00] text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform">
                 <TrendingUp size={24} />
               </div>
@@ -128,9 +128,9 @@ export default function BilaspurImportanceBlogPage() {
           </div>
 
           {/* CTA Box */}
-          <div className="mt-24 p-1 rounded-[40px] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-2xl">
+          <div className="mt-24 p-1 rounded-[40px] bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-2xl">
             <div className="bg-white rounded-[38px] p-10 md:p-14 text-center">
-               <h2 className="text-[32px] md:text-[42px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-6 font-sans">
+               <h2 className="text-[32px] md:text-[42px] font-black text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600 mb-6 font-sans">
                   Ab Apne Business Ko Online Le Aao
                </h2>
                <p className="text-[19px] text-[#5f6368] mb-12 max-w-xl mx-auto leading-relaxed">

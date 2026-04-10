@@ -17,19 +17,22 @@ export default function HeroVideo() {
       .then((data) => {
         if (data?.data) {
           // Look for the specific Reel (DWYzyplCHcL) or fallback to any video
-          const targetReel = data.data.find((p: any) => 
-            p.permalink?.includes("DWYzyplCHcL") || p.id === "DWYzyplCHcL"
+          const targetReel = data.data.find(
+            (p: any) =>
+              p.permalink?.includes("DWYzyplCHcL") || p.id === "DWYzyplCHcL",
           );
-          
+
           if (targetReel && targetReel.media_url) {
             setVideoUrl(targetReel.media_url);
             setThumbUrl(targetReel.thumbnail_url || null);
           } else {
-             const latestVideo = data.data.find((p: any) => p.media_type === "VIDEO");
-             if (latestVideo) {
-               setVideoUrl(latestVideo.media_url);
-               setThumbUrl(latestVideo.thumbnail_url || null);
-             }
+            const latestVideo = data.data.find(
+              (p: any) => p.media_type === "VIDEO",
+            );
+            if (latestVideo) {
+              setVideoUrl(latestVideo.media_url);
+              setThumbUrl(latestVideo.thumbnail_url || null);
+            }
           }
         }
       })
@@ -66,12 +69,11 @@ export default function HeroVideo() {
 
       {/* Video Container */}
       <div className="mx-3 md:mx-6 lg:mx-10 xl:mx-16 relative rounded-xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] aspect-video bg-[#ececec]">
-        
         {/* Dynamic Video Element (Instagram MP4 or Local) */}
         <video
           ref={videoRef}
           src={videoUrl || "/assets/website1.mp4"}
-          className={`w-full h-full ${videoUrl ? 'object-cover' : 'block'}`}
+          className={`w-full h-full ${videoUrl ? "object-cover" : "block"}`}
           playsInline
           loop
           preload="metadata"
@@ -86,10 +88,10 @@ export default function HeroVideo() {
           >
             {/* Optional Thumbnail Background from Instagram */}
             {thumbUrl && !hasStarted && (
-              <Image 
-                src={thumbUrl} 
-                alt="Video Thumbnail" 
-                fill 
+              <Image
+                src={thumbUrl}
+                alt="Video Thumbnail"
+                fill
                 className="object-cover opacity-30"
                 unoptimized
               />

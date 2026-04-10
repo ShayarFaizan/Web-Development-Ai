@@ -2,10 +2,13 @@ import HeroSlider from "./components/HeroSlider";
 import HeroVideo from "./components/HeroVideo";
 import ServicesSection from "./components/ServicesSection";
 import ServicesSpotlight from "./components/ServicesSpotlight";
+import GoogleReviewOffer from "./components/GoogleReviewOffer";
 import BannerSlider from "./components/BannerSlider";
 import InstagramFeed from "./components/InstagramFeed";
 import Footer from "./components/Footer";
 import HindiSEOSection from "./components/HindiSEOSection";
+import GlobalLocations from "./components/GlobalLocations";
+import Testimonials from "./components/Testimonials";
 import { Suspense } from "react";
 
 export default function Page() {
@@ -48,15 +51,24 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <h1 className="sr-only">Website Developer in Bilaspur Chhattisgarh | Affordable Web Development Company | Ecommerce, Landing Page, Business Website — webdevelopmentai.in. Website banwana ho to call karo ₹9,999 se shuru.</h1>
-      <h2 className="sr-only">Website Designer Bilaspur | Web Designer Near Me Bilaspur</h2>
+      <h1 className="sr-only">
+        Website Developer in Bilaspur Chhattisgarh | Affordable Web Development
+        Company | Ecommerce, Landing Page, Business Website —
+        webdevelopmentai.in. Website banwana ho to call karo ₹9,999 se shuru.
+      </h1>
+      <h2 className="sr-only">
+        Website Designer Bilaspur | Web Designer Near Me Bilaspur
+      </h2>
       <HeroSlider />
       <HeroVideo />
       <ServicesSection />
       <Suspense fallback={<div className="h-20 w-full" />}>
         <ServicesSpotlight />
       </Suspense>
+      <GoogleReviewOffer />
       <HindiSEOSection />
+      <GlobalLocations />
+      <Testimonials />
       <BannerSlider />
       <InstagramFeed />
       <Footer />

@@ -215,8 +215,12 @@ const Footer = () => {
               <Link
                 href="/about"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 About Us
               </Link>
@@ -225,8 +229,12 @@ const Footer = () => {
               <Link
                 href="#contact"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 Contact Us
               </Link>
@@ -235,8 +243,12 @@ const Footer = () => {
               <Link
                 href="/blog"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 Blogs
               </Link>
@@ -245,8 +257,12 @@ const Footer = () => {
               <Link
                 href="#"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 Careers
               </Link>
@@ -343,7 +359,7 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-          {/* Column 5: Locations (Newly Added for SEO) */}
+        {/* Column 5: Locations (Newly Added for SEO) */}
         <div>
           <h4 style={colHeadingStyle}>Our Presence</h4>
           <ul style={listStyle}>
@@ -351,8 +367,12 @@ const Footer = () => {
               <Link
                 href="/blog/why-website-important-raipur-business"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 Website Developer Raipur
               </Link>
@@ -361,8 +381,12 @@ const Footer = () => {
               <Link
                 href="/ecommerce-website-bilaspur"
                 style={linkStyle}
-                onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-                onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.textDecoration = "underline")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.textDecoration = "none")
+                }
               >
                 Website Developer Bilaspur
               </Link>
@@ -390,7 +414,27 @@ const Footer = () => {
             maxWidth: "900px",
           }}
         >
-          As the <strong style={{ color: "#fff" }}>best web developer Bilaspur</strong> and <strong style={{ color: "#fff" }}>top website development company in Raipur</strong>, we build fast, modern websites using AI-powered development. If you need an <strong style={{ color: "#fff" }}>affordable website developer Bilaspur</strong> or professional services in <strong style={{ color: "#fff" }}>Raipur</strong>, we ensure your business can launch quickly and grow online. <Link href="https://wa.me/916264906078" style={{ color: "#e3bc7c", textDecoration: "underline" }}>Hire web developer Raipur & Bilaspur</Link> today for a strong professional presence. 🚀
+          As the{" "}
+          <strong style={{ color: "#fff" }}>best web developer Bilaspur</strong>{" "}
+          and{" "}
+          <strong style={{ color: "#fff" }}>
+            top website development company in Raipur
+          </strong>
+          , we build fast, modern websites using AI-powered development. If you
+          need an{" "}
+          <strong style={{ color: "#fff" }}>
+            affordable website developer Bilaspur
+          </strong>{" "}
+          or professional services in{" "}
+          <strong style={{ color: "#fff" }}>Raipur</strong>, we ensure your
+          business can launch quickly and grow online.{" "}
+          <Link
+            href="https://wa.me/916264906078"
+            style={{ color: "#e3bc7c", textDecoration: "underline" }}
+          >
+            Hire web developer Raipur & Bilaspur
+          </Link>{" "}
+          today for a strong professional presence. 🚀
         </p>
       </div>
 

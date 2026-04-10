@@ -20,7 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Website Developer in Bilaspur | Web Development Company Chhattisgarh — webdevelopmentai.in",
+  title:
+    "Website Developer in Bilaspur | Web Development Company Chhattisgarh — webdevelopmentai.in",
   description:
     "Best website developer in Bilaspur, Chhattisgarh. ₹9,999 se shuru — affordable website development, ecommerce website, landing page, aur Next.js business sites. As a leading web development company Bilaspur, 13–21 din mein ready. Website banwana ho to abhi contact karo.",
   keywords:
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Shayar Faizan" }],
   metadataBase: new URL("https://webdevelopmentai.in"),
   openGraph: {
-    title: "Website Developer in Bilaspur | Affordable Web Development — webdevelopmentai.in",
+    title:
+      "Website Developer in Bilaspur | Affordable Web Development — webdevelopmentai.in",
     description:
       "Bilaspur ka best website developer. ₹9,999 se shuru, 13–21 din delivery. Ecommerce, landing page, business website — sab kuch ek jagah. Chhattisgarh ke local businesses ke liye specialist.",
     url: "https://webdevelopmentai.in",
@@ -79,6 +81,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

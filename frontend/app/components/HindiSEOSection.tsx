@@ -1,84 +1,93 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Globe, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Search, Globe, TrendingUp, CheckCircle } from "lucide-react";
 
 export default function HindiSEOSection() {
   return (
-    <section className="w-full bg-[#f8f9fa] py-20 lg:py-24 border-t border-gray-200">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col lg:flex-row items-center gap-12 text-[#202124]">
-          {/* Content Left */}
-          <div className="lg:w-1/2 space-y-6">
-            <div className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm font-semibold text-orange-700">
-              <span className="flex h-2 w-2 rounded-full bg-orange-500 mr-2"></span>
-              Local Business Experts
+    <section className="w-full bg-white py-20 border-t border-gray-100">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="flex flex-col lg:flex-row items-start gap-16">
+          
+          {/* Main Content Column */}
+          <div className="lg:w-2/3 space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-[32px] md:text-[48px] font-medium text-[#202124] leading-tight tracking-tight">
+                Kya aap apne business ke liye ek <br className="hidden md:block" />
+                <span className="text-[#1a73e8]">professional website</span> banwana chahte hain?
+              </h2>
+              <p className="text-xl text-[#5f6368] leading-relaxed max-w-2xl">
+                Chahe aap 🌏 <strong className="text-[#202124]">India, USA, Europe, ya Australia</strong> mein hon—hamari team aapko ek world-class website development service deti hai, jisse aapka business directly Google search results par rank kare.
+              </p>
             </div>
-            
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
-              Kya aap <span className="text-orange-600">website banane wala Bilaspur</span> mein dhundh rahe hain?
-            </h2>
-            
-            <p className="text-lg text-gray-600 leading-relaxed font-medium">
-              Business ko aage badhana hai to ek professional website bohot zaroori hai. Hamari team aapko ek <strong className="text-gray-900 font-bold decoration-orange-500/30">affordable website developer Bilaspur</strong> service deti hai, jisse aapka business directly Google par rank kare.
-            </p>
-            
-            <ul className="space-y-4 pt-2">
-              {[
-                "13-21 din mein apki website live.",
-                "Mobile aur SEO friendly design.",
-                "E-commerce, landing page aur business websites."
-              ].map((text, i) => (
-                <li key={i} className="flex items-start text-gray-700 font-semibold">
-                  <div className="mt-1 mr-3 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
-                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                  </div>
-                  <span>{text}</span>
-                </li>
-              ))}
-            </ul>
 
-            <div className="pt-6">
+            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 pt-4">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-[#1a73e8]">
+                  <Globe className="w-6 h-6" />
+                  <h3 className="text-lg font-bold">Global Presence</h3>
+                </div>
+                <p className="text-[#5f6368] text-sm leading-relaxed">
+                  Hum world-wide services dete hain, taki aapka business kisi bhi country mein successfully grow kare.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-[#34a853]">
+                  <TrendingUp className="w-6 h-6" />
+                  <h3 className="text-lg font-bold">Smart SEO Rank</h3>
+                </div>
+                <p className="text-[#5f6368] text-sm leading-relaxed">
+                  Apni website ko Google Search Console mein top par laaiye aur organically global sales generate karein.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-8 flex flex-wrap gap-4">
               <Link
                 href="https://wa.me/916264906078"
                 target="_blank"
-                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-4 text-sm font-bold text-white transition-all hover:bg-orange-700 shadow-md hover:shadow-lg"
+                className="px-8 py-3.5 bg-[#1a73e8] hover:bg-[#185abc] text-white rounded-full font-bold text-sm transition-all shadow-md hover:shadow-lg flex items-center gap-2"
               >
-                <span>Hire Web Developer Bilaspur</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Hire Expert Developer <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="px-8 py-3.5 bg-white hover:bg-gray-50 text-[#1a73e8] border border-gray-200 rounded-full font-bold text-sm transition-all flex items-center gap-2"
+              >
+                View Case Studies
               </Link>
             </div>
           </div>
 
-          {/* Cards Right */}
-          <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-orange-200 hover:shadow-xl shadow-sm">
-              <div className="mb-4 inline-flex rounded-lg bg-blue-50 p-3 text-blue-600 border border-blue-100">
-                <Globe className="h-6 w-6" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold text-gray-900">Online Presence</h3>
-              <p className="text-sm text-gray-600 font-medium">Bilaspur mein har customer ko aapki services easily online mil sakti hain.</p>
-            </div>
-            
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-orange-200 hover:shadow-xl shadow-sm mt-0 sm:mt-8">
-              <div className="mb-4 inline-flex rounded-lg bg-green-50 p-3 text-green-600 border border-green-100">
-                <TrendingUp className="h-6 w-6" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold text-gray-900">Sales Growth</h3>
-              <p className="text-sm text-gray-600 font-medium">Website ke through direct inquiries aur sales generate karein organically.</p>
-            </div>
-            
-            <div className="sm:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:border-orange-200 hover:shadow-xl shadow-sm">
-              <div className="flex items-center gap-4">
-                <div className="inline-flex rounded-lg bg-orange-50 p-3 text-orange-600 border border-orange-100">
-                  <Users className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">Best Web Developer Bilaspur</h3>
-                  <p className="text-sm text-gray-600 font-medium">Review our success stories and join 50+ local businesses.</p>
-                </div>
+          {/* Side Info Column (Google Style Card) */}
+          <div className="lg:w-1/3 w-full">
+            <div className="p-8 rounded-3xl border border-gray-100 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] space-y-6">
+              <h4 className="text-xl font-bold text-[#202124]">Features at a glance</h4>
+              
+              <ul className="space-y-5">
+                {[
+                  { title: "Standard Quality", text: "Global standards ke premium designs." },
+                  { title: "Lightning Fast", text: "High-speed and low bounce rate." },
+                  { title: "SEO Optimized", text: "100% crawlable search friendly code." },
+                  { title: "Trusted Delivery", text: "Used by 50+ international businesses." }
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4">
+                    <CheckCircle className="w-5 h-5 text-[#34a853] shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <p className="font-bold text-sm text-[#202124]">{item.title}</p>
+                      <p className="text-xs text-[#5f6368]">{item.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="p-4 rounded-2xl bg-gray-50 border border-gray-100 mt-4 flex items-center gap-3">
+                 <Search className="w-5 h-5 text-gray-400" />
+                 <p className="text-xs text-gray-500 italic">"Best Global Web Agency"</p>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
