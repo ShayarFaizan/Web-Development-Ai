@@ -43,7 +43,9 @@ const IndustryLayout: React.FC<IndustryLayoutProps> = ({
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="flex justify-center mb-8">
             <div className="w-16 h-16 bg-[#e8f0fe] text-[#1a73e8] rounded-2xl flex items-center justify-center">
-              {React.cloneElement(icon as React.ReactElement, { size: 32 })}
+              {React.isValidElement(icon) 
+                ? React.cloneElement(icon as React.ReactElement<any>, { size: 32 }) 
+                : icon}
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-medium text-[#202124] leading-[1.15] mb-6 tracking-tight">
