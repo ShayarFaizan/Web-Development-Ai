@@ -15,8 +15,8 @@ export default function WhyWebsiteRaipurBlog() {
       <article className="max-w-[800px] mx-auto px-6">
         
         {/* Navigation & Header */}
-        <Link href="/blog" className="inline-flex items-center text-[#1a73e8] hover:underline mb-8 font-medium">
-          <ArrowLeft size={16} className="mr-2" /> Back to Blog
+        <Link href="/services/ecommerce" className="inline-flex items-center text-[#1a73e8] hover:underline mb-8 font-medium">
+          <ArrowLeft size={16} className="mr-2" /> Back to Ecommerce Hub
         </Link>
         
         <header className="mb-12">

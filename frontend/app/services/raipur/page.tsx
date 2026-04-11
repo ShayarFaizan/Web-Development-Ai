@@ -231,19 +231,20 @@ export default function RaipurServicePage() {
                </div>
             </Link>
 
-            {/* Card 3: Black Box with scroll arrow */}
-            <Link href="/blog/why-website-important-raipur-business" className="flex flex-col group min-w-[316px] w-[316px] snap-start relative">
+            {/* Card 4: Ecommerce Blue */}
+            <Link href="/blog/ecommerce-website-development-raipur" className="flex flex-col group min-w-[316px] w-[316px] snap-start relative">
                <h3 className="text-[16px] font-medium text-[#174ea6] leading-[24px] mb-6 h-[72px] pr-2 hover:underline">
-                 Raipur ke local business ke liye website kyu zaroori hai (2026)
+                 Ecommerce Website Development in Raipur — Sell Online from Pandri to VIP Road
                </h3>
-               <div className="bg-black rounded-[16px] flex flex-col items-center justify-center h-[210px] w-full relative">
-                 <div className="font-bold text-[24px] text-white tracking-tight flex items-center gap-2">
-                   tech ❤️
+               <div className="bg-[#e8f0fe] rounded-[16px] flex flex-col items-center justify-center h-[210px] w-full relative overflow-hidden">
+                 <div className="font-bold text-[22px] text-[#1a73e8] tracking-tight flex items-center gap-2">
+                   🛒 Sell Online
                  </div>
+                 <div className="text-[13px] text-[#1a73e8]/70 font-medium mt-2">Raipur · Chhattisgarh</div>
                  
-                 {/* Right edge decorative arrow button mimicking the exact UI */}
+                 {/* Right edge decorative arrow button */}
                  <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[44px] h-[44px] bg-white border border-[#dadce0] rounded-full flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1)] z-10 transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5f6368" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                  </div>
                </div>
             </Link>

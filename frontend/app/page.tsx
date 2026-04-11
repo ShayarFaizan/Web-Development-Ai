@@ -2,6 +2,7 @@ import HeroSlider from "./components/HeroSlider";
 import HeroVideo from "./components/HeroVideo";
 import ServicesSection from "./components/ServicesSection";
 import ServicesSpotlight from "./components/ServicesSpotlight";
+import IndustriesSection from "./components/IndustriesSection";
 import GoogleReviewOffer from "./components/GoogleReviewOffer";
 import BannerSlider from "./components/BannerSlider";
 import InstagramFeed from "./components/InstagramFeed";
@@ -18,7 +19,7 @@ export default function Page() {
     name: "Web Development AI",
     image: "https://webdevelopmentai.in/assets/logo.png",
     description:
-      "Bilaspur ka best website developer. \u20b99,999 se shuru. Affordable website development, ecommerce website, landing page, aur Next.js business sites. Website banwana ho to abhi contact karo.",
+      "Bilaspur ka best website developer. ₹9,999 se shuru. Affordable website development, ecommerce website, landing page, aur Next.js business sites. Website banwana ho to abhi contact karo.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bilaspur",
@@ -27,7 +28,7 @@ export default function Page() {
     },
     telephone: "+91 62649 06078",
     url: "https://webdevelopmentai.in",
-    priceRange: "\u20b99,999 – \u20b95,00,000",
+    priceRange: "₹9,999 – ₹5,00,000",
     serviceType: [
       "Website Developer in Bilaspur",
       "Web Development Company Bilaspur",
@@ -65,6 +66,7 @@ export default function Page() {
       <Suspense fallback={<div className="h-20 w-full" />}>
         <ServicesSpotlight />
       </Suspense>
+      <IndustriesSection />
       <GoogleReviewOffer />
       <HindiSEOSection />
       <GlobalLocations />

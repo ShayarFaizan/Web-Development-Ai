@@ -1,218 +1,65 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const services = [
-  { id: 1, src: "/assets/is1.jpg", label: "E-COMMERCE SOLUTIONS" },
-  { id: 2, src: "/assets/is2.jpg", label: "Blog Website" },
-  { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING" },
-  { id: 4, src: "/assets/is4.jpg", label: "Educational Site" },
-  { id: 5, src: "/assets/is5.jpg", label: "Business Website" },
+  { id: 1, src: "/assets/is1.jpg", label: "E-COMMERCE SOLUTIONS", desc: "Custom online stores with advanced inventory.", href: "/services/ecommerce" },
+  { id: 2, src: "/assets/is2.jpg", label: "Blog Website", desc: "SEO-optimized publishing platforms.", href: "/book-appointment" },
+  { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING", desc: "Data-driven growth and SEO strategies.", href: "/book-appointment" },
+  { id: 4, src: "/assets/is4.jpg", label: "Educational Site", desc: "Interactive learning management systems.", href: "/services/education" },
+  { id: 5, src: "/assets/is5.jpg", label: "Business Website", desc: "Professional corporate presence sites.", href: "/services/business" },
 ];
 
 export default function ServicesSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = () => {
-    if (!scrollRef.current) return;
-    const container = scrollRef.current;
-    const scrollLeft = container.scrollLeft;
-    const scrollCenter = scrollLeft + container.offsetWidth / 2;
-    
-    // Find the item whose center is closest to the container's center
-    const items = Array.from(container.children);
-    let closestIndex = 0;
-    let minDistance = Infinity;
-
-    items.forEach((item, i) => {
-      const htmlItem = item as HTMLElement;
-      const itemCenter = htmlItem.offsetLeft + htmlItem.offsetWidth / 2;
-      const distance = Math.abs(scrollCenter - itemCenter);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = i;
-      }
-    });
-    
-    if (closestIndex !== activeMobileIndex) {
-      setActiveMobileIndex(closestIndex);
-    }
-  };
-
   return (
-    <section className="w-full bg-[#f4f4f4] py-10 md:py-14 overflow-hidden select-none">
-      {/* Heading */}
-      <h2 className="text-center text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-gray-800 mb-8 md:mb-10 px-4">
-        Website Types <span className="text-gray-900">We Build-</span>
-      </h2>
+    <section className="w-full bg-white pt-24 pb-8 border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-medium text-[#202124] mb-4">
+            Websites we build
+          </h2>
+          <p className="text-lg text-[#5f6368] max-w-2xl leading-relaxed">
+            From simple landing pages to complex e-commerce platforms, we deliver high-performance solutions.
+          </p>
+        </div>
 
-      {/* ── DESKTOP: Accordion Row ── */}
-      <div className="hidden md:flex gap-2 px-6 lg:px-10 xl:px-16 h-[360px] lg:h-[400px]">
-        {services.map((service, index) => {
-          const isActive = activeIndex === index;
-          return (
-            <div
-              key={service.id}
-              onMouseEnter={() => setActiveIndex(index)}
-              className={`relative rounded-2xl overflow-hidden cursor-pointer
-                          transition-all duration-500 ease-in-out
-                          ${isActive ? "flex-[3.5]" : "flex-1"}`}
-            >
-              {/* Image with zoom on active */}
-              <div
-                className={`absolute inset-0 transition-transform duration-500 ease-in-out
-                            ${isActive ? "scale-105" : "scale-100"}`}
-              >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <Link key={service.id} href={service.href} className="group flex flex-col rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="aspect-video relative overflow-hidden bg-gray-50">
                 <Image
                   src={service.src}
-                  alt="Best Web Development AI Portfolio Image"
+                  alt={service.label}
                   fill
-                  className="object-contain"
-                  priority={index === 0}
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-
-              {/* Gradient overlay — lighter on active */}
-              <div
-                className={`absolute inset-0 transition-opacity duration-500
-                            ${
-                              isActive
-                                ? "bg-linear-to-t from-black/60 via-black/10 to-transparent"
-                                : "bg-linear-to-t from-black/70 via-black/30 to-black/10"
-                            }`}
-              />
-
-              {/* Light flash on hover */}
-              <div
-                className={`absolute inset-0 bg-white transition-opacity duration-300
-                            ${isActive ? "opacity-0" : "opacity-0 hover:opacity-5"}`}
-              />
-
-              {/* Label — horizontal when active, vertical when inactive */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                {isActive ? (
-                  <div className="flex items-end justify-between">
-                    <p className="text-white text-sm font-bold tracking-wider uppercase">
-                      {service.label}
-                    </p>
-                    <button
-                      className="text-black text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-[18px] py-[10px] rounded-[4px]"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, #fdf0d5 0%, #d4a351 48%, #fdf0d5 100%)",
-                        border: "none",
-                      }}
-                    >
-                      EXPLORE NOW
-                    </button>
-                  </div>
-                ) : (
-                  <p
-                    className="text-white text-[10px] font-bold tracking-widest uppercase"
-                    style={{
-                      writingMode: "vertical-rl",
-                      transform: "rotate(180deg)",
-                    }}
-                  >
-                    {service.label}
-                  </p>
-                )}
+              <div className="p-8 flex flex-col flex-1">
+                <h3 className="text-xl font-medium text-[#202124] mb-2 uppercase tracking-wide text-sm font-bold">
+                  {service.label}
+                </h3>
+                <p className="text-[#5f6368] mb-8 flex-1">
+                  {service.desc}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[#1a73e8] font-medium group-hover:underline">
+                  Explore solution <ArrowRight size={16} />
+                </span>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            </Link>
+          ))}
+        </div>
 
-      {/* ── MOBILE: Horizontal Scroll with Snap ── */}
-      <div 
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="md:hidden flex gap-3 px-[12.5vw] items-center h-[360px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 overscroll-behavior-x-contain"
-      >
-        {services.map((service, index) => {
-          const isActive = activeMobileIndex === index;
-          return (
-            <div
-              key={service.id}
-              className={`relative rounded-xl overflow-hidden shrink-0 snap-center
-                          transition-all duration-500 ease-in-out
-                          ${isActive ? "w-[75vw] h-[320px]" : "w-[65vw] h-[280px] opacity-70 scale-95"}
-                          mt-auto mb-auto`}
-            >
-              <div className="absolute inset-0 bg-[#1a1a1a]" />
-              <Image
-                src={service.src}
-                alt="Best Web Development AI Portfolio Image"
-                fill
-                className="object-contain"
-                priority={index === 0}
-                draggable={false}
-              />
-              {/* Gradient */}
-              <div
-                className={`absolute inset-0 transition-opacity duration-500
-                              ${isActive ? "bg-linear-to-t from-black/80 via-black/20 to-transparent" : "bg-black/40"}`}
-              />
-
-              {/* Label + button on active, vertical label on others */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                {isActive ? (
-                  <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <p className="text-white text-[13px] font-bold tracking-wider uppercase mb-3">
-                      {service.label}
-                    </p>
-                    <button
-                      className="text-black text-[10px] font-bold tracking-widest uppercase px-4 py-2 rounded-[4px]"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, #fdf0d5 0%, #d4a351 48%, #fdf0d5 100%)",
-                        border: "none",
-                      }}
-                    >
-                      EXPLORE NOW
-                    </button>
-                  </div>
-                ) : (
-                  <p
-                    className="text-white text-[10px] font-bold tracking-widest uppercase opacity-80"
-                    style={{
-                      writingMode: "vertical-rl",
-                      transform: "rotate(180deg)",
-                    }}
-                  >
-                    {service.label}
-                  </p>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* MORE SERVICES button */}
-      <div className="flex justify-center mt-8 md:mt-10">
-        <button
-          className="group relative overflow-hidden text-black text-[15px] font-semibold uppercase px-[42px] py-[14px] rounded-[6px] transition-all duration-300"
-          style={{
-            background:
-              "linear-gradient(145deg, #efc881 0%, #fef4d8 35%, #e1b465 65%, #c89542 100%)",
-            boxShadow: "0px 4px 10px rgba(200, 149, 66, 0.2)",
-            border: "none",
-            letterSpacing: "0.5px",
-          }}
-        >
-          <span className="relative z-10">MORE SERVICES</span>
-
-          {/* Shine Effect */}
-          <div
-            className="absolute top-0 left-[-150%] w-[150%] h-full z-0 transform -skew-x-12 
-                       bg-linear-to-r from-transparent via-white/40 to-transparent 
-                       opacity-0 group-hover:opacity-100 group-hover:left-[150%] transition-all duration-1500 ease-in-out"
-          />
-        </button>
+        <div className="mt-16 text-center">
+          <Link
+            href="/more-services"
+            className="inline-flex items-center justify-center px-10 py-4 border border-gray-200 text-[#1a73e8] font-medium rounded-full hover:bg-gray-50 transition-all"
+          >
+            See all services
+          </Link>
+        </div>
       </div>
     </section>
   );

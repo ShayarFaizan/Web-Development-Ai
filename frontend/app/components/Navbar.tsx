@@ -83,6 +83,16 @@ const servicesMegaColumns = [
       { label: "Maintenance", href: "/website-maintenance-service-bilaspur" },
     ],
   },
+  {
+    heading: "Industries",
+    items: [
+      { label: "Manufacturing", href: "/industries/manufacturing" },
+      { label: "Wholesale", href: "/industries/wholesale" },
+      { label: "Real Estate", href: "/industries/real-estate" },
+      { label: "Healthcare", href: "/industries/healthcare" },
+      { label: "Education", href: "/industries/education" },
+    ],
+  },
 ];
 
 const aboutMegaColumns = [
@@ -252,9 +262,9 @@ function ServicesMegaMenu({ open }: { open: boolean }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "repeat(5, 1fr)",
           gap: "0",
-          maxWidth: "900px",
+          maxWidth: "1100px",
           margin: "0 auto",
         }}
       >

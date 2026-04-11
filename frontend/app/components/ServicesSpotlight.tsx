@@ -50,7 +50,7 @@ export default function ServicesSpotlight() {
   return (
     <section
       id="pricing"
-      className="w-full bg-white py-10 md:py-14 overflow-x-hidden"
+      className="w-full bg-white pt-8 pb-16 md:pb-24 border-t border-gray-100"
     >
       {/* ── Section Heading ── */}
       <h2 className="text-center text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-gray-800 mb-8 md:mb-10 px-4">
@@ -727,14 +727,14 @@ function ServiceCard({
             handleWishlistClick();
           }}
           className={`absolute top-4 left-4 z-30 transition-all duration-300 p-2 rounded-full backdrop-blur-md shadow-lg border border-white/20 group/heart ${
-            isWishlisted 
-              ? "bg-red-500 text-white scale-110" 
+            isWishlisted
+              ? "bg-red-500 text-white scale-110"
               : "bg-white/70 text-gray-400 hover:text-red-500 hover:bg-white hover:scale-110"
           }`}
         >
-          <Heart 
-            size={16} 
-            fill={isWishlisted ? "currentColor" : "none"} 
+          <Heart
+            size={16}
+            fill={isWishlisted ? "currentColor" : "none"}
             strokeWidth={2.5}
             className={isWishlisted ? "animate-pulse-subtle" : ""}
           />
