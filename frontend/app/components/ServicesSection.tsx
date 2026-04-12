@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 const services = [
   { id: 1, src: "/assets/is1.jpg", label: "E-COMMERCE SOLUTIONS", desc: "Custom online stores with advanced inventory.", href: "/services/ecommerce" },
   { id: 2, src: "/assets/is2.jpg", label: "Blog Website", desc: "SEO-optimized publishing platforms.", href: "/book-appointment" },
-  { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING", desc: "Data-driven growth and SEO strategies.", href: "/book-appointment" },
+  { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING", desc: "Data-driven growth and SEO strategies.", href: "/services/marketing" },
   { id: 4, src: "/assets/is4.jpg", label: "Educational Site", desc: "Interactive learning management systems.", href: "/services/education" },
   { id: 5, src: "/assets/is5.jpg", label: "Business Website", desc: "Professional corporate presence sites.", href: "/services/business" },
 ];

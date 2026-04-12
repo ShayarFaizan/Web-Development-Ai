@@ -96,6 +96,105 @@ const BUSINESS_BLOGS = [
     readTime: "11 min read",
     tag: "SEO",
     emoji: "🔍"
+  },
+  {
+    title: "AI vs Normal Website — Raipur Businesses Ke Liye Kya Sahi Hai?",
+    excerpt: "Kya AI powered websites sacch mein normal websites se behtar hain? Jaaniye Raipur ke market trends aur conversion rates.",
+    href: "/blog/ai-vs-normal-website-raipur",
+    readTime: "10 min read",
+    tag: "Tech Comparison",
+    emoji: "🤖"
+  },
+  {
+    title: "AI-powered website vs normal website — kya fark hai?",
+    excerpt: "Detail mein jaaniye 5 bade difference jo ek AI website ko normal website se alag aur zyada powerful banate hain. Conversion ka asli sach.",
+    href: "/blog/ai-powered-vs-normal-website-differences",
+    readTime: "12 min read",
+    tag: "Comparison",
+    emoji: "⚖️"
+  },
+  {
+    title: "Next.js kya hai aur kyun better hai WordPress se?",
+    excerpt: "Kya aap abhi bhi purani WordPress technology use kar rahe hain? Jaaniye kyun Next.js aapki Raipur website ko 10x faster aur secure banata hai.",
+    href: "/blog/nextjs-vs-wordpress-raipur",
+    readTime: "14 min read",
+    tag: "Modern Tech",
+    emoji: "⚡"
+  },
+  {
+    title: "AI chatbot apne business ke liye kaise banwayein Raipur — Best Solution",
+    excerpt: "Customer ko 24/7 reply chahiye? Seekhiye kaise AI chatbots aapke Raipur business ki sales 3x kar sakte hain bina kisi extra staff ke.",
+    href: "/blog/ai-chatbot-business-raipur",
+    readTime: "16 min read",
+    tag: "AI SOLUTIONS",
+    emoji: "💬"
+  },
+  {
+    title: "Google pe #1 kaise aayein — Bilaspur business guide",
+    excerpt: "Bilaspur ke local market mein apne business ko Google ke pehle page par kaise laayein? Jaaniye SEO ki aisi strategy jo koi nahi batayega.",
+    href: "/blog/google-rank-bilaspur-business",
+    readTime: "13 min read",
+    tag: "LOCAL SEO",
+    emoji: "📈"
+  },
+  {
+    title: "Website ke bina business kyun fail hota hai — CG examples",
+    excerpt: "Kyun sirf offline rehna aapke business ke liye khatarnak hai? Dekhiye Chhattisgarh ke real cases jahan bina website ke badhiya business bhi thapp ho gaye.",
+    href: "/blog/kyun-fail-hota-hai-business-without-website",
+    readTime: "12 min read",
+    tag: "BUSINESS GROWTH",
+    emoji: "📉"
+  },
+  {
+    title: "Chhattisgarh mein online store kaise banwayein 2026",
+    excerpt: "Apna offline vyapaar poore desh mein kaise felayein? Jaaniye Raipur aur Bilaspur ke businesses ecommerce ka use kar ke kaise 10x growth kar rahe hain.",
+    href: "/blog/online-store-kaise-banwayein-chhattisgarh",
+    readTime: "15 min read",
+    tag: "E-COMMERCE",
+    emoji: "🛍️"
+  },
+  {
+    title: "CA aur accountant ke liye professional website guide",
+    excerpt: "Tax season mein client dhoondhna band karein. Jaaniye kaise ek AI-powered website CA aur accounting firms ke liye trust aur leads automate karti hai.",
+    href: "/blog/ca-accountant-professional-website-guide",
+    readTime: "11 min read",
+    tag: "PROFESSIONAL SERVICES",
+    emoji: "⚖️"
+  },
+  {
+    title: "Salon aur beauty parlor ke liye website — Bilaspur guide",
+    excerpt: "Bilaspur ke beauty parlor aur salon owners ke liye: Jaaniye kaise ek professional website se aapka appointment booking automate ho sakta hai aur aapka brand city mein top par dikhega.",
+    href: "/blog/salon-beauty-parlor-website-guide-bilaspur",
+    readTime: "10 min read",
+    tag: "LIFESTYLE BUSINESS",
+    emoji: "💇‍♀️"
+  }
+];
+
+const MP_BLOGS = [
+  {
+    title: "MP mein GST registration ke baad website kyun banwayein?",
+    excerpt: "GST number mil gaya, ab vyapar kaise badhaein? Jaaniye kyun MP ke har GST-registered business ke liye ek professional website sales ka power booster hai.",
+    href: "/blog/mp-gst-registration-website-benefits",
+    readTime: "10 min read",
+    tag: "BUSINESS TAX",
+    emoji: "📑"
+  },
+  {
+    title: "Indore mein photography business ke liye website guide",
+    excerpt: "Apne clicks ko business mein convert karein. Jaaniye kaise ek premium portfolio website Indore ke wedding aur fashion photographers ki sales 5x badha sakti hai.",
+    href: "/blog/indore-photography-business-website-guide",
+    readTime: "11 min read",
+    tag: "CREATIVE BIZ",
+    emoji: "📸"
+  },
+  {
+    title: "Website maintenance kya hoti hai aur kyun zaroori hai?",
+    excerpt: "Website banwa li, par kya woh secure hai? Jaaniye kyun regular maintenance aapki website ko hacking aur slow speed se bachati hai.",
+    href: "/blog/website-maintenance-importance-hindi-guide",
+    readTime: "9 min read",
+    tag: "TECH CARE",
+    emoji: "🛠️"
   }
 ];
 
@@ -159,6 +258,54 @@ export default function BusinessHub() {
             </Link>
           ))}
         </div>
+
+        {/* Madhya Pradesh Hub Section */}
+        <section className="mt-32 mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-black text-[#202124] mb-4">
+                Madhya Pradesh <br/><span className="text-[#1a73e8]">Business Growth Hub</span>
+              </h2>
+              <p className="text-lg text-[#5f6368] max-w-2xl leading-relaxed">
+                Indore, Bhopal aur MP ke badhte shehron ke liye specialized digital strategies. 
+                Apne business ko pure state mein extend karein.
+              </p>
+            </div>
+            <div className="bg-[#f8f9fa] px-6 py-3 rounded-2xl border border-gray-100 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#137333] rounded-full animate-pulse"></span>
+              <span className="text-sm font-bold text-[#202124]">EXPANDING IN MP</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {MP_BLOGS.map((blog, idx) => (
+              <Link 
+                key={idx} 
+                href={blog.href}
+                className="group flex flex-col bg-[#fdfdfd] border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-[#1a73e8]/20"
+              >
+                <div className="h-40 bg-[#f8f9fa] flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-500 opacity-80">
+                  {blog.emoji}
+                </div>
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[10px] font-black text-[#1a73e8] uppercase tracking-widest">{blog.tag}</span>
+                    <span className="text-[10px] text-[#5f6368]">{blog.readTime}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#202124] mb-3 group-hover:text-[#1a73e8] transition-colors leading-tight">
+                    {blog.title}
+                  </h3>
+                  <p className="text-[#5f6368] text-xs leading-relaxed mb-6 flex-1">
+                    {blog.excerpt}
+                  </p>
+                  <div className="text-[#1a73e8] font-bold text-xs flex items-center gap-2">
+                    Open Guide <ArrowRight size={12} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Consulting Banner */}
         <div className="bg-[#1a73e8] rounded-3xl p-10 md:p-16 text-center text-white shadow-2xl">
