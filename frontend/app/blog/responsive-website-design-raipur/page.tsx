@@ -135,7 +135,7 @@ export default function ResponsiveDesignBlog() {
              </p>
           </section>
 
-          <section className="space-y-6 pt-6 bg-gradient-to-r from-blue-50 to-white p-8 rounded-[2.5rem] border border-blue-100">
+          <section className="space-y-6 pt-6 bg-linear-to-r from-blue-50 to-white p-8 rounded-[2.5rem] border border-blue-100">
              <h2 className="text-[30px] font-black text-[#202124]">
                The Search Opportunity in Chhattisgarh
              </h2>

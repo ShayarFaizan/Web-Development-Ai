@@ -58,7 +58,7 @@ export default function Testimonials() {
                       ))}
                    </div>
                    <div className="relative">
-                      <Quote className="w-10 h-10 text-gray-100 absolute -top-4 -left-4 -z-0" />
+                      <Quote className="w-10 h-10 text-gray-100 absolute -top-4 -left-4 z-0" />
                       <p className="text-gray-700 leading-relaxed font-medium relative z-10 italic">
                         "{t.content}"
                       </p>

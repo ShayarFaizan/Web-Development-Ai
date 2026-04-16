@@ -127,7 +127,7 @@ export default function GoogleRankBilaspurBlog() {
               },
             ].map((step) => (
               <div key={step.no} className="flex gap-6 items-start">
-                <span className="text-5xl font-black text-gray-100 leading-none flex-shrink-0 select-none">{step.no}</span>
+                <span className="text-5xl font-black text-gray-100 leading-none shrink-0 select-none">{step.no}</span>
                 <div>
                   <p className="text-[20px] font-black text-[#202124] mb-1">{step.title}</p>
                   <p className="text-gray-500 text-[17px] leading-relaxed">{step.body}</p>

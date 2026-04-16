@@ -109,7 +109,7 @@ export default function SalonBeautyParlorWebsiteBilaspur() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 p-7 border border-gray-100 rounded-3xl hover:shadow-sm transition-all">
-                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm flex-shrink-0">{item.icon}</div>
+                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm shrink-0">{item.icon}</div>
                   <div>
                     <p className="text-[19px] font-black text-[#202124] mb-1">{item.title}</p>
                     <p className="text-gray-500 text-[17px] leading-relaxed">{item.body}</p>
@@ -324,7 +324,7 @@ export default function SalonBeautyParlorWebsiteBilaspur() {
               "Aap chahti hain ki shaadi season mein slots advance book hon",
             ].map((point, i) => (
               <div key={i} className="flex items-start gap-4 p-5 border border-gray-100 rounded-2xl hover:border-[#c2185b]/30 transition-all">
-                <CheckCircle size={22} className="text-[#c2185b] mt-0.5 flex-shrink-0" />
+                <CheckCircle size={22} className="text-[#c2185b] mt-0.5 shrink-0" />
                 <p className="text-[17px]">{point}</p>
               </div>
             ))}

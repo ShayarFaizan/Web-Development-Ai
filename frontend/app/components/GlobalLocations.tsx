@@ -226,7 +226,7 @@ export default function GlobalLocations() {
                 className={`w-full flex items-center justify-between p-6 text-left focus:outline-none transition-colors ${expanded === loc.id ? "bg-blue-50/30" : "bg-white"}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="text-3xl bg-white w-12 h-12 flex items-center justify-center rounded-full shadow-sm border border-gray-100 uppercase font-black text-xs text-blue-600">
+                  <div className="text-3xl bg-white w-12 h-12 flex items-center justify-center rounded-full shadow-sm border border-gray-100 uppercase font-black text-blue-600">
                     {loc.flag}
                   </div>
                   <div>

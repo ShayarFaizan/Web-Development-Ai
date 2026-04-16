@@ -122,7 +122,7 @@ export default function IndorePhotographyBlog() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 p-8 border border-gray-100 rounded-3xl hover:shadow-md transition-all group">
-                  <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                  <div className="shrink-0 flex flex-col items-center gap-3">
                     <div className="p-3 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm group-hover:bg-[#fce8e6] transition-colors">{item.icon}</div>
                     <span className="text-[11px] font-black text-[#5f6368] tracking-widest">{item.num}</span>
                   </div>

@@ -1,6 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { initializeFirestore } from "firebase/firestore";
+import { initializeFirestore, setLogLevel } from "firebase/firestore";
 import { getMessaging, isSupported } from "firebase/messaging";
 
 const firebaseConfig = {
@@ -16,6 +16,9 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+
+// Set Firestore log level to 'error' to suppress 'GrpcConnection RPC' warnings
+setLogLevel("error");
 
 // Firestore with stable connection settings
 const db = initializeFirestore(app, {

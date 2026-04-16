@@ -71,7 +71,7 @@ export default function MpGstWebsiteBlog() {
               Exactly yahi hota hai jab ek GST-registered business ki koi website nahi hoti. GST ne aapko legal bana diya. Website aapko <strong>trustworthy, credible aur findable</strong> banati hai.
             </p>
             <div className="grid md:grid-cols-2 gap-6 mt-6">
-              <div className="p-7 bg-[#fce8e6] rounded-[2rem] border border-[#d93025]/10">
+              <div className="p-7 bg-[#fce8e6] rounded-4xl border border-[#d93025]/10">
                 <p className="font-black text-[#d93025] mb-2 text-sm uppercase tracking-wider">Bina Website GST Business</p>
                 <ul className="space-y-2 text-[16px] text-gray-700">
                   <li>❌ B2B clients dhundh nahi paate</li>
@@ -81,7 +81,7 @@ export default function MpGstWebsiteBlog() {
                   <li>❌ Corporate orders miss hote hain</li>
                 </ul>
               </div>
-              <div className="p-7 bg-[#e6f4ea] rounded-[2rem] border border-[#137333]/10">
+              <div className="p-7 bg-[#e6f4ea] rounded-4xl border border-[#137333]/10">
                 <p className="font-black text-[#137333] mb-2 text-sm uppercase tracking-wider">Website Ke Saath GST Business</p>
                 <ul className="space-y-2 text-[16px] text-gray-700">
                   <li>✅ B2B leads direct aate hain</li>
@@ -132,7 +132,7 @@ export default function MpGstWebsiteBlog() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 p-8 border border-gray-100 rounded-3xl hover:shadow-md transition-all group">
-                  <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                  <div className="shrink-0 flex flex-col items-center gap-3">
                     <div className="p-3 bg-[#f8f9fa] rounded-2xl border border-gray-100 shadow-sm group-hover:bg-[#e8f0fe] transition-colors">{item.icon}</div>
                     <span className="text-[11px] font-black text-[#5f6368] tracking-widest">{item.num}</span>
                   </div>

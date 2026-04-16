@@ -190,7 +190,7 @@ export default function SmallBusinessWebsiteRaipurBlog() {
                 href="https://wa.me/916264906078?text=Hi%2C%20mujhe%20apne%20small%20business%20ke%20liye%20website%20banwani%20hai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#25d366] text-[#000] font-black rounded-full hover:bg-[#1eba56] transition-all shadow-xl hover:-translate-y-1 active:scale-95 text-[18px]"
+                className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#25d366] text-black font-black rounded-full hover:bg-[#1eba56] transition-all shadow-xl hover:-translate-y-1 active:scale-95 text-[18px]"
               >
                 Let's Discuss (WhatsApp)
               </a>

@@ -53,7 +53,7 @@ export default function SEOFriendlyWebsiteRaipurBlog() {
             </p>
           </section>
 
-          <section className="space-y-6 bg-[#f4f8ff] p-8 md:p-14 rounded-[2.5rem] border border-[#d2e3fc] shadow-sm relative overflow-hidden my-12">
+          <section className="space-y-6 bg-[#f4f8ff] p-8 md:p-14 rounded-4xl border border-[#d2e3fc] shadow-sm relative overflow-hidden my-12">
              <div className="absolute top-0 right-0 p-4 opacity-5">
                 <EyeOff size={180} className="text-[#1a73e8] rotate-12" />
              </div>
@@ -204,7 +204,7 @@ export default function SEOFriendlyWebsiteRaipurBlog() {
                   { s: "2. The Image Heavy Weight Trap", d: "Apni hi website ko apne mobile me open kijiye, par is baar 'Mobile Data' use kare (Wi-fi nahi). Kya website layout load hone me rukawat ho rahi hai? Ya photos upar niche jump kar rahi hain? Agar haan, toh UI UX pass nahi ho raha, aur customer back button daba raha hai.", i: <EyeOff size={28} className="text-[#d93025]" /> },
                   { s: "3. Intent-Driven Call To Action (Click-to-Call)", d: "Apni website ke kisi bhi phone number par ungli se tap kijiye. Kya seedha aapka dial-pad open ho raha hai? Ya us number ko select karke copy karna pad raha hai? Search engines isko 'UX metric' bolte hain. Copy-paste ka jamana chala gaya.", i: <CheckCircle size={28} className="text-[#34a853]" /> }
                 ].map((item, i) => (
-                  <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-8 p-8 md:p-10 border border-[#d2e3fc] rounded-[2rem] hover:shadow-xl transition-all duration-300 bg-[#f4f8ff] items-start">
+                  <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-8 p-8 md:p-10 border border-[#d2e3fc] rounded-4xl hover:shadow-xl transition-all duration-300 bg-[#f4f8ff] items-start">
                      <div className="p-4 bg-white rounded-2xl shrink-0 border border-[#d2e3fc] shadow-sm transform -rotate-3">
                         {item.i}
                      </div>
@@ -231,7 +231,7 @@ export default function SEOFriendlyWebsiteRaipurBlog() {
               </span>
               
               <h3 className="text-[40px] md:text-[64px] font-black mb-8 leading-[1.1] tracking-tight">
-                Ready to Dominate <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ab0ff] to-[#34a853]">Google Search</span> in CG?
+                Ready to Dominate <br/><span className="text-transparent bg-clip-text bg-linear-to-r from-[#6ab0ff] to-[#34a853]">Google Search</span> in CG?
               </h3>
               
               <p className="text-xl md:text-2xl opacity-80 mb-14 max-w-3xl mx-auto leading-relaxed font-light text-gray-300">

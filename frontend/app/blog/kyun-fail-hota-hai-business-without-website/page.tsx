@@ -84,7 +84,7 @@ export default function BusinessFailWithoutWebsiteBlog() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 p-7 border border-gray-50 rounded-3xl hover:shadow-sm transition-all">
-                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm flex-shrink-0">{item.icon}</div>
+                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm shrink-0">{item.icon}</div>
                   <div>
                     <p className="text-[20px] font-black text-[#202124] mb-1">{item.title}</p>
                     <p className="text-gray-500 text-[17px] leading-relaxed">{item.body}</p>

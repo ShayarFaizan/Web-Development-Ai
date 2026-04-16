@@ -52,7 +52,7 @@ function MoreServicesContent() {
     if (!trimmed) return;
     
     const history = localStorage.getItem("searchHistory");
-    let currentHistory: string[] = history ? JSON.parse(history) : [];
+    const currentHistory: string[] = history ? JSON.parse(history) : [];
     const updatedHistory = [trimmed, ...currentHistory.filter(h => h !== trimmed)].slice(0, 10);
     
     localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));

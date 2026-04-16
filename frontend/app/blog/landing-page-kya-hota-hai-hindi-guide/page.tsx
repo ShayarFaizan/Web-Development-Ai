@@ -63,11 +63,11 @@ export default function LandingPageHindiGuide() {
             <p>Isko ek simple example se samjhte hain jo har Chhattisgarh ka vyapari relate karega.</p>
 
             <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div className="p-8 bg-[#f8f9fa] rounded-[2rem] border border-gray-100 italic">
+              <div className="p-7 bg-[#f8f9fa] rounded-4xl border border-gray-100 shadow-sm">
                 <p className="text-[#1a73e8] font-black mb-3 uppercase tracking-wider text-xs">Website = Showroom</p>
                 <p className="text-gray-600">Aapka bada showroom jahan 100 products hain. Customer aayega, ghumega, dekhega, aur shayad bina kuch liye chala jaaye kyunki options bahut hain.</p>
               </div>
-              <div className="p-8 bg-[#e8f0fe] rounded-[2rem] border border-[#1a73e8]/20 italic">
+              <div className="p-8 bg-[#e8f0fe] rounded-4xl border border-[#1a73e8]/20 italic">
                 <p className="text-[#1a73e8] font-black mb-3 uppercase tracking-wider text-xs">Landing Page = Trusted Salesman</p>
                 <p className="text-gray-600">Ek salesman jo customer ka haath pakad ke use sirf wahi product dikhata hai jiski use zaroorat hai, aur use "Buy Now" tak le jaata hai.</p>
               </div>
@@ -97,7 +97,7 @@ export default function LandingPageHindiGuide() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 p-7 border border-gray-100 rounded-3xl hover:shadow-md transition-all">
-                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm flex-shrink-0">{item.icon}</div>
+                  <div className="p-3 bg-white rounded-2xl h-fit border border-gray-100 shadow-sm shrink-0">{item.icon}</div>
                   <div>
                     <p className="text-[20px] font-black text-[#202124] mb-1">{item.title}</p>
                     <p className="text-gray-500 text-[17px] leading-relaxed">{item.body}</p>
@@ -129,7 +129,7 @@ export default function LandingPageHindiGuide() {
 
           {/* === AUTHORITY: Expert advice === */}
           <section className="bg-[#202124] text-white p-10 rounded-[2.5rem] space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="shrink-0 flex flex-col items-center gap-3">
               <Layers className="text-[#1a73e8]" size={24} />
               <p className="text-xs font-black uppercase tracking-widest text-white/50">Expert Tip — 2026 Strategy</p>
             </div>

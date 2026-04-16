@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 const services = [
   { id: 1, src: "/assets/is1.jpg", label: "E-COMMERCE SOLUTIONS", desc: "Custom online stores with advanced inventory.", href: "/services/ecommerce" },
-  { id: 2, src: "/assets/is2.jpg", label: "Blog Website", desc: "SEO-optimized publishing platforms.", href: "/book-appointment" },
+  { id: 2, src: "/assets/is2.jpg", label: "Blog Website", desc: "SEO-optimized publishing platforms.", href: "/services/blog" },
   { id: 3, src: "/assets/is3.jpg", label: "DIGITAL MARKETING", desc: "Data-driven growth and SEO strategies.", href: "/services/marketing" },
   { id: 4, src: "/assets/is4.jpg", label: "Educational Site", desc: "Interactive learning management systems.", href: "/services/education" },
   { id: 5, src: "/assets/is5.jpg", label: "Business Website", desc: "Professional corporate presence sites.", href: "/services/business" },
@@ -38,7 +38,7 @@ export default function ServicesSection() {
                 />
               </div>
               <div className="p-8 flex flex-col flex-1">
-                <h3 className="text-xl font-medium text-[#202124] mb-2 uppercase tracking-wide text-sm font-bold">
+                <h3 className="text-[#202124] mb-2 uppercase tracking-wide text-sm font-bold">
                   {service.label}
                 </h3>
                 <p className="text-[#5f6368] mb-8 flex-1">
