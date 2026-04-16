@@ -102,7 +102,7 @@ export default function AIWebDevVsTraditional() {
               {[
                 { icon: <Bot size={28} className="text-[#1a73e8]" />, title: 'AI Content Engine', body: 'Instant copy, meta tags, aur schema generation — Hindi support ke saath.' },
                 { icon: <Sparkles size={28} className="text-[#137333]" />, title: 'Design Automation', body: 'AI‑driven layout suggestions, color palettes, aur responsive previews.' },
-                { icon: <Server size={28} className="text-[#c5221f]" />, title: 'Performance Optimizer', body: 'Edge CDN, automatic image compression, < 2 s load time guarantee.' },
+                { icon: <Server size={28} className="text-[#c5221f]" />, title: 'Performance Optimizer', body: 'Edge CDN, automatic image compression, &lt; 2 s load time guarantee.' },
               ].map((item, i) => (
                 <div key={i} className="p-7 bg-[#f8f9fa] rounded-3xl border border-gray-100 shadow-sm">
                   <div className="p-3 bg-white rounded-2xl mb-3 shadow-sm">
@@ -126,7 +126,7 @@ export default function AIWebDevVsTraditional() {
                 { num: '01', color: '#1a73e8', title: 'Project Kick‑off AI Brief', body: 'AI tool se client brief ko auto‑summarize karo — 5 minute mein clear scope mil jata hai.' },
                 { num: '02', color: '#137333', title: 'AI‑Generated Wireframes', body: 'Midjourney ya Figma AI plugin se 3‑click wireframes banao — client ko visual approval fast milta hai.' },
                 { num: '03', color: '#c5221f', title: 'Content Automation', body: 'ChatGPT se SEO‑friendly copy, FAQs, aur schema generate karo — Hindi aur English dono.' },
-                { num: '04', color: '#e37400', title: 'Performance Benchmark', body: 'AI‑based Lighthouse score predictor se < 2 s load guarantee set karo.' },
+                { num: '04', color: '#e37400', title: 'Performance Benchmark', body: 'AI‑based Lighthouse score predictor se &lt; 2 s load guarantee set karo.' },
                 { num: '05', color: '#1a73e8', title: 'AI‑Driven A/B Testing', body: 'Variant generation aur statistical significance analysis automatically.' },
                 { num: '06', color: '#137333', title: 'Post‑Launch AI Monitoring', body: 'Real‑time AI alerts for SEO drift, security, aur performance.' },
                 { num: '07', color: '#c5221f', title: 'Client Education Kit', body: 'AI‑powered video tutorial in Hindi — client ko self‑service empower karta hai.' },
@@ -252,7 +252,7 @@ export default function AIWebDevVsTraditional() {
                 { icon: <Bot size={24} className="text-[#1a73e8]" />, num: '01', title: 'AI Chatbot – 24/7 Support', body: 'WhatsApp aur website par instant replies, lead capture, aur FAQ automation.' },
                 { icon: <Sparkles size={24} className="text-[#137333]" />, num: '02', title: 'AI Content Generator', body: 'Hindi product descriptions, blog snippets, aur SEO meta tags within seconds.' },
                 { icon: <Globe size={24} className="text-[#1a73e8]" />, num: '03', title: 'Local SEO AI', body: 'AI‑driven keyword clustering, schema markup, aur GMB optimization.' },
-                { icon: <BarChart3 size={24} className="text-[#137333]" />, num: '04', title: 'AI Performance Insights', body: 'Real‑time Lighthouse score, < 2 s load prediction, automatic image compression.' },
+                { icon: <BarChart3 size={24} className="text-[#137333]" />, num: '04', title: 'AI Performance Insights', body: 'Real‑time Lighthouse score, &lt; 2 s load prediction, automatic image compression.' },
                 { icon: <Smartphone size={24} className="text-[#1a73e8]" />, num: '05', title: 'Design Automation', body: 'AI‑suggested color palettes, layout grids, aur responsive previews.' },
                 { icon: <ShieldCheck size={24} className="text-[#137333]" />, num: '06', title: 'Secure Hosting + Backup', body: 'HTTPS, CSP, edge CDN, daily AI‑monitored backups.' },
               ].map((item, i) => (
