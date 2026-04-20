@@ -9,15 +9,20 @@ export const metadata: Metadata = {
   keywords: 'photography website indore, wedding photographer website indore, portfolio website indore photographer, photographer website design madhya pradesh, pre-wedding photographer indore website, fashion photographer website indore, photography business online indore 2026, best photographer website india, indore wedding photography booking website',
 };
 
-export default function IndorePhotographyBlog() {
+export default async function IndorePhotographyBlog({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const resolvedSearchParams = await searchParams;
+  const isFromBlogHub = resolvedSearchParams?.ref === 'bloghub';
+  const backLink = isFromBlogHub ? "/services/blog#indore-photography-business-website-guide" : "/services/business#indore-photography-business-website-guide";
+  const backLabel = isFromBlogHub ? "Back to Blog Hub" : "Back to Business Hub";
+
   return (
     <div className="bg-white min-h-screen pt-20 pb-24" style={{ fontFamily: "'Google Sans', system-ui, sans-serif" }}>
       <article className="max-w-[850px] mx-auto px-6">
 
         {/* Back Link */}
         <nav className="mb-10">
-          <Link href="/services/business" className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
-            <ArrowLeft size={15} className="mr-1.5" /> Back to Business Hub
+          <Link href={backLink} className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
+            <ArrowLeft size={15} className="mr-1.5" /> {backLabel}
           </Link>
         </nav>
 
@@ -305,7 +310,7 @@ export default function IndorePhotographyBlog() {
                 Free Consultation Lo <MousePointer2 size={20} />
               </a>
               <Link
-                href="/services/business"
+                href={backLink}
                 className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg"
               >
                 Aur Case Studies

@@ -21,18 +21,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Website Developer in Bilaspur | Web Development Company Chhattisgarh — webdevelopmentai.in",
+    "Website Developer in Bilaspur, Raipur, Indore, Bhopal, Nagpur | Web Development Company Chhattisgarh, MP & Maharashtra — webdevelopmentai.in",
   description:
-    "Best website developer in Bilaspur, Chhattisgarh. ₹9,999 se shuru — affordable website development, ecommerce website, landing page, aur Next.js business sites. As a leading web development company Bilaspur, 13–21 din mein ready. Website banwana ho to abhi contact karo.",
+    "Best website developer in Bilaspur, Raipur, Indore, Bhopal, Nagpur, Chhattisgarh, Madhya Pradesh & Maharashtra. ₹9,999 se shuru — affordable website development, ecommerce website, landing page, aur Next.js business sites. Best web development agency. Website banwana ho to abhi contact karo.",
   keywords:
-    "website developer in Bilaspur, web development company Bilaspur, website banane wala Bilaspur, website designer near me Bilaspur, affordable website development Bilaspur, website banane ka kharcha Bilaspur, website development cost Bilaspur 2026, cheap website designer Bilaspur, website development price Chhattisgarh, ecommerce website developer Bilaspur, Next.js developer Bilaspur, business website Bilaspur Chhattisgarh, landing page banana hai Bilaspur, portfolio website developer Bilaspur, best web developer Bilaspur, hire web developer Bilaspur, freelance web developer Bilaspur, Google pe website kaise aaye Bilaspur, website maintenance service Bilaspur, web development agency Chhattisgarh",
+    "website developer in Bilaspur, website developer in Raipur, website developer in Indore, website developer in Bhopal, website developer in Nagpur, web development company Chhattisgarh, website developer Chhattisgarh, website developer Madhya Pradesh, website developer Maharashtra, website designer Indore, website designer Nagpur, website designer Bhopal, website development Madhya Pradesh, website designer Raipur, website development Raipur, website banane wala Bilaspur, website designer near me, affordable website development, website banane ka kharcha, website development cost 2026, cheap website designer, website development price, ecommerce website developer, Next.js developer, business website, landing page banana hai, portfolio website developer, best web developer, hire web developer, freelance web developer, Google pe website kaise aaye, website maintenance service, web development agency, MP website development, Maharashtra website development",
   authors: [{ name: "Shayar Faizan" }],
   metadataBase: new URL("https://webdevelopmentai.in"),
   openGraph: {
     title:
-      "Website Developer in Bilaspur | Affordable Web Development — webdevelopmentai.in",
+      "Website Developer in Bilaspur & Raipur | Affordable Web Development — webdevelopmentai.in",
     description:
-      "Bilaspur ka best website developer. ₹9,999 se shuru, 13–21 din delivery. Ecommerce, landing page, business website — sab kuch ek jagah. Chhattisgarh ke local businesses ke liye specialist.",
+      "Bilaspur, Raipur aur Chhattisgarh ka best website developer. ₹9,999 se shuru, 13–21 din delivery. Ecommerce, landing page, business website — sab kuch ek jagah. Contact: +91 62649 06078",
     url: "https://webdevelopmentai.in",
     siteName: "Web Development AI",
     images: [
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Developer in Bilaspur | Web Development AI",
+    title: "Website Developer in Bilaspur, Raipur & Chhattisgarh | Web Development AI",
     description:
-      "Bilaspur mein best website developer. ₹9,999 mein professional business website, ecommerce, aur landing page banwao. Hire karo aaj — 13–21 din delivery.",
+      "Bilaspur, Raipur aur Chhattisgarh mein best website developer. ₹9,999 mein professional business website, ecommerce, aur landing page banwao. Hire karo aaj.",
   },
   icons: {
     icon: "/assets/NextGen Website Developer2.png",
@@ -77,8 +77,99 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Web Development AI",
+    "image": "https://webdevelopmentai.in/assets/NextGen%20Website%20Developer2.png",
+    "@id": "https://webdevelopmentai.in",
+    "url": "https://webdevelopmentai.in",
+    "telephone": "+91 62649 06078",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bilaspur City",
+      "addressLocality": "Bilaspur",
+      "addressRegion": "Chhattisgarh",
+      "postalCode": "495001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 22.0797,
+      "longitude": 82.1409
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Bilaspur"
+      },
+      {
+        "@type": "City",
+        "name": "Raipur"
+      },
+      {
+        "@type": "City",
+        "name": "Indore"
+      },
+      {
+        "@type": "City",
+        "name": "Bhopal"
+      },
+      {
+        "@type": "City",
+        "name": "Jabalpur"
+      },
+      {
+        "@type": "City",
+        "name": "Gwalior"
+      },
+      {
+        "@type": "State",
+        "name": "Chhattisgarh"
+      },
+      {
+        "@type": "State",
+        "name": "Madhya Pradesh"
+      },
+      {
+        "@type": "City",
+        "name": "Nagpur"
+      },
+      {
+        "@type": "State",
+        "name": "Maharashtra"
+      }
+    ],
+    "priceRange": "INR 9999+",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://www.facebook.com/webdevelopmentai",
+      "https://www.instagram.com/webdevelopmentai"
+    ]
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning

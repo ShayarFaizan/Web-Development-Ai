@@ -13,15 +13,19 @@ export const metadata: Metadata = {
   keywords: 'gwalior property dealers website guide, real estate website gwalior, property listings gwalior, seo real estate gwalior, digital property marketing',
 };
 
-export default function GwaliorPropertyDealersGuide() {
+export default async function GwaliorPropertyDealersGuide({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const resolvedSearchParams = await searchParams;
+  const isFromBlogHub = resolvedSearchParams?.ref === 'bloghub';
+  const backLink = isFromBlogHub ? "/services/blog#gwalior-property-dealers-website-guide" : "/services/business#gwalior-property-dealers-website-guide";
+  const backLabel = isFromBlogHub ? "Back to Blog Hub" : "Back to Business Hub";
   return (
     <div className="bg-white min-h-screen pt-20 pb-24" style={{ fontFamily: "'Google Sans', system-ui, sans-serif" }}>
       <article className="max-w-[850px] mx-auto px-6">
 
         {/* Back Link */}
         <nav className="mb-10">
-          <Link href="/services/business" className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
-            <ArrowLeft size={15} className="mr-1.5" /> Back to Business Hub
+          <Link href={backLink} className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
+            <ArrowLeft size={15} className="mr-1.5" /> {backLabel}
           </Link>
         </nav>
 
@@ -394,7 +398,7 @@ export default function GwaliorPropertyDealersGuide() {
                 Free Call Book Karo <MousePointer2 size={20} />
               </a>
               <Link
-                href="/services/business"
+                href="/services/business#gwalior-property-dealers-website-guide"
                 className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg"
               >
                 Aur Success Stories

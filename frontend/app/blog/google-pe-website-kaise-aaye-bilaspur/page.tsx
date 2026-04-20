@@ -19,7 +19,7 @@ export default function GoogleSeoBlog() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-4xl mx-auto px-6 py-24">
         
-        <Link href="/blog" className="text-blue-600 hover:underline mb-8 inline-block font-semibold">← Back to Blogs</Link>
+        <Link href="/services/blog" className="text-blue-600 hover:underline mb-8 inline-block font-semibold">← Back to Blog Hub</Link>
 
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-6">
           Google Pe Website Kaise Aaye Bilaspur (Local SEO Guide)

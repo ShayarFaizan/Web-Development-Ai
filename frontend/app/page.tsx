@@ -19,7 +19,7 @@ export default function Page() {
     name: "Web Development AI",
     image: "https://webdevelopmentai.in/assets/logo.png",
     description:
-      "Bilaspur ka best website developer. ₹9,999 se shuru. Affordable website development, ecommerce website, landing page, aur Next.js business sites. Website banwana ho to abhi contact karo.",
+      "Best website developer in Bilaspur, Raipur, Indore, Bhopal, Nagpur, Chhattisgarh, Madhya Pradesh, and Maharashtra. ₹9,999 se shuru. Affordable website development, ecommerce website, landing page, aur Next.js business sites. CG, MP aur Maharashtra mein website banwana ho to abhi contact karo.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bilaspur",
@@ -31,18 +31,31 @@ export default function Page() {
     priceRange: "₹9,999 – ₹5,00,000",
     serviceType: [
       "Website Developer in Bilaspur",
-      "Web Development Company Bilaspur",
-      "Ecommerce Website Developer Bilaspur",
-      "Affordable Website Development Bilaspur",
-      "Freelance Web Developer Bilaspur",
-      "Next.js Developer Bilaspur Chhattisgarh",
-      "Business Website Bilaspur Chhattisgarh",
-      "Website Designer Bilaspur",
-      "Web Designer Near Me Bilaspur",
-      "Website Banane Wala Bilaspur",
-      "Landing Page Development Bilaspur",
-      "Website Maintenance Service Bilaspur",
-      "Portfolio Website Developer Bilaspur",
+      "Website Developer in Raipur",
+      "Website Developer in Indore",
+      "Website Developer in Bhopal",
+      "Website Developer in Nagpur",
+      "Web Development Company Chhattisgarh",
+      "Web Development Company Madhya Pradesh",
+      "Web Development Company Maharashtra",
+      "Website Developer Chhattisgarh",
+      "Website Developer Madhya Pradesh",
+      "Website Developer Maharashtra",
+      "Ecommerce Website Developer Raipur",
+      "Ecommerce Website Developer Indore",
+      "Ecommerce Website Developer Nagpur",
+      "Affordable Website Development Bhopal",
+      "Freelance Web Developer Madhya Pradesh",
+      "Next.js Developer Indore",
+      "Business Website Developer Bhopal",
+      "Business Website Developer Nagpur",
+      "Website Designer Madhya Pradesh",
+      "Website Designer Maharashtra",
+      "Web Designer Near Me Indore",
+      "Website Banane Wala Madhya Pradesh",
+      "Landing Page Development Bhopal",
+      "Website Maintenance Service Madhya Pradesh",
+      "Portfolio Website Developer Indore",
     ],
   };
 
@@ -53,12 +66,12 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <h1 className="sr-only">
-        Website Developer in Bilaspur Chhattisgarh | Affordable Web Development
+        Website Developer in Bilaspur, Raipur, Indore, Bhopal, Nagpur, Chhattisgarh, Madhya Pradesh & Maharashtra | Affordable Web Development
         Company | Ecommerce, Landing Page, Business Website —
-        webdevelopmentai.in. Website banwana ho to call karo ₹9,999 se shuru.
+        webdevelopmentai.in. CG, MP aur Maharashtra mein website banwana ho to call karo ₹9,999 se shuru.
       </h1>
       <h2 className="sr-only">
-        Website Designer Bilaspur | Web Designer Near Me Bilaspur
+        Website Designer Nagpur | Website Designer Indore | Website Designer Bhopal | Website Designer Raipur | Website Designer Bilaspur | Web Designer Near Me Maharashtra
       </h2>
       <HeroSlider />
       <HeroVideo />

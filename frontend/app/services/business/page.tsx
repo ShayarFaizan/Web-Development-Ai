@@ -518,7 +518,8 @@ export default function BusinessHub() {
             <Link
               key={idx}
               href={blog.href}
-              className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              id={blog.href.split('/').pop()}
+              className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 scroll-mt-24"
             >
               <div className="h-48 bg-[#f8f9fa] flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
                 {blog.emoji}
@@ -577,7 +578,8 @@ export default function BusinessHub() {
               <Link
                 key={idx}
                 href={blog.href}
-                className="group flex flex-col bg-[#fdfdfd] border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-[#1a73e8]/20"
+                id={blog.href.split('/').pop()}
+                className="group flex flex-col bg-[#fdfdfd] border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-[#1a73e8]/20 scroll-mt-24"
               >
                 <div className="h-40 bg-[#f8f9fa] flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-500 opacity-80">
                   {blog.emoji}

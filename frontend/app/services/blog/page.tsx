@@ -250,8 +250,9 @@ export default function BlogHub() {
           {BLOG_ARTICLES.map((blog, idx) => (
             <Link 
               key={idx} 
-              href={blog.href}
-              className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              href={`${blog.href}?ref=bloghub`}
+              id={blog.href.split('/').pop()}
+              className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 scroll-mt-24"
             >
               <div className="h-48 bg-[#f8f9fa] flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
                 {blog.emoji}

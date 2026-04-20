@@ -9,15 +9,20 @@ export const metadata: Metadata = {
   keywords: 'GST registration ke baad website madhya pradesh, website for GST business MP, professional website indore bhopal jabalpur, GST registered business website benefits, online presence after GST MP, website development indore, small business website bhopal, GST business digital identity madhya pradesh 2026, website banwayein MP, gst ke baad online presence',
 };
 
-export default function MpGstWebsiteBlog() {
+export default async function MpGstWebsiteBlog({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const resolvedSearchParams = await searchParams;
+  const isFromBlogHub = resolvedSearchParams?.ref === 'bloghub';
+  const backLink = isFromBlogHub ? "/services/blog#mp-gst-registration-website-benefits" : "/services/business#mp-gst-registration-website-benefits";
+  const backLabel = isFromBlogHub ? "Back to Blog Hub" : "Back to Business Hub";
+
   return (
     <div className="bg-white min-h-screen pt-20 pb-24" style={{ fontFamily: "'Google Sans', system-ui, sans-serif" }}>
       <article className="max-w-[850px] mx-auto px-6">
 
         {/* Back Link */}
         <nav className="mb-10">
-          <Link href="/services/business" className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
-            <ArrowLeft size={15} className="mr-1.5" /> Back to Business Hub
+          <Link href={backLink} className="inline-flex items-center text-[#1a73e8] hover:underline text-sm font-medium">
+            <ArrowLeft size={15} className="mr-1.5" /> {backLabel}
           </Link>
         </nav>
 
@@ -283,7 +288,7 @@ export default function MpGstWebsiteBlog() {
                 Free Consultation Lo <MousePointer2 size={20} />
               </a>
               <Link
-                href="/services/business"
+                href={backLink}
                 className="inline-flex items-center justify-center gap-3 px-12 py-5 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg"
               >
                 Aur Case Studies

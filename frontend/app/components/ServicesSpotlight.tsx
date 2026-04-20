@@ -238,7 +238,8 @@ function MediaCarousel({
     video.addEventListener("timeupdate", handleTimeUpdate);
     if (isPlaying) video.play();
 
-    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+    return () =>
+      video.removeEventListener("timeupdate", handleTimeUpdate); /*  */
   }, [isInteracting, currentIndex, isModalActive, isPlaying, isVideo]);
 
   // Passive touch listeners (GOLDEN FIX for mobile vertical scroll)
