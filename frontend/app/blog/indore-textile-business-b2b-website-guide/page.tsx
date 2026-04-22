@@ -63,7 +63,7 @@ export default async function IndoreTextileB2BGuide({ searchParams }: { searchPa
           
           <div className="flex flex-wrap items-center gap-6 text-gray-600 text-sm font-medium border-t border-b border-gray-200 py-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-10 h-10 bg-linear-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 WA
               </div>
               <div>
@@ -200,7 +200,7 @@ export default async function IndoreTextileB2BGuide({ searchParams }: { searchPa
             Indore ka market hamesha se apne kapde ki quality aur rate ke liye jana jata hai. Hamara product best hai, bas hume apne bechne ka tareeka modern karna padega. Ek bar jab system set ho gaya, toh aapko order processing ki tension lene ki zaroorat nahi padegi, software sab sambhal lega.
           </p>
 
-          <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
+          <div className="bg-linear-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
             <h3 className="text-3xl font-black mb-4">Kya Aap Apna Textile Business Scale Karne Ke Liye Taiyar Hain?</h3>
             <p className="text-blue-100 text-lg mb-8 max-w-2xl">
               Thok vyapar ko digitize karna koi choti baat nahi hai. Iske liye ek aisi tech team chahiye jo kapda market ke rules, udhaar system, aur MOQ ko samajhti ho. 

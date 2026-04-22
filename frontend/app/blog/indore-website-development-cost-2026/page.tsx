@@ -87,7 +87,7 @@ export default async function IndoreWebsiteCostGuide({ searchParams }: { searchP
               <span className="bg-blue-100 text-blue-800 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md">Indore Business</span>
             </div>
             <h1 className="text-4xl md:text-[2.75rem] font-black text-gray-900 leading-[1.1] tracking-tight">
-              Indore Mein Website Banwane Ka Kharcha <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">2026 Report</span>
+              Indore Mein Website Banwane Ka Kharcha <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">2026 Report</span>
             </h1>
             <p className="text-lg text-gray-500 leading-relaxed max-w-2xl">
               Indore ke businessmen ke liye website cost ki ek transparent, no-BS guide. Jaaniye 2026 ke actual market rates, zaroori features, aur wo hidden costs jo freelancers aapse chupate hain.
@@ -107,7 +107,7 @@ export default async function IndoreWebsiteCostGuide({ searchParams }: { searchP
           </div>
           
           <div className="w-full md:w-1/3 flex justify-center">
-            <div className="relative w-64 h-64 bg-gradient-to-tr from-blue-50 to-indigo-100 rounded-full flex items-center justify-center shadow-inner border-[8px] border-white">
+            <div className="relative w-64 h-64 bg-linear-to-tr from-blue-50 to-indigo-100 rounded-full flex items-center justify-center shadow-inner border-8 border-white">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 rounded-full"></div>
               <Calculator size={80} className="text-blue-600 drop-shadow-md z-10" />
               <div className="absolute top-10 right-10 bg-white p-3 rounded-2xl shadow-lg rotate-12">
@@ -172,7 +172,7 @@ export default async function IndoreWebsiteCostGuide({ searchParams }: { searchP
 
           <div className="grid md:grid-cols-3 gap-6 not-prose mb-16">
             {costTiers.map((tier, idx) => (
-              <div key={idx} className={`relative bg-gradient-to-b ${tier.color} border ${tier.border} rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
+              <div key={idx} className={`relative bg-linear-to-b ${tier.color} border ${tier.border} rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
                     Most Popular
@@ -295,7 +295,7 @@ export default async function IndoreWebsiteCostGuide({ searchParams }: { searchP
             <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
               <ShieldCheck size={200} className="text-white" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 opacity-90"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 opacity-90"></div>
             
             <div className="relative p-10 md:p-14 z-10 text-center md:text-left flex flex-col md:flex-row items-center gap-10">
               <div className="flex-1">

@@ -35,7 +35,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
             <span className="bg-[#e8f0fe] text-[#1a73e8] px-4 py-1.5 rounded-full text-[12px] font-bold uppercase shadow-sm border border-[#1a73e8]/10">Local SEO</span>
             <span className="bg-[#fef7e0] text-[#b06000] px-4 py-1.5 rounded-full text-[12px] font-bold uppercase shadow-sm border border-[#fbbc04]/10">2026 Guide</span>
           </div>
-          <h1 className="text-[42px] md:text-[64px] font-[900] text-[#202124] leading-[1.05] mb-8 tracking-tighter">
+          <h1 className="text-[42px] md:text-[64px] font-black text-[#202124] leading-[1.05] mb-8 tracking-tighter">
             Google Par Apna Business <br/>
             <span className="text-[#1a73e8]">Kaise Register Karein?</span>
           </h1>
@@ -89,7 +89,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                {/* Step 1 */}
                <div className="relative pl-12 border-l-4 border-gray-100">
                   <div className="absolute top-0 -left-[14px] w-6 h-6 bg-[#1a73e8] rounded-full border-4 border-white"></div>
-                  <h3 className="text-[24px] font-[900] text-[#202124] mb-4">1. Google Business Profile Par Jayein</h3>
+                  <h3 className="text-[24px] font-black text-[#202124] mb-4">1. Google Business Profile Par Jayein</h3>
                   <p className="mb-6 text-gray-600">Apne browser mein <code>google.com/business</code> open karein aur 'Manage Now' par click karein. Yahan aapko apne business ka "Exact Name" likhna hai joh aapke shop ke board par hai.</p>
                   <div className="bg-[#f8f9fa] p-6 rounded-3xl border border-gray-100 flex items-start gap-4 italic space-y-2 flex-col">
                     <span className="text-sm font-bold text-orange-600 uppercase flex items-center gap-2 tracking-widest"><Settings size={14} /> Expert Tip:</span>
@@ -100,7 +100,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                {/* Step 2 */}
                <div className="relative pl-12 border-l-4 border-gray-100">
                   <div className="absolute top-0 -left-[14px] w-6 h-6 bg-[#1a73e8] rounded-full border-4 border-white"></div>
-                  <h3 className="text-[24px] font-[900] text-[#202124] mb-4">2. Sahi Category Chunnein</h3>
+                  <h3 className="text-[24px] font-black text-[#202124] mb-4">2. Sahi Category Chunnein</h3>
                   <p className="mb-4">Google ko batayein ki aap kya karte hain. Agar aap doctor hain, toh sirf "Doctor" na likhein, balki "Pediatrician" ya "Dentist" jaisi exact category chunnein.</p>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {['Hardware Store', 'Real Estate Agency', 'Beauty Salon', 'Restaurant', 'Clinic', 'Mobile Shop'].map(tag => (
@@ -112,7 +112,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                {/* Step 3 */}
                <div className="relative pl-12 border-l-4 border-gray-100">
                   <div className="absolute top-0 -left-[14px] w-6 h-6 bg-[#1a73e8] rounded-full border-4 border-white"></div>
-                  <h3 className="text-[24px] font-[900] text-[#202124] mb-4">3. Location Aur Pin Drop</h3>
+                  <h3 className="text-[24px] font-black text-[#202124] mb-4">3. Location Aur Pin Drop</h3>
                   <p className="mb-4">Google Maps par red pin ko exact shop ki position par rakhein. Chhattisgarh ke naye areas mein GPS thoda galat ho sakta hai, toh isse manually check karna <span className="font-black">bahut zaroori hai</span>.</p>
                   <div className="p-6 bg-[#e8f0fe] rounded-3xl border border-[#1a73e8]/20 flex items-center gap-4">
                     <MapPin size={32} className="text-[#1a73e8] animate-bounce" />
@@ -123,7 +123,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                {/* Step 4 */}
                <div className="relative pl-12 border-l-4 border-gray-100">
                   <div className="absolute top-0 -left-[14px] w-6 h-6 bg-[#1a73e8] rounded-full border-4 border-white"></div>
-                  <h3 className="text-[24px] font-[900] text-[#202124] mb-4">4. Verification (The Hard Part)</h3>
+                  <h3 className="text-[24px] font-black text-[#202124] mb-4">4. Verification (The Hard Part)</h3>
                   <p>Ab Google aapko verify karega. Pehle 'Postcard' (letter) aata tha, lekin 2026 mein zyadatar <strong>Video Verification</strong> chalta hai. Aapko apni shop ke bahar se andar tak ka ek video banana hota hai.</p>
                </div>
             </div>
@@ -144,7 +144,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                   <li key={i} className="flex gap-4">
                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-xs font-black shrink-0 shadow-sm">{i+1}</div>
                      <div>
-                        <div className="font-[900] text-[#202124] text-[17px] mb-1">{item.t}</div>
+                        <div className="font-black text-[#202124] text-[17px] mb-1">{item.t}</div>
                         <p className="text-[15px] text-gray-600">{item.d}</p>
                      </div>
                   </li>
@@ -169,7 +169,7 @@ export default async function GoogleBusinessRegistrationPage({ searchParams }: {
                 <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-orange-500 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000"></div>
             </div>
             <p className="text-[#1a73e8] text-sm font-black uppercase tracking-[0.3em] mb-8">Ready to grow?</p>
-            <h3 className="text-[38px] md:text-[56px] font-[900] mb-8 leading-[1.05] tracking-tight">
+            <h3 className="text-[38px] md:text-[56px] font-black mb-8 leading-[1.05] tracking-tight">
               Hamse Apna Google <br/><span className="text-[#1a73e8]">Setup Karwayein</span>
             </h3>
             <p className="text-xl text-gray-400 mb-14 max-w-2xl mx-auto leading-relaxed">

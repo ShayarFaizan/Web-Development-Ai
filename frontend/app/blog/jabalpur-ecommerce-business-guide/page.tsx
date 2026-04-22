@@ -62,7 +62,7 @@ export default async function JabalpurEcommerceGuide({ searchParams }: { searchP
           
           <div className="flex flex-wrap items-center gap-6 text-gray-600 text-sm font-medium border-t border-b border-gray-200 py-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-10 h-10 bg-linear-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 WA
               </div>
               <div>
@@ -241,7 +241,7 @@ export default async function JabalpurEcommerceGuide({ searchParams }: { searchP
             Jo aaj sochega ki "dekhte hain aaram se", wo kal market se bahar ho jayega. Market rules badal chuke hain. <strong>Jo pehle aayega, wahi bada hissa capture karega.</strong> Agar aapne aaj apni digital pehchan nahi banayi, toh aane wale 2-3 saalon mein aapka business sirf survival mode par reh jayega.
           </p>
 
-          <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
+          <div className="bg-linear-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
             <h3 className="text-3xl font-black mb-4">Kya Aap Apna Digital Empire Banane Ko Taiyar Hain?</h3>
             <p className="text-blue-100 text-lg mb-8 max-w-2xl">
               "Bhaiya, humein tech aur website samajh nahi aati, server kya hota hai, domain kya hota hai, bahut complicated lagta hai." Main Jabalpur ke vyapariyon se har roj ye sunta hoon. Aur mera jawab hamesha yehi hota hai: <strong>Aapko tech samajhne ki zaroorat nahi hai, aapko sirf apna dhandha (business) samajhna hai. Tech hum sambhalenge.</strong>

@@ -119,7 +119,7 @@ export default async function MPSmallBusinessWebsiteGuide({ searchParams }: { se
           {/* Author + Meta */}
           <div className="flex flex-wrap items-center gap-5 text-sm text-gray-500 border-t border-b border-gray-200 py-5">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white font-black text-base shadow-md">
+              <div className="w-11 h-11 rounded-full bg-linear-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white font-black text-base shadow-md">
                 WA
               </div>
               <div>
@@ -224,7 +224,7 @@ export default async function MPSmallBusinessWebsiteGuide({ searchParams }: { se
           </p>
 
           {/* Story Card */}
-          <div className="not-prose bg-gradient-to-br from-slate-50 to-blue-50 border border-blue-100 rounded-3xl p-8 my-10 shadow-sm">
+          <div className="not-prose bg-linear-to-br from-slate-50 to-blue-50 border border-blue-100 rounded-3xl p-8 my-10 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
               <span className="text-3xl">💡</span>
               <h3 className="text-xl font-black text-gray-900">
@@ -490,7 +490,7 @@ export default async function MPSmallBusinessWebsiteGuide({ searchParams }: { se
 
           {/* CTA Block */}
           <div className="not-prose relative overflow-hidden rounded-3xl my-14 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-indigo-700 to-violet-800" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-700 via-indigo-700 to-violet-800" />
             <div className="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
             <div className="absolute bottom-0 left-0 w-56 h-56 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
             <div className="relative p-9 md:p-14">

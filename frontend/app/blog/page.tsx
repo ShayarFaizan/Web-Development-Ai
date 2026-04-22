@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, ChevronRight, ArrowRight } from "lucide-react";
+import { Search, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { auth, googleProvider, db, messaging } from "@/lib/firebase";
 
@@ -21,7 +21,8 @@ interface Blog {
 const FEATURED_ARTICLES = [
   {
     tags: ["BILASPUR", "WEBSITE COST", "WEB DEVELOPMENT", "2026 GUIDE"],
-    title: "Bilaspur, Chhattisgarh Mein Website Banwane Ka Kharcha Kitna Hai? (2026 Guide)",
+    title:
+      "Bilaspur, Chhattisgarh Mein Website Banwane Ka Kharcha Kitna Hai? (2026 Guide)",
     description:
       "Bilaspur, Chhattisgarh mein apna business online lane ki soch rahe hain? Jaano website ka sahi kharcha, local areas (Vyapar Vihar, Ratanpur) ke liye tips, aur 2026 ka complete guide Roman Hindi mein.",
     date: "APRIL 2026",
@@ -31,7 +32,9 @@ const FEATURED_ARTICLES = [
         <div className="flex items-center gap-6 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
           <div className="text-6xl">🏙️</div>
           <div className="text-white text-center">
-            <div className="text-[13px] font-medium text-blue-200 uppercase tracking-widest mb-1">Bilaspur Guide</div>
+            <div className="text-[13px] font-medium text-blue-200 uppercase tracking-widest mb-1">
+              Bilaspur Guide
+            </div>
             <div className="text-4xl font-bold">2026</div>
           </div>
           <div className="text-6xl">💻</div>
@@ -41,7 +44,7 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
+    ),
   },
   {
     tags: ["BILASPUR INSIGHTS", "LOCAL BUSINESS", "GROWTH"],
@@ -55,7 +58,9 @@ const FEATURED_ARTICLES = [
         <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
           <div className="text-6xl">🏪</div>
           <div className="text-white text-center">
-            <div className="text-[13px] font-medium text-indigo-200 uppercase tracking-widest mb-1">Local Business</div>
+            <div className="text-[13px] font-medium text-indigo-200 uppercase tracking-widest mb-1">
+              Local Business
+            </div>
             <div className="text-4xl font-bold">Growth</div>
           </div>
           <div className="text-6xl">📈</div>
@@ -65,11 +70,12 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
+    ),
   },
   {
     tags: ["BILASPUR", "LOCAL VS BAHAR", "TRUST GUIDE"],
-    title: "Raipur ya Bangalore Se Website Banwana vs Local Developer — Kya Sahi Hai?",
+    title:
+      "Raipur ya Bangalore Se Website Banwana vs Local Developer — Kya Sahi Hai?",
     description:
       "Honest comparison: paisa, time, communication aur after-support ke basis par jaano ki Bilaspur ke local business ke liye kaun sa developer sahi rahega.",
     date: "APRIL 2026",
@@ -79,7 +85,9 @@ const FEATURED_ARTICLES = [
         <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
           <div className="text-6xl">🏙️</div>
           <div className="text-white text-center">
-            <div className="text-[13px] font-medium text-orange-200 uppercase tracking-widest mb-1">Local vs Bahar</div>
+            <div className="text-[13px] font-medium text-orange-200 uppercase tracking-widest mb-1">
+              Local vs Bahar
+            </div>
             <div className="text-4xl font-bold">Trust</div>
           </div>
           <div className="text-6xl">🤝</div>
@@ -89,7 +97,7 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
+    ),
   },
   {
     tags: ["BILASPUR", "AI WEBSITE", "FAST DELIVERY", "USP"],
@@ -103,7 +111,9 @@ const FEATURED_ARTICLES = [
         <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
           <div className="text-6xl">🤖</div>
           <div className="text-white text-center">
-            <div className="text-[13px] font-medium text-emerald-200 uppercase tracking-widest mb-1">AI-Powered</div>
+            <div className="text-[13px] font-medium text-emerald-200 uppercase tracking-widest mb-1">
+              AI-Powered
+            </div>
             <div className="text-4xl font-bold">Speed</div>
           </div>
           <div className="text-6xl">⚡</div>
@@ -113,11 +123,12 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
+    ),
   },
   {
     tags: ["CHHATTISGARH", "WEBSITE GUIDE", "DECISION STAGE", "SMALL BUSINESS"],
-    title: "Chhattisgarh Ke Small Businesses Ke Liye Best Website Type — Static vs Dynamic vs Ecommerce",
+    title:
+      "Chhattisgarh Ke Small Businesses Ke Liye Best Website Type — Static vs Dynamic vs Ecommerce",
     description:
       "Decision table, budget guide, 5 common mistakes aur Chhattisgarh-specific context ke saath jaano ki aapke restaurant, clinic ya boutique ke liye exactly kaunsa website type sahi hai.",
     date: "APRIL 2026",
@@ -127,7 +138,9 @@ const FEATURED_ARTICLES = [
         <div className="flex items-center gap-4 mb-6 transform transition-transform duration-700 group-hover/image:scale-110">
           <div className="text-6xl">📊</div>
           <div className="text-white text-center">
-            <div className="text-[13px] font-medium text-violet-200 uppercase tracking-widest mb-1">Decision Guide</div>
+            <div className="text-[13px] font-medium text-violet-200 uppercase tracking-widest mb-1">
+              Decision Guide
+            </div>
             <div className="text-4xl font-bold">Static vs E-comm</div>
           </div>
           <div className="text-6xl">🏪</div>
@@ -137,11 +150,12 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
+    ),
   },
   {
     tags: ["NICHE GUIDE", "LOCAL BUSINESS", "CHHATTISGARH", "ZERO COMPETITION"],
-    title: "Petrol Pump, Kirana Store, Clinic — Chhattisgarh Ke Local Businesses Ki Website Kaisi Honi Chahiye?",
+    title:
+      "Petrol Pump, Kirana Store, Clinic — Chhattisgarh Ke Local Businesses Ki Website Kaisi Honi Chahiye?",
     description:
       "Real competitor research ke saath: Chhattisgarh mein in 6 niches mein Google par competition virtually zero hai. Pehle aane wala jitta hai — deep-dive guide with feature lists, SEO keywords aur blueprints.",
     date: "APRIL 2026",
@@ -152,7 +166,9 @@ const FEATURED_ARTICLES = [
           <div className="text-5xl">⛽</div>
           <div className="text-5xl">🛒</div>
           <div className="text-white text-center px-2">
-            <div className="text-[11px] font-medium text-orange-200 uppercase tracking-widest mb-1">Niche Deep-Dive</div>
+            <div className="text-[11px] font-medium text-orange-200 uppercase tracking-widest mb-1">
+              Niche Deep-Dive
+            </div>
             <div className="text-3xl font-bold">Zero Competition</div>
           </div>
           <div className="text-5xl">🏥</div>
@@ -163,26 +179,25 @@ const FEATURED_ARTICLES = [
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
       </div>
-    )
-  }
+    ),
+  },
 ];
 
 const STATIC_BLOGS = [
   {
-    title:
-      "Announcing ADK for Java 1.0.0: Building the Future of AI Agents in Java",
+    title: "Ai software development company",
     date: "MARCH 30, 2026",
     snippet:
       "Google has released version 1.0.0 of the Agent Development Kit (ADK) for Java, introducing powerful new features like Google Maps grounding, built-in URL fetching, and a standardized Agent2Agent...",
   },
   {
-    title: "Closing the knowledge gap with agent skills",
+    title: "Ai development company",
     date: "MARCH 25, 2026",
     snippet:
       'To bridge the gap between static model knowledge and rapidly evolving software practices, Google DeepMind developed a "Gemini API developer skill" that provides agents with live...',
   },
   {
-    title: "Jump to play: Building with Gemini & MediaPipe",
+    title: " web development ai",
     date: "MARCH 24, 2026",
     snippet:
       "The provided workflow streamlines motion-controlled game development by using Gemini Canvas to rapidly prototype mechanics like the MediaPipe Pose Landmarker through high-level...",
@@ -191,11 +206,11 @@ const STATIC_BLOGS = [
 
 const MOBILE_BLOGS = [
   {
-    title: "Jump to play: Building with Gemini & MediaPipe",
+    title: "Mobile Application Development",
     image: "https://lh3.googleusercontent.com/pw/AP1GczM_Xz_Z_j_Y_Z",
   },
   {
-    title: "On-Device Function Calling in Google AI Edge Gallery",
+    title: "On-Device websiteFunction Calling in Google AI Edge Gallery",
     image: "https://lh3.googleusercontent.com/pw/AP1GczN_Xz_Z_j_Y_Z",
   },
   {
@@ -206,17 +221,17 @@ const MOBILE_BLOGS = [
 
 const WEB_BLOGS = [
   {
-    title: "Jump to play: Building with Gemini & MediaPipe",
+    title: "website design and development",
     color: "#f1f3f4",
     type: "dino",
   },
   {
-    title: "Turn creative prompts into interactive XR experiences with Gemini",
+    title: "website developer in bilaspur",
     color: "#e8effc",
     type: "xr",
   },
   {
-    title: "LiteRT: The Universal Framework for On-Device AI",
+    title: "professional web development",
     color: "#e8f0fe",
     type: "litert",
   },
@@ -224,8 +239,7 @@ const WEB_BLOGS = [
 
 const CLOUD_BLOGS = [
   {
-    title:
-      "Announcing ADK for Java 1.0.0: Building the Future of AI Agents in Java",
+    title: "ai software development company",
     color: "#fef7e0",
     type: "robot",
   },
@@ -244,7 +258,8 @@ const CLOUD_BLOGS = [
 
 const CHHATTISGARH_BLOGS = [
   {
-    title: "Website banwane ka kharcha Raipur mein 2026: The Ultimate Price Guide",
+    title:
+      "Website banwane ka kharcha Raipur mein 2026: The Ultimate Price Guide",
     color: "#fef7e0",
     type: "raipur",
     link: "/blog/website-banane-ka-kharcha-raipur-2026",
@@ -262,6 +277,195 @@ const CHHATTISGARH_BLOGS = [
     link: "/blog/why-website-important-raipur-business",
   },
 ];
+
+const CategorySlider = ({ section, sIdx }: { section: any; sIdx: number }) => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Duplicate to have 3 slides for demo purposes
+  const displayBlogs = [...section.blogs, ...section.blogs, ...section.blogs];
+  const chunks = [];
+  for (let i = 0; i < displayBlogs.length; i += 3) {
+    chunks.push(displayBlogs.slice(i, i + 3));
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveSlide((prev) => (prev + 1) % chunks.length);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveSlide((prev) => (prev - 1 + chunks.length) % chunks.length);
+  };
+
+  return (
+    <div key={section.title}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
+        <div className="lg:col-span-3">
+          <h2 className="text-[34px] font-bold text-[#1a1c1e] mb-6 tracking-tight">
+            {section.title}
+          </h2>
+          <button className="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-[#dadce0] text-[#1a73e8] font-semibold hover:bg-[#1a73e8]/5 transition-all text-[15px] cursor-pointer">
+            See posts <ArrowRight size={16} />
+          </button>
+        </div>
+
+        <div className="lg:col-span-9 relative group/slider">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out w-full"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {chunks.map((chunk, chunkIdx) => (
+                <div
+                  key={chunkIdx}
+                  className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8"
+                >
+                  {chunk.map((blog, bIdx) => (
+                    <Link
+                      key={bIdx}
+                      href={(blog as any).link || "#"}
+                      className="flex flex-col group cursor-pointer"
+                    >
+                      <h4 className="text-[18px] font-medium text-[#202124] mb-6 leading-tight h-[80px] line-clamp-3 group-hover:text-[#1a73e8] transition-colors">
+                        {blog.title}
+                      </h4>
+                      <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg shadow-gray-200 bg-gray-100 flex items-center justify-center">
+                        <div
+                          className="w-full h-full flex items-center justify-center"
+                          style={{
+                            backgroundColor:
+                              (blog as any).color ||
+                              (sIdx === 0 && bIdx === 1
+                                ? "#042e27"
+                                : sIdx === 0 && bIdx === 0
+                                  ? "#f8e9d9"
+                                  : "#f1f3f4"),
+                          }}
+                        >
+                          {(blog as any).type === "robot" && (
+                            <div className="relative w-full h-full flex items-center justify-center font-bold text-[#805a3b] text-xl">
+                              🤖 ADK Java
+                            </div>
+                          )}
+                          {(blog as any).type === "colab" && (
+                            <div className="text-white font-bold text-2xl flex items-center gap-2">
+                              colab{" "}
+                              <span className="text-orange-500">🧡</span>
+                            </div>
+                          )}
+                          {(blog as any).type === "litert" && (
+                            <div className="text-[#1a73e8] font-bold text-xl">
+                              LiteRT
+                            </div>
+                          )}
+                          {(blog as any).type === "protocols" && (
+                            <div className="w-full h-full bg-linear-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center p-4">
+                              <div className="border border-gray-100 rounded-lg p-2 bg-white shadow-sm text-[10px] text-gray-400">
+                                Agent Protocols
+                              </div>
+                            </div>
+                          )}
+                          {(blog as any).type === "raipur" && (
+                            <div className="relative w-full h-full flex items-center justify-center font-bold text-[#805a3b] text-xl">
+                              🤖 Raipur 2026
+                            </div>
+                          )}
+                          {(blog as any).type === "bilaspur" && (
+                            <div className="w-full h-full bg-linear-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center p-4 border border-gray-100 rounded-xl">
+                              <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[12px]">
+                                Bilaspur Prices
+                              </div>
+                            </div>
+                          )}
+                          {(blog as any).type === "raipurTop5" && (
+                            <div className="w-full h-full bg-white flex items-center justify-center p-4 border border-[#dadce0] rounded-[16px] shadow-sm relative">
+                              <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[13px] shadow-sm">
+                                Raipur Rankings
+                              </div>
+                            </div>
+                          )}
+                          {(blog as any).type === "tech" && (
+                            <div className="text-white font-bold text-2xl flex items-center gap-2 tracking-tight">
+                              tech <span className="text-red-500">❤️</span>
+                            </div>
+                          )}
+                          {(blog as any).type === "xr" && (
+                            <div className="w-full h-full flex items-center justify-center bg-blue-50">
+                              <div className="w-12 h-12 border-2 border-blue-200 rounded-full flex items-center justify-center text-blue-400">
+                                XR
+                              </div>
+                            </div>
+                          )}
+                          {(blog as any).type === "dino" && (
+                            <div className="text-gray-400 text-3xl">🌵</div>
+                          )}
+                          {!(blog as any).type && (
+                            <>
+                              {sIdx === 0 && bIdx === 0 && (
+                                <span className="text-[11px] text-[#202124]/40 font-bold uppercase tracking-widest">
+                                  ADK Java 1.0
+                                </span>
+                              )}
+                              {sIdx === 0 && bIdx === 1 && (
+                                <div className="text-white text-center">
+                                  <div className="text-[10px] opacity-70 mb-1 tracking-wider uppercase">
+                                    ✦ Gemini API
+                                  </div>
+                                  <div className="text-[18px] font-medium">
+                                    Agent skills
+                                  </div>
+                                </div>
+                              )}
+                              {(sIdx === 1 || (sIdx === 0 && bIdx === 2)) &&
+                                !(blog as any).type && (
+                                  <div className="w-16 h-16 bg-white/40 rounded-lg animate-pulse"></div>
+                                )}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={handlePrev}
+            className="absolute left-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-800 hover:bg-gray-50 transition-all invisible lg:visible lg:flex z-10 cursor-pointer"
+          >
+            <ChevronLeft size={24} strokeWidth={1.5} />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="absolute right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-800 hover:bg-gray-50 transition-all invisible lg:visible lg:flex z-10 cursor-pointer"
+          >
+            <ChevronRight size={24} strokeWidth={1.5} />
+          </button>
+
+          {/* 3 Pagination Dots */}
+          <div className="flex justify-center items-center gap-3 mt-6">
+            {chunks.map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setActiveSlide(i)}
+                className={`rounded-full cursor-pointer transition-all duration-300 ${
+                  i === activeSlide
+                    ? "w-3 h-3 bg-black"
+                    : "w-2.5 h-2.5 border-[1.5px] border-black bg-transparent"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      {sIdx < 4 && <div className="h-px bg-gray-100 my-10 w-full"></div>}
+    </div>
+  );
+};
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState<any[]>(STATIC_BLOGS);
@@ -350,18 +554,26 @@ export default function BlogPage() {
 
   useEffect(() => {
     const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      if (!snapshot.empty) {
-        const blogsData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setBlogs([...STATIC_BLOGS, ...blogsData]);
-      } else {
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        if (!snapshot.empty) {
+          const blogsData = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setBlogs([...STATIC_BLOGS, ...blogsData]);
+        } else {
+          setBlogs(STATIC_BLOGS);
+        }
+        setLoading(false);
+      },
+      (error) => {
+        console.error("Error fetching blogs:", error);
         setBlogs(STATIC_BLOGS);
-      }
-      setLoading(false);
-    });
+        setLoading(false);
+      },
+    );
 
     return () => unsubscribe();
   }, []);
@@ -371,10 +583,14 @@ export default function BlogPage() {
     import("firebase/auth").then(({ onAuthStateChanged }) => {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-          const { getDoc, doc } = await import("firebase/firestore");
-          const subDoc = await getDoc(doc(db, "subscribers", user.uid));
-          if (subDoc.exists()) {
-            setFollowed(true);
+          try {
+            const { getDoc, doc } = await import("firebase/firestore");
+            const subDoc = await getDoc(doc(db, "subscribers", user.uid));
+            if (subDoc.exists()) {
+              setFollowed(true);
+            }
+          } catch (error) {
+            console.error("Error checking subscriber status:", error);
           }
         }
       });
@@ -441,18 +657,27 @@ export default function BlogPage() {
 
               {/* Carousel Viewport */}
               <div className="relative flex-1 overflow-hidden mt-6">
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out h-full w-full" 
+                <div
+                  className="flex transition-transform duration-500 ease-in-out h-full w-full"
                   style={{ transform: `translateX(-${activeSlide * 100}%)` }}
                 >
                   {FEATURED_ARTICLES.map((article, idx) => (
-                    <div key={idx} className="min-w-full h-full flex flex-col px-10 pb-10">
-                      <Link href={article.link} className="flex flex-col h-full group/link">
+                    <div
+                      key={idx}
+                      className="min-w-full h-full flex flex-col px-10 pb-10"
+                    >
+                      <Link
+                        href={article.link}
+                        className="flex flex-col h-full group/link"
+                      >
                         {article.customContent}
                         <div className="mt-10 flex-1">
                           <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium text-[#1a73e8] tracking-widest uppercase mb-6">
                             {article.tags.map((tag) => (
-                              <span key={tag} className="hover:underline cursor-pointer">
+                              <span
+                                key={tag}
+                                className="hover:underline cursor-pointer"
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -481,12 +706,28 @@ export default function BlogPage() {
                 ))}
               </div>
 
-              {/* Next Slide Button (Arrows) */}
-              <div 
+              {/* Previous Slide Button */}
+              <div
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  setActiveSlide((prev) => (prev + 1) % FEATURED_ARTICLES.length);
+                  setActiveSlide(
+                    (prev) => (prev - 1 + FEATURED_ARTICLES.length) % FEATURED_ARTICLES.length,
+                  );
+                }}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-[#dadce0] hover:bg-gray-50 transition-all z-20 cursor-pointer"
+              >
+                <ChevronLeft className="w-8 h-8 text-[#202124]" />
+              </div>
+
+              {/* Next Slide Button (Arrows) */}
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveSlide(
+                    (prev) => (prev + 1) % FEATURED_ARTICLES.length,
+                  );
                 }}
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-[#dadce0] hover:bg-gray-50 transition-all z-20 cursor-pointer"
               >
@@ -554,136 +795,7 @@ export default function BlogPage() {
             { title: "Cloud", blogs: CLOUD_BLOGS },
             { title: "Chhattisgarh", blogs: CHHATTISGARH_BLOGS },
           ].map((section, sIdx) => (
-            <div key={section.title}>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <div className="lg:col-span-3">
-                  <h2 className="text-[34px] font-bold text-[#1a1c1e] mb-6 tracking-tight">
-                    {section.title}
-                  </h2>
-                  <button className="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-[#dadce0] text-[#1a73e8] font-semibold hover:bg-[#1a73e8]/5 transition-all text-[15px] cursor-pointer">
-                    See posts <ArrowRight size={16} />
-                  </button>
-                </div>
-
-                <div className="lg:col-span-9 relative">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {section.blogs.map((blog, bIdx) => (
-                      <Link
-                        key={bIdx}
-                        href={(blog as any).link || "#"}
-                        className="flex flex-col group cursor-pointer"
-                      >
-                        <h4 className="text-[18px] font-medium text-[#202124] mb-14 leading-tight h-[80px] line-clamp-3 group-hover:text-[#1a73e8] transition-colors">
-                          {blog.title}
-                        </h4>
-                        <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg shadow-gray-200 bg-gray-100 flex items-center justify-center">
-                          <div
-                            className="w-full h-full flex items-center justify-center"
-                            style={{
-                              backgroundColor:
-                                (blog as any).color ||
-                                (sIdx === 0 && bIdx === 1
-                                  ? "#042e27"
-                                  : sIdx === 0 && bIdx === 0
-                                    ? "#f8e9d9"
-                                    : "#f1f3f4"),
-                            }}
-                          >
-                            {(blog as any).type === "robot" && (
-                              <div className="relative w-full h-full flex items-center justify-center font-bold text-[#805a3b] text-xl">
-                                🤖 ADK Java
-                              </div>
-                            )}
-                            {(blog as any).type === "colab" && (
-                              <div className="text-white font-bold text-2xl flex items-center gap-2">
-                                colab{" "}
-                                <span className="text-orange-500">🧡</span>
-                              </div>
-                            )}
-                            {(blog as any).type === "litert" && (
-                              <div className="text-[#1a73e8] font-bold text-xl">
-                                LiteRT
-                              </div>
-                            )}
-                            {(blog as any).type === "protocols" && (
-                              <div className="w-full h-full bg-linear-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center p-4">
-                                <div className="border border-gray-100 rounded-lg p-2 bg-white shadow-sm text-[10px] text-gray-400">
-                                  Agent Protocols
-                                </div>
-                              </div>
-                            )}
-                            {(blog as any).type === "raipur" && (
-                              <div className="relative w-full h-full flex items-center justify-center font-bold text-[#805a3b] text-xl">
-                                🤖 Raipur 2026
-                              </div>
-                            )}
-                            {(blog as any).type === "bilaspur" && (
-                              <div className="w-full h-full bg-linear-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center p-4 border border-gray-100 rounded-xl">
-                                <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[12px]">
-                                  Bilaspur Prices
-                                </div>
-                              </div>
-                            )}
-                            {(blog as any).type === "raipurTop5" && (
-                              <div className="w-full h-full bg-white flex items-center justify-center p-4 border border-[#dadce0] rounded-[16px] shadow-sm relative">
-                                <div className="border border-[#dadce0] rounded-full text-[#5f6368] font-medium bg-white px-3 py-1 flex items-center text-[13px] shadow-sm">
-                                  Raipur Rankings
-                                </div>
-                              </div>
-                            )}
-                            {(blog as any).type === "tech" && (
-                              <div className="text-white font-bold text-2xl flex items-center gap-2 tracking-tight">
-                                tech <span className="text-red-500">❤️</span>
-                              </div>
-                            )}
-                            {(blog as any).type === "xr" && (
-                              <div className="w-full h-full flex items-center justify-center bg-blue-50">
-                                <div className="w-12 h-12 border-2 border-blue-200 rounded-full flex items-center justify-center text-blue-400">
-                                  XR
-                                </div>
-                              </div>
-                            )}
-                            {(blog as any).type === "dino" && (
-                              <div className="text-gray-400 text-3xl">🌵</div>
-                            )}
-                            {!(blog as any).type && (
-                              <>
-                                {sIdx === 0 && bIdx === 0 && (
-                                  <span className="text-[11px] text-[#202124]/40 font-bold uppercase tracking-widest">
-                                    ADK Java 1.0
-                                  </span>
-                                )}
-                                {sIdx === 0 && bIdx === 1 && (
-                                  <div className="text-white text-center">
-                                    <div className="text-[10px] opacity-70 mb-1 tracking-wider uppercase">
-                                      ✦ Gemini API
-                                    </div>
-                                    <div className="text-[18px] font-medium">
-                                      Agent skills
-                                    </div>
-                                  </div>
-                                )}
-                                {(sIdx === 1 || (sIdx === 0 && bIdx === 2)) &&
-                                  !(blog as any).type && (
-                                    <div className="w-16 h-16 bg-white/40 rounded-lg animate-pulse"></div>
-                                  )}
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-
-                  <button className="absolute right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-gray-800 hover:bg-gray-50 transition-all invisible lg:visible lg:flex z-10">
-                    <ChevronRight size={24} strokeWidth={1.5} />
-                  </button>
-                </div>
-              </div>
-              {sIdx < 4 && (
-                <div className="h-px bg-gray-100 my-16 w-full"></div>
-              )}
-            </div>
+            <CategorySlider key={section.title} section={section} sIdx={sIdx} />
           ))}
         </div>
       </div>

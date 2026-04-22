@@ -78,7 +78,7 @@ export default async function WebsiteMaintenanceGuide({ searchParams }: { search
 
           <div className="flex flex-wrap items-center gap-6 text-gray-600 text-sm font-medium border-t border-b border-gray-200 py-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-10 h-10 bg-linear-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 WA
               </div>
               <div>
@@ -340,7 +340,7 @@ export default async function WebsiteMaintenanceGuide({ searchParams }: { search
             tha.
           </p>
 
-          <div className="bg-gradient-to-r from-gray-900 to-black text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl border border-gray-800">
+          <div className="bg-linear-to-r from-gray-900 to-black text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl border border-gray-800">
             <h3 className="text-3xl font-black mb-4">
               Apni Digital Asset Ko Laawaris Mat Chhodein
             </h3>

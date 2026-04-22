@@ -64,7 +64,7 @@ export default async function MadhyaPradeshOnlineBusiness({ searchParams }: { se
           
           <div className="flex flex-wrap items-center gap-6 text-gray-600 text-sm font-medium border-t border-b border-gray-200 py-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-10 h-10 bg-linear-to-tr from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 WA
               </div>
               <div>
@@ -258,7 +258,7 @@ export default async function MadhyaPradeshOnlineBusiness({ searchParams }: { se
             Agar MP ke chote kasbo ke ladke daily ka lakho ka business kar rahe hain, toh aap kyu nahi? Unke paas aur aapke paas 24 ghante hi hain. Fark sirf execution ka hai. Wo action lete hain, aur baaki log sirf article padhkar chhod dete hain.
           </p>
 
-          <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
+          <div className="bg-linear-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-8 md:p-12 my-12 shadow-2xl">
             <h3 className="text-3xl font-black mb-4">Waqt Aa Gaya Hai Action Lene Ka!</h3>
             <p className="text-blue-100 text-lg mb-8 max-w-2xl">
               Jaise ki maine upar bataya, jo iss early phase mein market mein entry lega, wahi jitega. Kal competition zyada hoga, ads mehnge honge aur attention span kam hoga. 
